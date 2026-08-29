@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>આપણું બોટાદ — બોટાદનું પોતાનું Digital Marketplace</title>
+
+<meta name="description"
+content="આપણું બોટાદ — બોટાદમાં Business, Services, Vehicles, Property, Jobs અને Buy & Sell શોધો.">
+
+<style>
+
+:root{
+  --orange:#ff6b16;
+  --orange2:#ff8a22;
+  --navy:#102a56;
+  --purple:#6535c9;
+  --green:#18a957;
+  --bg:#f7f8fb;
+  --text:#172033;
+  --muted:#6f7787;
+  --card:#fff;
+  --border:#e7e9ef;
+  --shadow:0 6px 24px rgba(16,42,86,.08);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,"Noto Sans Gujarati",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+button,
+input,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+  border:0;
+}
+
+/* HEADER */
+
+.top{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.nav{
+  max-width:1450px;
+  margin:auto;
+  min-height:82px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:10px 22px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:285px;
+}
+
+.logo-mark{
+  font-size:43px;
+  line-height:1;
+}
+
+.logo h1{
+  margin:0;
+  font-size:30px;
+  color:var(--navy);
+}
+
+.logo h1 span{
+  color:var(--orange);
+}
+
+.logo small{
+  display:block;
+  margin-top:2px;
+  color:#555;
+  font-size:13px;
+  font-weight:600;
+}
+
+.location{
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:10px;
+  padding:12px 15px;
+  white-space:nowrap;
+}
+
+.search{
+  height:48px;
+  display:flex;
+  flex:1;
+  max-width:480px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+  background:#fff;
+}
+
+.search input{
+  border:0;
+  outline:0;
+  flex:1;
+  padding:0 16px;
+}
+
+.search button{
+  width:70px;
+  background:var(--orange);
+  color:#fff;
+  font-weight:700;
+}
+
+.navlinks{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.navlink{
+  background:transparent;
+  padding:10px;
+  color:#333;
+}
+
+.post{
+  background:var(--orange);
+  color:#fff;
+  border-radius:10px;
+  padding:13px 17px;
+  font-weight:700;
+}
+
+.login{
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:10px;
+  padding:12px 14px;
+}
+
+/* MAIN */
+
+.layout{
+  max-width:1450px;
+  margin:18px auto;
+  padding:0 22px;
+  display:grid;
+  grid-template-columns:235px 1fr;
+  gap:20px;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:15px;
+  height:max-content;
+  box-shadow:var(--shadow);
+}
+
+.sidebar h3{
+  margin:4px 8px 12px;
+  color:var(--orange);
+  font-size:20px;
+}
+
+.cat{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 9px;
+  background:#fff;
+  border-radius:9px;
+  text-align:left;
+  color:#222;
+}
+
+.cat:hover{
+  background:#fff3e9;
+  color:var(--orange);
+}
+
+.cat .ic{
+  font-size:20px;
+  width:27px;
+}
+
+.allcat{
+  margin-top:10px;
+  background:#fff2d9;
+  font-weight:700;
+  color:#7a4c00;
+}
+
+/* HERO */
+
+.hero{
+  min-height:250px;
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  background:linear-gradient(90deg,#fff1e6,#f3e9ff);
+  box-shadow:var(--shadow);
+}
+
+.hero-bg{
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(
+    90deg,
+    rgba(255,255,255,.98) 0%,
+    rgba(255,255,255,.86) 43%,
+    rgba(255,255,255,.18) 100%
+  ),
+  radial-gradient(
+    circle at 85% 40%,
+    #f5b36b 0 8%,
+    transparent 25%
+  ),
+  linear-gradient(
+    135deg,
+    #f9d8b8,
+    #f5c7b1 45%,
+    #d7e3f2
+  );
+
+  opacity:.95;
+}
+
+.hero-content{
+  position:relative;
+  padding:36px 55px;
+}
+
+.hero h2{
+  font-size:42px;
+  margin:0 0 7px;
+  color:var(--navy);
+}
+
+.hero h2 span{
+  color:var(--orange);
+}
+
+.hero p{
+  font-size:18px;
+  margin:0 0 20px;
+  color:#303747;
+  font-weight:600;
+}
+
+/* BIG SEARCH */
+
+.bigsearch{
+  display:flex;
+  background:#fff;
+  border-radius:12px;
+  padding:6px;
+  max-width:920px;
+  box-shadow:0 8px 25px rgba(0,0,0,.1);
+}
+
+.bigsearch input,
+.bigsearch select{
+  border:0;
+  outline:0;
+  padding:13px 14px;
+  flex:1;
+  min-width:0;
+}
+
+.bigsearch select{
+  border-left:1px solid var(--border);
+}
+
+.bigsearch button{
+  background:var(--orange);
+  color:#fff;
+  border-radius:9px;
+  padding:0 28px;
+  font-weight:800;
+}
+
+/* QUICK CATEGORIES */
+
+.quick{
+  display:grid;
+  grid-template-columns:repeat(10,1fr);
+  gap:10px;
+  margin:15px 0;
+}
+
+.quick-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:13px;
+  text-align:center;
+  padding:13px 6px;
+  box-shadow:0 3px 12px rgba(0,0,0,.04);
+}
+
+.quick-card b{
+  display:block;
+  margin-top:6px;
+  font-size:14px;
+}
+
+.qic{
+  font-size:27px;
+}
+
+/* SECTION */
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:18px 2px 11px;
+}
+
+.section-head h2{
+  font-size:23px;
+  margin:0;
+}
+
+.section-head a{
+  color:#4f32ba;
+  font-weight:700;
+}
+
+/* TABS */
+
+.tabs{
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  margin-bottom:12px;
+}
+
+.tab{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:8px 15px;
+  white-space:nowrap;
+}
+
+.tab.active{
+  background:var(--orange);
+  color:#fff;
+  border-color:var(--orange);
+}
+
+/* CARDS */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:13px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 4px 14px rgba(0,0,0,.05);
+  position:relative;
+}
+
+.photo{
+  height:155px;
+  background:#ddd;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:55px;
+}
+
+.badge{
+  position:absolute;
+  top:9px;
+  left:9px;
+  background:var(--green);
+  color:#fff;
+  padding:5px 8px;
+  border-radius:6px;
+  font-size:11px;
+  font-weight:800;
+}
+
+.badge.premium{
+  background:var(--purple);
+}
+
+.heart{
+  position:absolute;
+  right:10px;
+  top:8px;
+  color:#fff;
+  font-size:23px;
+  text-shadow:0 1px 3px #555;
+}
+
+.body{
+  padding:11px;
+}
+
+.price{
+  font-size:18px;
+  font-weight:800;
+  margin-bottom:5px;
+}
+
+.title{
+  font-weight:700;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.meta{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.5;
+}
+
+.card-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:8px;
+}
+
+.wa{
+  width:29px;
+  height:29px;
+  border-radius:50%;
+  background:#1db954;
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+}
+
+/* PROMO */
+
+.promo{
+  margin-top:16px;
+  background:linear-gradient(
+    120deg,
+    #5d27c9,
+    #7b3ee5
+  );
+  color:#fff;
+  border-radius:16px;
+  padding:23px 28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  overflow:hidden;
+}
+
+.promo h3{
+  font-size:24px;
+  margin:0 0 8px;
+}
+
+.promo p{
+  margin:0;
+  color:#eee;
+}
+
+.promo button{
+  background:var(--orange);
+  color:#fff;
+  padding:12px 17px;
+  border-radius:9px;
+  font-weight:800;
+}
+
+/* TRUST */
+
+.trust{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin:18px 0 30px;
+}
+
+.trust div{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:15px;
+  text-align:center;
+}
+
+.trust b{
+  display:block;
+  color:var(--navy);
+  margin-top:5px;
+}
+
+/* FOOTER */
+
+footer{
+  background:#102a56;
+  color:#fff;
+  padding:28px 22px;
+}
+
+.foot{
+  max-width:1450px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  gap:25px;
+}
+
+.foot h3{
+  margin:0 0 7px;
+}
+
+.foot p{
+  color:#dbe4f5;
+  margin:4px 0;
+  font-size:14px;
+}
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:50;
+  padding:15px;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modalbox{
+  width:min(600px,100%);
+  background:#fff;
+  border-radius:16px;
+  padding:22px;
+  max-height:90vh;
+  overflow:auto;
+}
+
+.modalhead{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.close{
+  background:#f1f2f5;
+  border-radius:50%;
+  width:35px;
+  height:35px;
+}
+
+.form{
+  display:grid;
+  gap:11px;
+}
+
+.form input,
+.form select,
+.form textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  outline:0;
+}
+
+.form textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+.submit{
+  background:var(--orange);
+  color:#fff;
+  border-radius:9px;
+  padding:13px;
+  font-weight:800;
+}
+
+/* TABLET */
+
+@media(max-width:1100px){
+
+  .navlinks .navlink{
+    display:none;
+  }
+
+  .grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .quick{
+    grid-template-columns:repeat(5,1fr);
+  }
+
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .nav{
+    flex-wrap:wrap;
+  }
+
+  .logo{
+    min-width:auto;
+  }
+
+  .location{
+    display:none;
+  }
+
+  .search{
+    order:3;
+    max-width:none;
+    flex-basis:100%;
+  }
+
+  .layout{
+    grid-template-columns:1fr;
+    padding:0 12px;
+  }
+
+  .sidebar{
+    display:none;
+  }
+
+  .hero-content{
+    padding:28px 20px;
+  }
+
+  .hero h2{
+    font-size:31px;
+  }
+
+  .bigsearch{
+    flex-wrap:wrap;
+  }
+
+  .bigsearch input,
+  .bigsearch select{
+    min-width:48%;
+  }
+
+  .bigsearch button{
+    height:45px;
+    flex:1;
+    margin-top:5px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .quick{
+    grid-template-columns:repeat(5,1fr);
+  }
+
+  .qic{
+    font-size:22px;
+  }
+
+  .quick-card b{
+    font-size:11px;
+  }
+
+  .trust{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .foot{
+    flex-direction:column;
+  }
+
+}
+
+/* SMALL MOBILE */
+
+@media(max-width:480px){
+
+  .logo h1{
+    font-size:23px;
+  }
+
+  .logo small{
+    font-size:10px;
+  }
+
+  .post{
+    padding:10px;
+  }
+
+  .login{
+    padding:10px;
+  }
+
+  .quick{
+    grid-template-columns:repeat(5,1fr);
+    gap:5px;
+  }
+
+  .quick-card{
+    padding:9px 2px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    min-height:285px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="top">
+
+<div class="nav">
+
+  <div class="logo">
+
+    <div class="logo-mark">🏛️</div>
+
+    <div>
+
+      <h1>
+        આપણું <span>બોટાદ</span>
+      </h1>
+
+      <small>
+        બોટાદમાં જે જોઈએ, અહીં શોધો!
+      </small>
+
+    </div>
+
+  </div>
+
+  <button class="location">
+    📍 Botad ▾
+  </button>
+
+  <div class="search">
+
+    <input
+      id="topSearch"
+      placeholder="શું શોધી રહ્યા છો?"
+    >
+
+    <button onclick="searchAds()">
+      શોધો
+    </button>
+
+  </div>
+
+  <div class="navlinks">
+
+    <button class="navlink">
+      ♡ ફેવરિટ
+    </button>
+
+    <button class="navlink">
+      💬 ચેટ
+    </button>
+
+    <button class="navlink">
+      🔔
+    </button>
+
+    <button
+      class="post"
+      onclick="openPost()"
+    >
+      મફત જાહેરાત મૂકો
+    </button>
+
+    <button
+      class="login"
+      onclick="alert('Login / Signup આગળના versionમાં Firebase સાથે જોડાશે.')"
+    >
+      👤 લોગિન / સાઇનઅપ
+    </button>
+
+  </div>
+
+</div>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main class="layout">
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+  <h3>
+    બધી કેટેગરી
+  </h3>
+
+  <button
+    class="cat"
+    onclick="filterAds('Business')"
+  >
+    <span class="ic">🏪</span>
+    બિઝનેસ
+    <span>›</span>
+  </button>
+
+  <button
+    class="cat"
+    onclick="filterAds('Services')"
+  >
+    <span class="ic">🔧</span>
+    સેવાઓ
+    <span>›</span>
+  </button>
+
+  <button
+    class="cat"
+    onclick="filterAds('Vehicles')"
+  >
+    <span class="ic">🚗</span>
+    વાહન
+    <span>›</span>
+  </button>
+
+  <button
+    class="cat"
+    onclick="filterAds('Property')"
+  >
+    <span class="ic">🏠</span>
+    પ્રોપર્ટી
+    <span>›</span>
+  </button>
+
+  <button
+    class="cat"
+    onclick="filterAds('Jobs')"
+  >
+    <span class="ic">💼</span>
+    નોકરીઓ
+    <span>›</span>
+  </button>
+
+  <button
+    class="cat"
+    onclick="filterAds('Buy & Sell')"
+  >
+    <span class="ic">🛒</span>
+    બાય & સેલ
+    <span>›</span>
+  </button>
+
+  <button
+    class="cat"
+    onclick="filterAds('Mobile')"
+  >
+    <span class="ic">📱</span>
+    મોબાઇલ & ઇલેક્ટ્રોનિક્સ
+    <span>›</span>
+  </button>
+
+  <button
+    class="cat"
+    onclick="filterAds('Fashion')"
+  >
+    <span class="ic">👗</span>
+    ફેશન & બ્યુટી
+    <span>›</span>
+  </button>
+
+  <button
+    class="cat"
+    onclick="filterAds('Restaurant')"
+  >
+    <span class="ic">🍽️</span>
+    રેસ્ટોરન્ટ
+    <span>›</span>
+  </button>
+
+  <button
+    class="cat"
+    onclick="filterAds('Wedding')"
+  >
+    <span class="ic">💍</span>
+    વેડિંગ સર્વિસ
+    <span>›</span>
+  </button>
+
+  <button
+    class="cat"
+    onclick="filterAds('Education')"
+  >
+    <span class="ic">🎓</span>
+    એજ્યુકેશન
+    <span>›</span>
+  </button>
+
+  <button
+    class="cat"
+    onclick="filterAds('Pets')"
+  >
+    <span class="ic">🐾</span>
+    પેટ્સ
+    <span>›</span>
+  </button>
+
+  <button
+    class="cat"
+    onclick="filterAds('Offers')"
+  >
+    <span class="ic">🏷️</span>
+    ઓફર્સ
+    <span>›</span>
+  </button>
+
+  <button
+    class="cat allcat"
+    onclick="filterAds('all')"
+  >
+    ⠿ &nbsp; બધી કેટેગરી જુઓ
+  </button>
+
+</aside>
+
+
+<section>
+
+
+<!-- HERO -->
+
+<div class="hero">
+
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+
+    <h2>
+      બોટાદમાં જે જોઈએ,
+      <span>અહીં શોધો!</span>
+    </h2>
+
+    <p>
+      વ્યવસાય, નોકરી, પ્રોપર્ટી, વાહન, સેવા અને ઘણું બધું...
+    </p>
+
+    <div class="bigsearch">
+
+      <input
+        id="mainSearch"
+        placeholder="શું શોધી રહ્યા છો? જેમ કે કાર, નોકરી, મકાન..."
+      >
+
+      <select id="category">
+
+        <option value="all">
+          બધી કેટેગરી
+        </option>
+
+        <option>
+          Business
+        </option>
+
+        <option>
+          Services
+        </option>
+
+        <option>
+          Vehicles
+        </option>
+
+        <option>
+          Property
+        </option>
+
+        <option>
+          Jobs
+        </option>
+
+        <option>
+          Buy & Sell
+        </option>
+
+        <option>
+          Mobile
+        </option>
+
+      </select>
+
+      <select>
+        <option>
+          📍 Botad
+        </option>
+      </select>
+
+      <button onclick="searchAds()">
+        શોધો
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- QUICK CATEGORIES -->
+
+<div class="quick">
+
+  <div
+    class="quick-card"
+    onclick="filterAds('Business')"
+  >
+    <div class="qic">🏪</div>
+    <b>બિઝનેસ</b>
+  </div>
+
+  <div
+    class="quick-card"
+    onclick="filterAds('Services')"
+  >
+    <div class="qic">🔧</div>
+    <b>સેવાઓ</b>
+  </div>
+
+  <div
+    class="quick-card"
+    onclick="filterAds('Vehicles')"
+  >
+    <div class="qic">🚗</div>
+    <b>વાહન</b>
+  </div>
+
+  <div
+    class="quick-card"
+    onclick="filterAds('Property')"
+  >
+    <div class="qic">🏠</div>
+    <b>પ્રોપર્ટી</b>
+  </div>
+
+  <div
+    class="quick-card"
+    onclick="filterAds('Jobs')"
+  >
+    <div class="qic">💼</div>
+    <b>નોકરીઓ</b>
+  </div>
+
+  <div
+    class="quick-card"
+    onclick="filterAds('Buy & Sell')"
+  >
+    <div class="qic">🛒</div>
+    <b>બાય & સેલ</b>
+  </div>
+
+  <div
+    class="quick-card"
+    onclick="filterAds('Mobile')"
+  >
+    <div class="qic">📱</div>
+    <b>મોબાઇલ</b>
+  </div>
+
+  <div
+    class="quick-card"
+    onclick="filterAds('Restaurant')"
+  >
+    <div class="qic">🍽️</div>
+    <b>રેસ્ટોરન્ટ</b>
+  </div>
+
+  <div
+    class="quick-card"
+    onclick="filterAds('Wedding')"
+  >
+    <div class="qic">💍</div>
+    <b>વેડિંગ</b>
+  </div>
+
+  <div
+    class="quick-card"
+    onclick="filterAds('all')"
+  >
+    <div class="qic">•••</div>
+    <b>વધારે જુઓ</b>
+  </div>
+
+</div>
+
+
+<!-- FEATURED -->
+
+<div class="section-head">
+
+  <h2>
+    🔥 ફીચર્ડ જાહેરાતો
+  </h2>
+
+  <a
+    href="#"
+    onclick="filterAds('all');return false"
+  >
+    બધી જુઓ →
+  </a>
+
+</div>
+
+<div
+  class="grid"
+  id="featured"
+></div>
+
+
+<!-- PROMOTION -->
+
+<div class="promo">
+
+  <div>
+
+    <h3>
+      તમારા બિઝનેસને નવા ગ્રાહકો સુધી લઈ જાઓ!
+    </h3>
+
+    <p>
+      Premium Listing સાથે વધુ visibility,
+      WhatsApp leads અને Top પર દેખાવ.
+    </p>
+
+  </div>
+
+  <button onclick="openPost()">
+    Premium Listing કરો
+  </button>
+
+</div>
+
+
+<!-- LATEST ADS -->
+
+<div class="section-head">
+
+  <h2>
+    🆕 તાજેતરની જાહેરાતો
+  </h2>
+
+  <a
+    href="#"
+    onclick="filterAds('all');return false"
+  >
+    બધી જુઓ →
+  </a>
+
+</div>
+
+
+<div class="tabs">
+
+  <button
+    class="tab active"
+    onclick="filterAds('all')"
+  >
+    બધી
+  </button>
+
+  <button
+    class="tab"
+    onclick="filterAds('Business')"
+  >
+    બિઝનેસ
+  </button>
+
+  <button
+    class="tab"
+    onclick="filterAds('Services')"
+  >
+    સેવાઓ
+  </button>
+
+  <button
+    class="tab"
+    onclick="filterAds('Vehicles')"
+  >
+    વાહન
+  </button>
+
+  <button
+    class="tab"
+    onclick="filterAds('Property')"
+  >
+    પ્રોપર્ટી
+  </button>
+
+  <button
+    class="tab"
+    onclick="filterAds('Jobs')"
+  >
+    નોકરીઓ
+  </button>
+
+  <button
+    class="tab"
+    onclick="filterAds('Buy & Sell')"
+  >
+    બાય & સેલ
+  </button>
+
+</div>
+
+
+<div
+  class="grid"
+  id="latest"
+></div>
+
+
+<!-- TRUST -->
+
+<div class="trust">
+
+  <div>
+    🛡️
+    <b>100% લોકલ</b>
+    <span>ખાસ બોટાદ માટે</span>
+  </div>
+
+  <div>
+    ✅
+    <b>વિશ્વસનીય જાહેરાતો</b>
+    <span>Verified listings</span>
+  </div>
+
+  <div>
+    📞
+    <b>ઝડપી સપોર્ટ</b>
+    <span>Call / WhatsApp</span>
+  </div>
+
+  <div>
+    ❤️
+    <b>આપણું બોટાદ</b>
+    <span>આપણું શહેર, આપણો ગર્વ</span>
+  </div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="foot">
+
+  <div>
+    <h3>આપણું બોટાદ</h3>
+    <p>
+      બોટાદનું પોતાનું Digital Marketplace.
+    </p>
+  </div>
+
+  <div>
+    <h3>મદદ</h3>
+    <p>
+      સંપર્ક કરો · Terms · Privacy
+    </p>
+  </div>
+
+  <div>
+    <h3>જાહેરાત</h3>
+    <p>
+      તમારો Business / Ad અહીં મૂકો.
+    </p>
+  </div>
+
+</div>
+
+</footer>
+
+
+<!-- POST AD MODAL -->
+
+<div
+  class="modal"
+  id="postModal"
+>
+
+<div class="modalbox">
+
+  <div class="modalhead">
+
+    <h2>
+      મફત જાહેરાત મૂકો
+    </h2>
+
+    <button
+      class="close"
+      onclick="closePost()"
+    >
+      ×
+    </button>
+
+  </div>
+
+  <p style="color:#6f7787">
+
+    હમણાં આ demoમાં જાહેરાત તમારા browserમાં જ ઉમેરાશે.
+    Firebase જોડ્યા પછી તે online databaseમાં જશે.
+
+  </p>
+
+
+  <div class="form">
+
+    <input
+      id="adTitle"
+      placeholder="જાહેરાતનું નામ"
+    >
+
+    <select id="adCat">
+
+      <option>
+        Business
+      </option>
+
+      <option>
+        Services
+      </option>
+
+      <option>
+        Vehicles
+      </option>
+
+      <option>
+        Property
+      </option>
+
+      <option>
+        Jobs
+      </option>
+
+      <option>
+        Buy & Sell
+      </option>
+
+      <option>
+        Mobile
+      </option>
+
+    </select>
+
+    <input
+      id="adPrice"
+      placeholder="ભાવ (જેમ કે ₹50,000)"
+    >
+
+    <input
+      id="adSeller"
+      placeholder="તમારું નામ / Business નામ"
+    >
+
+    <input
+      id="adPhone"
+      placeholder="મોબાઇલ નંબર"
+    >
+
+    <textarea
+      id="adDesc"
+      placeholder="જાહેરાત વિશે માહિતી"
+    ></textarea>
+
+    <button
+      class="submit"
+      onclick="addAd()"
+    >
+      જાહેરાત ઉમેરો
+    </button>
+
+  </div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* DEMO ADS */
+
+const ads = [
+
+ {
+   title:"Maruti Suzuki Brezza ZXI",
+   price:"₹6,25,000",
+   cat:"Vehicles",
+   meta:"2021 · પેટ્રોલ · 35,000 km",
+   emoji:"🚗",
+   featured:true,
+   premium:false
+ },
+
+ {
+   title:"3 BHK House for Sale",
+   price:"₹45,00,000",
+   cat:"Property",
+   meta:"120 Sq.Yd. · GIDC Road, Botad",
+   emoji:"🏠",
+   featured:true,
+   premium:true
+ },
+
+ {
+   title:"Dell Inspiron 15 3000",
+   price:"₹22,000",
+   cat:"Mobile",
+   meta:"8GB RAM · 512GB SSD · i5 10th Gen",
+   emoji:"💻",
+   featured:true,
+   premium:false
+ },
+
+ {
+   title:"Sales Executive",
+   price:"Negotiable",
+   cat:"Jobs",
+   meta:"Experience: 1–2 Years",
+   emoji:"💼",
+   featured:true,
+   premium:true
+ },
+
+ {
+   title:"iPhone 12 64GB",
+   price:"₹38,000",
+   cat:"Mobile",
+   meta:"64GB · Good Condition",
+   emoji:"📱",
+   featured:true,
+   premium:false
+ },
+
+ {
+   title:"Fitness Gym",
+   price:"₹1,500/month",
+   cat:"Business",
+   meta:"Fitness · Personal Training · Botad",
+   emoji:"🏋️",
+   featured:false,
+   premium:false
+ },
+
+ {
+   title:"Royal Enfield Classic 350",
+   price:"₹85,000",
+   cat:"Vehicles",
+   meta:"Used · Good Condition · Botad",
+   emoji:"🏍️",
+   featured:false,
+   premium:false
+ },
+
+ {
+   title:"ખેતીની જમીન વેચાણ માટે",
+   price:"₹8,50,000",
+   cat:"Property",
+   meta:"Botad · રોડ ટચ",
+   emoji:"🌾",
+   featured:false,
+   premium:false
+ },
+
+ {
+   title:"iPhone 11 64GB",
+   price:"₹12,500",
+   cat:"Mobile",
+   meta:"Good Condition · Botad",
+   emoji:"📱",
+   featured:false,
+   premium:false
+ },
+
+ {
+   title:"3 Seater Sofa Set",
+   price:"₹9,999",
+   cat:"Buy & Sell",
+   meta:"Good Condition · Botad",
+   emoji:"🛋️",
+   featured:false,
+   premium:false
+ }
+
+];
+
+
+/* CARD */
+
+function card(a){
+
+ return `
+
+ <div class="card">
+
+   <div class="photo">
+     ${a.emoji}
+   </div>
+
+   ${
+     a.premium
+     ?
+     '<span class="badge premium">PREMIUM</span>'
+     :
+     a.featured
+     ?
+     '<span class="badge">FEATURED</span>'
+     :
+     ''
+   }
+
+   <span class="heart">
+     ♡
+   </span>
+
+   <div class="body">
+
+     <div class="price">
+       ${a.price}
+     </div>
+
+     <div class="title">
+       ${a.title}
+     </div>
+
+     <div class="meta">
+       ${a.meta}
+     </div>
+
+     <div class="card-bottom">
+
+       <span class="meta">
+         📍 Botad
+       </span>
+
+       <span
+         class="wa"
+         title="WhatsApp"
+       >
+         ⌕
+       </span>
+
+     </div>
+
+   </div>
+
+ </div>
+
+ `;
+
+}
+
+
+/* RENDER */
+
+function render(list=ads){
+
+ document.getElementById("featured").innerHTML =
+   list
+   .filter(x=>x.featured)
+   .slice(0,5)
+   .map(card)
+   .join("")
+   ||
+   "<p>કોઈ જાહેરાત મળી નથી.</p>";
+
+ document.getElementById("latest").innerHTML =
+   list
+   .slice(0,10)
+   .map(card)
+   .join("")
+   ||
+   "<p>કોઈ જાહેરાત મળી નથી.</p>";
+
+}
+
+
+/* FILTER */
+
+function filterAds(cat){
+
+ const list =
+   cat==="all"
+   ?
+   ads
+   :
+   ads.filter(a=>a.cat===cat);
+
+ render(list);
+
+ window.scrollTo({
+   top:430,
+   behavior:"smooth"
+ });
+
+}
+
+
+/* SEARCH */
+
+function searchAds(){
+
+ const q =
+   (
+     document.getElementById("mainSearch").value
+     ||
+     document.getElementById("topSearch").value
+   )
+   .toLowerCase()
+   .trim();
+
+ const cat =
+   document.getElementById("category").value;
+
+ let list =
+   ads.filter(a =>
+
+     (!q ||
+       (
+         a.title+
+         " "+
+         a.meta+
+         " "+
+         a.cat
+       )
+       .toLowerCase()
+       .includes(q)
+     )
+
+     &&
+
+     (
+       cat==="all"
+       ||
+       a.cat===cat
+     )
+
+   );
+
+ render(list);
+
+}
+
+
+/* OPEN POST */
+
+function openPost(){
+
+ document
+ .getElementById("postModal")
+ .classList
+ .add("show");
+
+}
+
+
+/* CLOSE POST */
+
+function closePost(){
+
+ document
+ .getElementById("postModal")
+ .classList
+ .remove("show");
+
+}
+
+
+/* ADD AD */
+
+function addAd(){
+
+ const title =
+   document
+   .getElementById("adTitle")
+   .value
+   .trim();
+
+ if(!title){
+
+   alert("જાહેરાતનું નામ લખો.");
+
+   return;
+
+ }
+
+ ads.unshift({
+
+   title:title,
+
+   price:
+     document
+     .getElementById("adPrice")
+     .value
+     ||
+     "ભાવ માટે સંપર્ક કરો",
+
+   cat:
+     document
+     .getElementById("adCat")
+     .value,
+
+   meta:
+     (
+       document
+       .getElementById("adSeller")
+       .value
+       ||
+       "Local Seller"
+     )
+     +
+     " · Botad",
+
+   emoji:"📌",
+
+   featured:false,
+
+   premium:false
+
+ });
+
+ render();
+
+ closePost();
+
+ alert(
+   "Demoમાં જાહેરાત ઉમેરાઈ ગઈ છે. Firebase જોડ્યા પછી આ online save થશે."
+ );
+
+}
+
+
+/* INITIAL LOAD */
+
+render();
+
+</script>
+
+</body>
+</html>
