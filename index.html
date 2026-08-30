@@ -6,9 +6,6 @@
 
 <title>આપણું બોટાદ | Local Marketplace</title>
 
-<meta name="description"
-content="આપણું બોટાદ - બોટાદનું પોતાનું Local Marketplace. વસ્તુઓ, વાહન, પ્રોપર્ટી, બિઝનેસ, સેવાઓ અને નોકરીઓ શોધો.">
-
 <style>
 *{
     margin:0;
@@ -271,7 +268,7 @@ header{
     color:var(--orange);
 }
 
-/* CATEGORIES */
+/* SECTION */
 
 .section-title{
     display:flex;
@@ -289,6 +286,8 @@ header{
     font-weight:bold;
     cursor:pointer;
 }
+
+/* CATEGORIES */
 
 .categories{
     display:grid;
@@ -643,11 +642,6 @@ footer{
     cursor:pointer;
 }
 
-.pay-button:disabled{
-    opacity:.6;
-    cursor:not-allowed;
-}
-
 .otp-info{
     background:#f3f0ff;
     border:1px solid #ddd3ff;
@@ -656,14 +650,6 @@ footer{
     font-size:13px;
     color:#4b3b82;
 }
-
-.user-status{
-    font-size:13px;
-    color:var(--green);
-    font-weight:bold;
-}
-
-/* PAYMENT */
 
 .upi-box{
     background:#f4f8ff;
@@ -702,8 +688,6 @@ footer{
     font-size:13px;
 }
 
-/* RECAPTCHA */
-
 #recaptcha-container{
     margin-top:10px;
 }
@@ -718,10 +702,6 @@ footer{
 
     .ads-grid{
         grid-template-columns:repeat(3,1fr);
-    }
-
-    .nav-actions .nav-btn{
-        display:none;
     }
 }
 
@@ -860,46 +840,90 @@ footer{
 <body>
 
 <header>
+
 <div class="navbar">
 
     <div class="logo">
-        <div class="logo-icon">🏛️</div>
-        <div>
-            <h1>આપણું <span>બોટાદ</span></h1>
-            <p>આપણું શહેર • આપણું માર્કેટ</p>
+
+        <div class="logo-icon">
+            🏛️
         </div>
+
+        <div>
+
+            <h1>
+                આપણું <span>બોટાદ</span>
+            </h1>
+
+            <p>
+                આપણું શહેર • આપણું માર્કેટ
+            </p>
+
+        </div>
+
     </div>
+
 
     <button class="location">
         📍 બોટાદ ▾
     </button>
 
+
     <div class="top-search">
-        <input id="topSearch" type="text" placeholder="શું શોધી રહ્યા છો?">
-        <button onclick="searchAds()">શોધો</button>
+
+        <input
+            id="topSearch"
+            type="text"
+            placeholder="શું શોધી રહ્યા છો?"
+        >
+
+        <button onclick="searchAds()">
+            શોધો
+        </button>
+
     </div>
+
 
     <div class="nav-actions">
 
-        <button class="nav-btn" onclick="showMyAds()">♡</button>
+        <button
+            class="nav-btn"
+            onclick="showMyAds()"
+        >
+            ♡
+        </button>
 
-        <button class="nav-btn" onclick="showMyAds()">🔔</button>
+        <button
+            class="nav-btn"
+            onclick="showMyAds()"
+        >
+            🔔
+        </button>
 
-        <button class="login-btn" id="loginButton" onclick="openLogin()">
+        <button
+            class="login-btn"
+            id="loginButton"
+            onclick="openLogin()"
+        >
             👤 Login
         </button>
 
-        <button class="post-btn" onclick="openPostAd()">
+        <button
+            class="post-btn"
+            onclick="openPostAd()"
+        >
             📢 ₹99માં જાહેરાત મૂકો
         </button>
 
     </div>
 
 </div>
+
 </header>
 
 
 <main class="container">
+
 
 <section class="hero">
 
@@ -913,9 +937,10 @@ footer{
         </h2>
 
         <p class="hero-subtitle">
-            વસ્તુઓ, વાહન, પ્રોપર્ટી, બિઝનેસ, સેવાઓ,
-            નોકરીઓ અને ઘણું બધું.
+            વસ્તુઓ, વાહન, પ્રોપર્ટી, બિઝનેસ,
+            સેવાઓ, નોકરીઓ અને ઘણું બધું.
         </p>
+
 
         <div class="main-search">
 
@@ -925,27 +950,69 @@ footer{
                 placeholder="જેમ કે કાર, મકાન, નોકરી..."
             >
 
+
             <select id="mainCategory">
 
-                <option value="all">બધી કેટેગરી</option>
-                <option value="Vehicles">🚗 વાહન</option>
-                <option value="Property">🏠 પ્રોપર્ટી</option>
-                <option value="Business">🏪 બિઝનેસ</option>
-                <option value="Services">🔧 સેવાઓ</option>
-                <option value="Jobs">💼 નોકરી</option>
-                <option value="Buy & Sell">🛒 Buy & Sell</option>
-                <option value="Mobile">📱 મોબાઇલ</option>
-                <option value="Wedding">💍 વેડિંગ</option>
-                <option value="Restaurant">🍽️ રેસ્ટોરન્ટ</option>
-                <option value="Education">🎓 શિક્ષણ</option>
+                <option value="all">
+                    બધી કેટેગરી
+                </option>
+
+                <option value="Vehicles">
+                    🚗 વાહન
+                </option>
+
+                <option value="Property">
+                    🏠 પ્રોપર્ટી
+                </option>
+
+                <option value="Business">
+                    🏪 બિઝનેસ
+                </option>
+
+                <option value="Services">
+                    🔧 સેવાઓ
+                </option>
+
+                <option value="Jobs">
+                    💼 નોકરી
+                </option>
+
+                <option value="Buy & Sell">
+                    🛒 Buy & Sell
+                </option>
+
+                <option value="Mobile">
+                    📱 મોબાઇલ
+                </option>
+
+                <option value="Wedding">
+                    💍 વેડિંગ
+                </option>
+
+                <option value="Restaurant">
+                    🍽️ રેસ્ટોરન્ટ
+                </option>
+
+                <option value="Education">
+                    🎓 શિક્ષણ
+                </option>
 
             </select>
+
 
             <select>
-                <option>📍 બોટાદ</option>
+
+                <option>
+                    📍 બોટાદ
+                </option>
+
             </select>
 
-            <button class="search-btn" onclick="searchAds()">
+
+            <button
+                class="search-btn"
+                onclick="searchAds()"
+            >
                 શોધો
             </button>
 
@@ -957,19 +1024,33 @@ footer{
 
 
 <div class="notice">
+
     💡
+
     <span>
-        <strong>જાહેરાત મૂકવાની ફી ₹99 છે.</strong>
-        Payment verification પછી જ જાહેરાત Publish થશે.
+
+        <strong>
+            જાહેરાત મૂકવાની ફી ₹99 છે.
+        </strong>
+
+        Payment verification પછી જ
+        જાહેરાત Publish થશે.
+
     </span>
+
 </div>
 
 
 <div class="section-title">
 
-    <h2>📂 કેટેગરી પસંદ કરો</h2>
+    <h2>
+        📂 કેટેગરી પસંદ કરો
+    </h2>
 
-    <span class="view-all" onclick="filterAds('all')">
+    <span
+        class="view-all"
+        onclick="filterAds('all')"
+    >
         બધી કેટેગરી →
     </span>
 
@@ -978,86 +1059,217 @@ footer{
 
 <div class="categories">
 
-    <div class="category" onclick="filterAds('Business')">
-        <div class="category-icon">🏪</div>
-        <span class="category-name">બિઝનેસ</span>
+
+    <div
+        class="category"
+        onclick="filterAds('Business')"
+    >
+
+        <div class="category-icon">
+            🏪
+        </div>
+
+        <span class="category-name">
+            બિઝનેસ
+        </span>
+
     </div>
 
-    <div class="category" onclick="filterAds('Services')">
-        <div class="category-icon">🔧</div>
-        <span class="category-name">સેવાઓ</span>
+
+    <div
+        class="category"
+        onclick="filterAds('Services')"
+    >
+
+        <div class="category-icon">
+            🔧
+        </div>
+
+        <span class="category-name">
+            સેવાઓ
+        </span>
+
     </div>
 
-    <div class="category" onclick="filterAds('Vehicles')">
-        <div class="category-icon">🚗</div>
-        <span class="category-name">વાહન</span>
+
+    <div
+        class="category"
+        onclick="filterAds('Vehicles')"
+    >
+
+        <div class="category-icon">
+            🚗
+        </div>
+
+        <span class="category-name">
+            વાહન
+        </span>
+
     </div>
 
-    <div class="category" onclick="filterAds('Property')">
-        <div class="category-icon">🏠</div>
-        <span class="category-name">પ્રોપર્ટી</span>
+
+    <div
+        class="category"
+        onclick="filterAds('Property')"
+    >
+
+        <div class="category-icon">
+            🏠
+        </div>
+
+        <span class="category-name">
+            પ્રોપર્ટી
+        </span>
+
     </div>
 
-    <div class="category" onclick="filterAds('Jobs')">
-        <div class="category-icon">💼</div>
-        <span class="category-name">નોકરી</span>
+
+    <div
+        class="category"
+        onclick="filterAds('Jobs')"
+    >
+
+        <div class="category-icon">
+            💼
+        </div>
+
+        <span class="category-name">
+            નોકરી
+        </span>
+
     </div>
 
-    <div class="category" onclick="filterAds('Buy & Sell')">
-        <div class="category-icon">🛒</div>
-        <span class="category-name">Buy & Sell</span>
+
+    <div
+        class="category"
+        onclick="filterAds('Buy & Sell')"
+    >
+
+        <div class="category-icon">
+            🛒
+        </div>
+
+        <span class="category-name">
+            Buy & Sell
+        </span>
+
     </div>
 
-    <div class="category" onclick="filterAds('Mobile')">
-        <div class="category-icon">📱</div>
-        <span class="category-name">મોબાઇલ</span>
+
+    <div
+        class="category"
+        onclick="filterAds('Mobile')"
+    >
+
+        <div class="category-icon">
+            📱
+        </div>
+
+        <span class="category-name">
+            મોબાઇલ
+        </span>
+
     </div>
 
-    <div class="category" onclick="filterAds('Restaurant')">
-        <div class="category-icon">🍽️</div>
-        <span class="category-name">રેસ્ટોરન્ટ</span>
+
+    <div
+        class="category"
+        onclick="filterAds('Restaurant')"
+    >
+
+        <div class="category-icon">
+            🍽️
+        </div>
+
+        <span class="category-name">
+            રેસ્ટોરન્ટ
+        </span>
+
     </div>
 
-    <div class="category" onclick="filterAds('Wedding')">
-        <div class="category-icon">💍</div>
-        <span class="category-name">વેડિંગ</span>
+
+    <div
+        class="category"
+        onclick="filterAds('Wedding')"
+    >
+
+        <div class="category-icon">
+            💍
+        </div>
+
+        <span class="category-name">
+            વેડિંગ
+        </span>
+
     </div>
 
-    <div class="category" onclick="filterAds('Education')">
-        <div class="category-icon">🎓</div>
-        <span class="category-name">શિક્ષણ</span>
+
+    <div
+        class="category"
+        onclick="filterAds('Education')"
+    >
+
+        <div class="category-icon">
+            🎓
+        </div>
+
+        <span class="category-name">
+            શિક્ષણ
+        </span>
+
     </div>
 
 </div>
 
 
 <div class="section-title">
-    <h2>⭐ Featured જાહેરાતો</h2>
 
-    <span class="view-all" onclick="filterAds('all')">
+    <h2>
+        ⭐ Featured જાહેરાતો
+    </h2>
+
+    <span
+        class="view-all"
+        onclick="filterAds('all')"
+    >
         બધી જુઓ →
     </span>
+
 </div>
 
 
-<div class="ads-grid" id="featuredAds">
-    <p>જાહેરાતો લોડ થઈ રહી છે...</p>
+<div
+    class="ads-grid"
+    id="featuredAds"
+>
+
+    <p>
+        જાહેરાતો લોડ થઈ રહી છે...
+    </p>
+
 </div>
 
 
 <div class="price-banner">
 
     <div>
-        <h3>📢 તમારી જાહેરાત બોટાદના લોકો સુધી પહોંચાડો</h3>
+
+        <h3>
+            📢 તમારી જાહેરાત બોટાદના લોકો સુધી પહોંચાડો
+        </h3>
 
         <p>
             એક જાહેરાત મૂકવાની ફી માત્ર ₹99 છે.
         </p>
+
     </div>
+
 
     <div class="price-box">
 
-        <strong>₹99</strong>
+        <strong>
+            ₹99
+        </strong>
 
         <button onclick="openPostAd()">
             જાહેરાત મૂકો
@@ -1070,76 +1282,150 @@ footer{
 
 <div class="section-title">
 
-    <h2>🆕 તાજેતરની જાહેરાતો</h2>
+    <h2>
+        🆕 તાજેતરની જાહેરાતો
+    </h2>
 
 </div>
 
 
 <div class="filters">
 
-    <button class="filter active" onclick="filterAds('all')">
+    <button
+        class="filter active"
+        onclick="filterAds('all')"
+    >
         બધી
     </button>
 
-    <button class="filter" onclick="filterAds('Business')">
+    <button
+        class="filter"
+        onclick="filterAds('Business')"
+    >
         બિઝનેસ
     </button>
 
-    <button class="filter" onclick="filterAds('Services')">
+    <button
+        class="filter"
+        onclick="filterAds('Services')"
+    >
         સેવાઓ
     </button>
 
-    <button class="filter" onclick="filterAds('Vehicles')">
+    <button
+        class="filter"
+        onclick="filterAds('Vehicles')"
+    >
         વાહન
     </button>
 
-    <button class="filter" onclick="filterAds('Property')">
+    <button
+        class="filter"
+        onclick="filterAds('Property')"
+    >
         પ્રોપર્ટી
     </button>
 
-    <button class="filter" onclick="filterAds('Jobs')">
+    <button
+        class="filter"
+        onclick="filterAds('Jobs')"
+    >
         નોકરી
     </button>
 
-    <button class="filter" onclick="filterAds('Buy & Sell')">
+    <button
+        class="filter"
+        onclick="filterAds('Buy & Sell')"
+    >
         Buy & Sell
     </button>
 
 </div>
 
 
-<div class="ads-grid" id="latestAds">
-    <p>જાહેરાતો લોડ થઈ રહી છે...</p>
+<div
+    class="ads-grid"
+    id="latestAds"
+>
+
+    <p>
+        જાહેરાતો લોડ થઈ રહી છે...
+    </p>
+
 </div>
 
 
 <div class="trust">
 
     <div class="trust-card">
-        <div class="icon">📍</div>
-        <strong>ખાસ બોટાદ માટે</strong>
-        <span>Local Marketplace</span>
+
+        <div class="icon">
+            📍
+        </div>
+
+        <strong>
+            ખાસ બોટાદ માટે
+        </strong>
+
+        <span>
+            Local Marketplace
+        </span>
+
     </div>
 
-    <div class="trust-card">
-        <div class="icon">📱</div>
-        <strong>Mobile OTP Login</strong>
-        <span>સાચું Firebase Login</span>
-    </div>
 
     <div class="trust-card">
-        <div class="icon">💳</div>
-        <strong>₹99 Advertisement</strong>
-        <span>Paid Listing</span>
+
+        <div class="icon">
+            📱
+        </div>
+
+        <strong>
+            Mobile OTP Login
+        </strong>
+
+        <span>
+            Firebase Login
+        </span>
+
     </div>
 
+
     <div class="trust-card">
-        <div class="icon">🛡️</div>
-        <strong>Firebase Security</strong>
-        <span>Secure Database</span>
+
+        <div class="icon">
+            💳
+        </div>
+
+        <strong>
+            ₹99 Advertisement
+        </strong>
+
+        <span>
+            Paid Listing
+        </span>
+
+    </div>
+
+
+    <div class="trust-card">
+
+        <div class="icon">
+            🛡️
+        </div>
+
+        <strong>
+            Firebase Security
+        </strong>
+
+        <span>
+            Secure Database
+        </span>
+
     </div>
 
 </div>
+
 
 </main>
 
@@ -1149,17 +1435,26 @@ footer{
 <div class="footer">
 
     <div>
-        <h3>આપણું બોટાદ</h3>
+
+        <h3>
+            આપણું બોટાદ
+        </h3>
 
         <p>
             બોટાદનું પોતાનું Local Marketplace.
             અહીં બોટાદના લોકો વસ્તુઓ, સેવાઓ,
-            બિઝનેસ, વાહન, પ્રોપર્ટી અને નોકરીઓ શોધી શકે છે.
+            બિઝનેસ, વાહન, પ્રોપર્ટી અને નોકરીઓ
+            શોધી શકે છે.
         </p>
+
     </div>
 
+
     <div>
-        <h3>Marketplace</h3>
+
+        <h3>
+            Marketplace
+        </h3>
 
         <p>
             બિઝનેસ<br>
@@ -1168,25 +1463,36 @@ footer{
             નોકરી<br>
             Buy & Sell
         </p>
+
     </div>
 
+
     <div>
-        <h3>મદદ</h3>
+
+        <h3>
+            મદદ
+        </h3>
 
         <p>
             Contact<br>
             Terms & Conditions<br>
             Privacy Policy
         </p>
+
     </div>
 
+
     <div>
-        <h3>જાહેરાત</h3>
+
+        <h3>
+            જાહેરાત
+        </h3>
 
         <p>
             તમારી જાહેરાત માત્ર ₹99માં
             બોટાદના લોકો સુધી પહોંચાડો.
         </p>
+
     </div>
 
 </div>
@@ -1196,23 +1502,35 @@ footer{
 
 <!-- POST AD MODAL -->
 
-<div class="modal" id="postModal">
+<div
+    class="modal"
+    id="postModal"
+>
 
 <div class="modal-box">
 
     <div class="modal-header">
 
-        <h2>📢 જાહેરાત મૂકો</h2>
+        <h2>
+            📢 જાહેરાત મૂકો
+        </h2>
 
-        <button class="close" onclick="closePostAd()">
+        <button
+            class="close"
+            onclick="closePostAd()"
+        >
             ×
         </button>
 
     </div>
 
 
-    <div id="postLoginMessage" class="otp-info">
-        🔐 જાહેરાત મૂકવા માટે પહેલા Mobile OTP Login કરો.
+    <div
+        id="postLoginMessage"
+        class="otp-info"
+    >
+        🔐 જાહેરાત મૂકવા માટે પહેલા
+        Mobile OTP Login કરો.
     </div>
 
 
@@ -1221,7 +1539,10 @@ footer{
 
     <div class="form">
 
-        <label>જાહેરાતનું નામ</label>
+
+        <label>
+            જાહેરાતનું નામ
+        </label>
 
         <input
             id="adTitle"
@@ -1230,25 +1551,58 @@ footer{
         >
 
 
-        <label>કેટેગરી</label>
+        <label>
+            કેટેગરી
+        </label>
 
         <select id="adCategory">
 
-            <option value="Vehicles">🚗 વાહન</option>
-            <option value="Property">🏠 પ્રોપર્ટી</option>
-            <option value="Business">🏪 બિઝનેસ</option>
-            <option value="Services">🔧 સેવાઓ</option>
-            <option value="Jobs">💼 નોકરી</option>
-            <option value="Buy & Sell">🛒 Buy & Sell</option>
-            <option value="Mobile">📱 મોબાઇલ</option>
-            <option value="Wedding">💍 વેડિંગ</option>
-            <option value="Restaurant">🍽️ રેસ્ટોરન્ટ</option>
-            <option value="Education">🎓 શિક્ષણ</option>
+            <option value="Vehicles">
+                🚗 વાહન
+            </option>
+
+            <option value="Property">
+                🏠 પ્રોપર્ટી
+            </option>
+
+            <option value="Business">
+                🏪 બિઝનેસ
+            </option>
+
+            <option value="Services">
+                🔧 સેવાઓ
+            </option>
+
+            <option value="Jobs">
+                💼 નોકરી
+            </option>
+
+            <option value="Buy & Sell">
+                🛒 Buy & Sell
+            </option>
+
+            <option value="Mobile">
+                📱 મોબાઇલ
+            </option>
+
+            <option value="Wedding">
+                💍 વેડિંગ
+            </option>
+
+            <option value="Restaurant">
+                🍽️ રેસ્ટોરન્ટ
+            </option>
+
+            <option value="Education">
+                🎓 શિક્ષણ
+            </option>
 
         </select>
 
 
-        <label>ભાવ</label>
+        <label>
+            ભાવ
+        </label>
 
         <input
             id="adPrice"
@@ -1257,7 +1611,9 @@ footer{
         >
 
 
-        <label>ફોટો</label>
+        <label>
+            ફોટો
+        </label>
 
         <div class="upload">
 
@@ -1276,7 +1632,9 @@ footer{
         </div>
 
 
-        <label>જાહેરાત વિશે માહિતી</label>
+        <label>
+            જાહેરાત વિશે માહિતી
+        </label>
 
         <textarea
             id="adDescription"
@@ -1284,7 +1642,9 @@ footer{
         ></textarea>
 
 
-        <label>Contact Mobile Number</label>
+        <label>
+            Contact Mobile Number
+        </label>
 
         <input
             id="adPhone"
@@ -1296,13 +1656,20 @@ footer{
 
         <div class="payment-box">
 
-            <div>જાહેરાત Publish કરવાની ફી</div>
+            <div>
+                જાહેરાત Publish કરવાની ફી
+            </div>
 
-            <strong>₹99</strong>
+            <strong>
+                ₹99
+            </strong>
 
             <div style="font-size:12px;margin-top:5px">
-                UPI payment કર્યા પછી payment details submit કરો.
-                Verification પછી જ જાહેરાત Publish થશે.
+
+                UPI payment કર્યા પછી
+                transaction details submit કરો.
+                Verification પછી જાહેરાત Publish થશે.
+
             </div>
 
         </div>
@@ -1315,6 +1682,7 @@ footer{
             💳 ₹99 Payment માટે આગળ વધો
         </button>
 
+
     </div>
 
 </div>
@@ -1324,15 +1692,24 @@ footer{
 
 <!-- PAYMENT MODAL -->
 
-<div class="modal" id="paymentModal">
+<div
+    class="modal"
+    id="paymentModal"
+>
 
 <div class="modal-box">
 
+
     <div class="modal-header">
 
-        <h2>💳 ₹99 Payment</h2>
+        <h2>
+            💳 ₹99 Payment
+        </h2>
 
-        <button class="close" onclick="closePayment()">
+        <button
+            class="close"
+            onclick="closePayment()"
+        >
             ×
         </button>
 
@@ -1341,15 +1718,23 @@ footer{
 
     <div class="upi-box">
 
-        <strong>UPI દ્વારા ₹99 ચૂકવો</strong>
+        <strong>
+            UPI દ્વારા ₹99 ચૂકવો
+        </strong>
 
         <p style="margin-top:8px;font-size:13px">
+
             નીચેની UPI ID પર ₹99 payment કરો.
+
         </p>
 
+
         <div class="upi-id">
+
             khacharudayraj185-2@okicici
+
         </div>
+
 
         <a
             id="upiPayButton"
@@ -1367,11 +1752,16 @@ footer{
 
     <div class="pending-box">
 
-        <strong>Payment કર્યા પછી</strong>
+        <strong>
+            Payment કર્યા પછી
+        </strong>
 
         <p style="margin-top:6px">
+
             Transaction / UTR નંબર નીચે નાખો.
-            Advertisement verification માટે pending રહેશે.
+            Advertisement verification માટે
+            pending રહેશે.
+
         </p>
 
     </div>
@@ -1382,13 +1772,16 @@ footer{
 
     <div class="form">
 
-        <label>UPI Transaction / UTR Number</label>
+        <label>
+            UPI Transaction / UTR Number
+        </label>
 
         <input
             id="utrNumber"
             type="text"
             placeholder="જેમ કે 123456789012"
         >
+
 
         <button
             class="pay-button"
@@ -1399,6 +1792,7 @@ footer{
 
     </div>
 
+
 </div>
 
 </div>
@@ -1406,15 +1800,24 @@ footer{
 
 <!-- LOGIN MODAL -->
 
-<div class="modal" id="loginModal">
+<div
+    class="modal"
+    id="loginModal"
+>
 
 <div class="modal-box">
 
+
     <div class="modal-header">
 
-        <h2>👤 Login / Signup</h2>
+        <h2>
+            👤 Login / Signup
+        </h2>
 
-        <button class="close" onclick="closeLogin()">
+        <button
+            class="close"
+            onclick="closeLogin()"
+        >
             ×
         </button>
 
@@ -1423,7 +1826,10 @@ footer{
 
     <div class="form">
 
-        <label>Mobile Number</label>
+
+        <label>
+            Mobile Number
+        </label>
 
         <input
             id="loginPhone"
@@ -1444,9 +1850,14 @@ footer{
         </button>
 
 
-        <div id="otpArea" style="display:none">
+        <div
+            id="otpArea"
+            style="display:none"
+        >
 
-            <label>OTP</label>
+            <label>
+                OTP
+            </label>
 
             <input
                 id="otp"
@@ -1457,6 +1868,7 @@ footer{
 
             <br><br>
 
+
             <button
                 class="pay-button"
                 onclick="verifyOTP()"
@@ -1466,6 +1878,7 @@ footer{
 
         </div>
 
+
     </div>
 
 </div>
@@ -1473,12 +1886,18 @@ footer{
 </div>
 
 
-<!-- FIREBASE -->
-
 <script type="module">
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+/* =========================================
+   FIREBASE IMPORTS
+========================================= */
+
+import {
+    initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
 
 import {
     getAuth,
@@ -1487,7 +1906,9 @@ import {
     onAuthStateChanged,
     signOut
 }
-from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
 
 import {
     getFirestore,
@@ -1499,7 +1920,8 @@ import {
     limit,
     serverTimestamp
 }
-from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
 /* =========================================
@@ -1528,34 +1950,43 @@ const firebaseConfig = {
 
     measurementId:
     "G-D4JRJXG3DQ"
+
 };
 
 
 /* =========================================
-   INITIALIZE FIREBASE
+   INITIALIZE
 ========================================= */
 
-const app = initializeApp(firebaseConfig);
+const app =
+    initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
 
-const db = getFirestore(app);
+const auth =
+    getAuth(app);
+
+
+const db =
+    getFirestore(app);
+
+
+let confirmationResult =
+    null;
+
+
+let currentUser =
+    null;
+
+
+let currentAds =
+    [];
 
 
 /* =========================================
-   GLOBALS
+   RECAPTCHA
 ========================================= */
 
-let confirmationResult = null;
-
-let currentUser = null;
-
-
-/* =========================================
-   PHONE LOGIN
-========================================= */
-
-window.setupRecaptcha = function(){
+function setupRecaptcha(){
 
     if(window.recaptchaVerifier){
         return;
@@ -1570,7 +2001,7 @@ window.setupRecaptcha = function(){
             }
         );
 
-};
+}
 
 
 /* =========================================
@@ -1585,6 +2016,7 @@ window.sendOTP = async function(){
         .value
         .trim();
 
+
     if(!/^[0-9]{10}$/.test(phone)){
 
         alert(
@@ -1592,47 +2024,57 @@ window.sendOTP = async function(){
         );
 
         return;
+
     }
+
 
     try{
 
         setupRecaptcha();
 
-        const appVerifier =
-            window.recaptchaVerifier;
 
         confirmationResult =
             await signInWithPhoneNumber(
                 auth,
                 "+91" + phone,
-                appVerifier
+                window.recaptchaVerifier
             );
+
 
         document
         .getElementById("otpArea")
         .style
         .display="block";
 
+
         alert(
-            "OTP તમારા મોબાઇલ નંબર પર મોકલવામાં આવ્યો છે."
+            "OTP તમારા મોબાઇલ પર મોકલવામાં આવ્યો છે."
         );
+
 
     }catch(error){
 
         console.error(error);
 
         alert(
-            "OTP મોકલવામાં સમસ્યા આવી: " +
+            "OTP મોકલવામાં સમસ્યા આવી:\n" +
             error.message
         );
+
 
         if(window.recaptchaVerifier){
 
             try{
-                window.recaptchaVerifier.clear();
+
+                window
+                .recaptchaVerifier
+                .clear();
+
             }catch(e){}
 
-            window.recaptchaVerifier = null;
+            window.recaptchaVerifier =
+                null;
+
         }
 
     }
@@ -1652,14 +2094,17 @@ window.verifyOTP = async function(){
         .value
         .trim();
 
+
     if(!/^[0-9]{6}$/.test(otp)){
 
         alert(
-            "6 અંકનો સાચો OTP નાખો."
+            "6 અંકનો OTP નાખો."
         );
 
         return;
+
     }
+
 
     if(!confirmationResult){
 
@@ -1668,17 +2113,22 @@ window.verifyOTP = async function(){
         );
 
         return;
+
     }
+
 
     try{
 
         await confirmationResult.confirm(otp);
 
+
         alert(
             "Login સફળ થયું."
         );
 
+
         closeLogin();
+
 
     }catch(error){
 
@@ -1701,11 +2151,14 @@ onAuthStateChanged(
     auth,
     function(user){
 
-        currentUser = user;
+        currentUser =
+            user;
+
 
         const button =
             document
             .getElementById("loginButton");
+
 
         const message =
             document
@@ -1715,16 +2168,19 @@ onAuthStateChanged(
         if(user){
 
             button.innerHTML =
-                "👤 Logged In";
+                "👤 Logout";
+
 
             button.onclick =
-                function(){
+                async function(){
 
-                    if(confirm(
-                        "Logout કરવું છે?"
-                    )){
+                    if(
+                        confirm(
+                            "Logout કરવું છે?"
+                        )
+                    ){
 
-                        signOut(auth);
+                        await signOut(auth);
 
                     }
 
@@ -1744,12 +2200,14 @@ onAuthStateChanged(
 
                 message.style.color =
                     "#14743c";
+
             }
 
         }else{
 
             button.innerHTML =
                 "👤 Login";
+
 
             button.onclick =
                 openLogin;
@@ -1768,6 +2226,7 @@ onAuthStateChanged(
 
                 message.style.color =
                     "#4b3b82";
+
             }
 
         }
@@ -1777,7 +2236,7 @@ onAuthStateChanged(
 
 
 /* =========================================
-   LOAD ADS FROM FIRESTORE
+   LOAD PUBLISHED ADS
 ========================================= */
 
 async function loadAds(){
@@ -1786,11 +2245,20 @@ async function loadAds(){
         document
         .getElementById("featuredAds");
 
+
     const latest =
         document
         .getElementById("latestAds");
 
+
     try{
+
+        /*
+          અહીં query માત્ર createdAtથી
+          order કરે છે.
+
+          Published check JavaScriptમાં થાય છે.
+        */
 
         const q =
             query(
@@ -1799,13 +2267,16 @@ async function loadAds(){
                     "createdAt",
                     "desc"
                 ),
-                limit(50)
+                limit(100)
             );
+
 
         const snapshot =
             await getDocs(q);
 
+
         const ads = [];
+
 
         snapshot.forEach(
             function(doc){
@@ -1813,10 +2284,6 @@ async function loadAds(){
                 const data =
                     doc.data();
 
-                /*
-                    Only published ads
-                    are shown publicly.
-                */
 
                 if(
                     data.status ===
@@ -1837,18 +2304,44 @@ async function loadAds(){
         );
 
 
-        renderAds(ads);
+        currentAds =
+            ads;
+
+
+        renderAds(
+            currentAds
+        );
 
 
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "Firestore error:",
+            error
+        );
+
 
         featured.innerHTML =
-            "<p>જાહેરાતો લોડ થઈ શકી નથી.</p>";
+            `
+            <div style="
+                background:#fff3f3;
+                border:1px solid #ffcaca;
+                padding:15px;
+                border-radius:10px;
+                grid-column:1/-1;
+            ">
+                <strong>
+                    જાહેરાત લોડ થઈ શકી નથી.
+                </strong>
+                <br><br>
+                Firebase Firestore permission/index
+                અથવા database configuration તપાસો.
+            </div>
+            `;
+
 
         latest.innerHTML =
-            "<p>જાહેરાતો લોડ થઈ શકી નથી.</p>";
+            "";
 
     }
 
@@ -1856,17 +2349,74 @@ async function loadAds(){
 
 
 /* =========================================
-   CREATE CARD
+   RENDER
+========================================= */
+
+function renderAds(list){
+
+    const featured =
+        document
+        .getElementById("featuredAds");
+
+
+    const latest =
+        document
+        .getElementById("latestAds");
+
+
+    const featuredAds =
+        list
+        .filter(
+            ad =>
+            ad.featured === true
+        )
+        .slice(0,5);
+
+
+    const latestAds =
+        list.slice(0,20);
+
+
+    featured.innerHTML =
+        featuredAds.length
+        ?
+        featuredAds
+        .map(createCard)
+        .join("")
+        :
+        `
+        <p>
+            હાલમાં Featured જાહેરાત ઉપલબ્ધ નથી.
+        </p>
+        `;
+
+
+    latest.innerHTML =
+        latestAds.length
+        ?
+        latestAds
+        .map(createCard)
+        .join("")
+        :
+        `
+        <p>
+            હાલમાં કોઈ published જાહેરાત નથી.
+        </p>
+        `;
+
+}
+
+
+/* =========================================
+   CARD
 ========================================= */
 
 function createCard(ad){
 
-    let imageHTML =
-        ad.image
-        ?
-        `<img src="${escapeHTML(ad.image)}" alt="">`
-        :
-        getCategoryIcon(ad.category);
+    const icon =
+        getCategoryIcon(
+            ad.category
+        );
 
 
     return `
@@ -1874,18 +2424,24 @@ function createCard(ad){
     <div class="ad-card">
 
         <div class="ad-image">
-            ${imageHTML}
+
+            ${icon}
+
         </div>
 
+
         ${
-            ad.featured
+            ad.featured === true
             ?
-            `<div class="ad-badge">
+            `
+            <div class="ad-badge">
                 FEATURED
-            </div>`
+            </div>
+            `
             :
             ""
         }
+
 
         <div
             class="ad-heart"
@@ -1894,30 +2450,61 @@ function createCard(ad){
             ♡
         </div>
 
+
         <div class="ad-info">
 
+
             <div class="ad-price">
-                ${escapeHTML(ad.price || "Contact")}
+
+                ${escapeHTML(
+                    ad.price ||
+                    "Contact"
+                )}
+
             </div>
+
 
             <div class="ad-title">
-                ${escapeHTML(ad.title || "")}
+
+                ${escapeHTML(
+                    ad.title ||
+                    ""
+                )}
+
             </div>
 
+
             <div class="ad-meta">
-                ${escapeHTML(ad.description || "")}<br>
+
+                ${escapeHTML(
+                    ad.description ||
+                    ""
+                )}
+
+                <br>
+
                 📍 Botad
+
             </div>
+
 
             <div class="ad-bottom">
 
                 <span class="ad-meta">
-                    ${escapeHTML(ad.category || "")}
+
+                    ${escapeHTML(
+                        ad.category ||
+                        ""
+                    )}
+
                 </span>
+
 
                 <span
                     class="whatsapp"
-                    onclick="contactSeller('${escapeHTML(ad.phone || "")}')"
+                    onclick="contactSeller('${escapeHTML(
+                        ad.phone || ""
+                    )}')"
                 >
                     WA
                 </span>
@@ -1929,65 +2516,12 @@ function createCard(ad){
     </div>
 
     `;
-}
-
-
-/* =========================================
-   RENDER ADS
-========================================= */
-
-let currentAds = [];
-
-
-function renderAds(list){
-
-    currentAds = list;
-
-    const featured =
-        document
-        .getElementById("featuredAds");
-
-    const latest =
-        document
-        .getElementById("latestAds");
-
-
-    const featuredList =
-        list
-        .filter(
-            ad => ad.featured === true
-        )
-        .slice(0,5);
-
-
-    const latestList =
-        list.slice(0,20);
-
-
-    featured.innerHTML =
-        featuredList.length
-        ?
-        featuredList
-        .map(createCard)
-        .join("")
-        :
-        "<p>હાલમાં Featured જાહેરાત ઉપલબ્ધ નથી.</p>";
-
-
-    latest.innerHTML =
-        latestList.length
-        ?
-        latestList
-        .map(createCard)
-        .join("")
-        :
-        "<p>હાલમાં કોઈ published જાહેરાત નથી.</p>";
 
 }
 
 
 /* =========================================
-   CATEGORY ICON
+   ICON
 ========================================= */
 
 function getCategoryIcon(category){
@@ -1995,19 +2529,33 @@ function getCategoryIcon(category){
     const icons = {
 
         Vehicles:"🚗",
+
         Property:"🏠",
+
         Business:"🏪",
+
         Services:"🔧",
+
         Jobs:"💼",
+
         "Buy & Sell":"🛒",
+
         Mobile:"📱",
+
         Wedding:"💍",
+
         Restaurant:"🍽️",
+
         Education:"🎓"
 
     };
 
-    return icons[category] || "📢";
+
+    return (
+        icons[category] ||
+        "📢"
+    );
+
 }
 
 
@@ -2015,25 +2563,36 @@ function getCategoryIcon(category){
    FILTER
 ========================================= */
 
-window.filterAds = function(category){
+window.filterAds =
+function(category){
 
-    let result = currentAds;
+    let result =
+        currentAds;
+
 
     if(category !== "all"){
 
         result =
             currentAds.filter(
                 ad =>
-                ad.category === category
+                ad.category ===
+                category
             );
 
     }
 
-    renderAds(result);
+
+    renderAds(
+        result
+    );
+
 
     window.scrollTo({
+
         top:450,
+
         behavior:"smooth"
+
     });
 
 };
@@ -2043,7 +2602,8 @@ window.filterAds = function(category){
    SEARCH
 ========================================= */
 
-window.searchAds = function(){
+window.searchAds =
+function(){
 
     const main =
         document
@@ -2052,6 +2612,7 @@ window.searchAds = function(){
         .toLowerCase()
         .trim();
 
+
     const top =
         document
         .getElementById("topSearch")
@@ -2059,8 +2620,11 @@ window.searchAds = function(){
         .toLowerCase()
         .trim();
 
-    const queryText =
-        main || top;
+
+    const search =
+        main ||
+        top;
+
 
     const category =
         document
@@ -2070,31 +2634,43 @@ window.searchAds = function(){
 
     const result =
         currentAds.filter(
-            ad => {
+            function(ad){
 
                 const text =
                     (
-                        ad.title +
-                        " " +
-                        ad.description +
-                        " " +
-                        ad.category
+                        ad.title ||
+                        ""
+                    )
+                    +
+                    " " +
+                    (
+                        ad.description ||
+                        ""
+                    )
+                    +
+                    " " +
+                    (
+                        ad.category ||
+                        ""
                     )
                     .toLowerCase();
 
 
-                const matchSearch =
-                    !queryText ||
-                    text.includes(queryText);
+                const matchText =
+                    !search ||
+                    text
+                    .toLowerCase()
+                    .includes(search);
 
 
                 const matchCategory =
                     category === "all" ||
-                    ad.category === category;
+                    ad.category ===
+                    category;
 
 
                 return (
-                    matchSearch &&
+                    matchText &&
                     matchCategory
                 );
 
@@ -2102,16 +2678,19 @@ window.searchAds = function(){
         );
 
 
-    renderAds(result);
+    renderAds(
+        result
+    );
 
 };
 
 
 /* =========================================
-   LOGIN MODAL
+   LOGIN
 ========================================= */
 
-window.openLogin = function(){
+window.openLogin =
+function(){
 
     document
     .getElementById("loginModal")
@@ -2121,7 +2700,8 @@ window.openLogin = function(){
 };
 
 
-window.closeLogin = function(){
+window.closeLogin =
+function(){
 
     document
     .getElementById("loginModal")
@@ -2132,10 +2712,11 @@ window.closeLogin = function(){
 
 
 /* =========================================
-   POST MODAL
+   POST AD
 ========================================= */
 
-window.openPostAd = function(){
+window.openPostAd =
+function(){
 
     if(!currentUser){
 
@@ -2143,10 +2724,14 @@ window.openPostAd = function(){
             "જાહેરાત મૂકવા માટે પહેલા Mobile OTP Login કરો."
         );
 
+
         openLogin();
 
+
         return;
+
     }
+
 
     document
     .getElementById("postModal")
@@ -2156,7 +2741,8 @@ window.openPostAd = function(){
 };
 
 
-window.closePostAd = function(){
+window.closePostAd =
+function(){
 
     document
     .getElementById("postModal")
@@ -2167,10 +2753,11 @@ window.closePostAd = function(){
 
 
 /* =========================================
-   PAYMENT
+   PAYMENT PAGE
 ========================================= */
 
-window.preparePayment = function(){
+window.preparePayment =
+function(){
 
     if(!currentUser){
 
@@ -2178,11 +2765,15 @@ window.preparePayment = function(){
             "પહેલા Login કરો."
         );
 
+
         closePostAd();
+
 
         openLogin();
 
+
         return;
+
     }
 
 
@@ -2207,16 +2798,22 @@ window.preparePayment = function(){
         );
 
         return;
+
     }
 
 
-    if(!/^[0-9]{10}$/.test(phone)){
+    if(
+        !/^[0-9]{10}$/.test(
+            phone
+        )
+    ){
 
         alert(
             "સાચો 10 અંકનો મોબાઇલ નંબર નાખો."
         );
 
         return;
+
     }
 
 
@@ -2227,9 +2824,13 @@ window.preparePayment = function(){
     const upiURL =
         "upi://pay" +
         "?pa=" +
-        encodeURIComponent(upiID) +
+        encodeURIComponent(
+            upiID
+        ) +
         "&pn=" +
-        encodeURIComponent("Aapnu Botad") +
+        encodeURIComponent(
+            "Aapnu Botad"
+        ) +
         "&am=99" +
         "&cu=INR" +
         "&tn=" +
@@ -2252,7 +2853,12 @@ window.preparePayment = function(){
 };
 
 
-window.closePayment = function(){
+/* =========================================
+   CLOSE PAYMENT
+========================================= */
+
+window.closePayment =
+function(){
 
     document
     .getElementById("paymentModal")
@@ -2263,10 +2869,11 @@ window.closePayment = function(){
 
 
 /* =========================================
-   SUBMIT ADVERTISEMENT
+   SUBMIT AD
 ========================================= */
 
-window.submitAdvertisement = async function(){
+window.submitAdvertisement =
+async function(){
 
     if(!currentUser){
 
@@ -2275,6 +2882,7 @@ window.submitAdvertisement = async function(){
         );
 
         return;
+
     }
 
 
@@ -2334,10 +2942,15 @@ window.submitAdvertisement = async function(){
         closePayment();
 
         return;
+
     }
 
 
-    if(!/^[0-9]{10}$/.test(phone)){
+    if(
+        !/^[0-9]{10}$/.test(
+            phone
+        )
+    ){
 
         alert(
             "સાચો મોબાઇલ નંબર નાખો."
@@ -2346,6 +2959,7 @@ window.submitAdvertisement = async function(){
         closePayment();
 
         return;
+
     }
 
 
@@ -2356,18 +2970,12 @@ window.submitAdvertisement = async function(){
         );
 
         return;
+
     }
 
 
-    /*
-      Browserથી photoને base64 તરીકે Firestoreમાં
-      મૂકવાથી document limit આવી શકે છે.
-
-      એટલે આ versionમાં photo filename save થાય છે.
-      Firebase Storage upload પછી અલગથી જોડાશે.
-    */
-
     let photoName = "";
+
 
     if(photo){
 
@@ -2379,37 +2987,67 @@ window.submitAdvertisement = async function(){
 
     try{
 
+
+        /*
+        IMPORTANT:
+
+        તમારી Firestore Rules મુજબ:
+
+        userId == currentUser.uid
+        status == pending
+        paymentStatus == pending
+
+        એટલે અહીં એ જ fields છે.
+        */
+
+
         const adData = {
 
-            title:title,
+            title:
+                title,
 
-            category:category,
+            category:
+                category,
 
-            price:price,
+            price:
+                price,
 
-            description:description,
+            description:
+                description,
 
-            phone:phone,
+            phone:
+                phone,
 
-            photoName:photoName,
+            photoName:
+                photoName,
 
-            uid:currentUser.uid,
+            userId:
+                currentUser.uid,
 
             sellerPhone:
-                currentUser.phoneNumber || "",
+                currentUser.phoneNumber ||
+                "",
 
-            paymentAmount:99,
+            paymentAmount:
+                99,
 
-            paymentMethod:"UPI",
+            paymentMethod:
+                "UPI",
 
             upiId:
                 "khacharudayraj185-2@okicici",
 
-            utr:utr,
+            utr:
+                utr,
 
-            status:"pending_payment_verification",
+            status:
+                "pending",
 
-            featured:false,
+            paymentStatus:
+                "pending",
+
+            featured:
+                false,
 
             createdAt:
                 serverTimestamp()
@@ -2418,13 +3056,16 @@ window.submitAdvertisement = async function(){
 
 
         await addDoc(
-            collection(db,"ads"),
+            collection(
+                db,
+                "ads"
+            ),
             adData
         );
 
 
         alert(
-            "તમારી જાહેરાતની વિગતો સફળતાપૂર્વક submit થઈ ગઈ છે. Payment verification પછી Admin તેને Publish કરશે."
+            "✅ જાહેરાતની વિગતો સફળતાપૂર્વક submit થઈ ગઈ છે.\n\nPayment verification પછી Admin જાહેરાત Publish કરશે."
         );
 
 
@@ -2435,35 +3076,41 @@ window.submitAdvertisement = async function(){
 
         document
         .getElementById("adTitle")
-        .value="";
+        .value =
+            "";
 
 
         document
         .getElementById("adPrice")
-        .value="";
+        .value =
+            "";
 
 
         document
         .getElementById("adDescription")
-        .value="";
+        .value =
+            "";
 
 
         document
         .getElementById("adPhone")
-        .value="";
+        .value =
+            "";
 
 
         document
         .getElementById("utrNumber")
-        .value="";
+        .value =
+            "";
 
 
     }catch(error){
 
         console.error(error);
 
+
         alert(
-            "Advertisement save થઈ શકી નથી: " +
+            "Advertisement save થઈ શકી નથી.\n\n" +
             error.message
         );
 
@@ -2476,7 +3123,8 @@ window.submitAdvertisement = async function(){
    WHATSAPP
 ========================================= */
 
-window.contactSeller = function(phone){
+window.contactSeller =
+function(phone){
 
     if(!phone){
 
@@ -2485,6 +3133,7 @@ window.contactSeller = function(phone){
         );
 
         return;
+
     }
 
 
@@ -2495,7 +3144,7 @@ window.contactSeller = function(phone){
         );
 
 
-    const whatsappNumber =
+    const number =
         clean.length === 10
         ?
         "91" + clean
@@ -2505,7 +3154,7 @@ window.contactSeller = function(phone){
 
     window.open(
         "https://wa.me/" +
-        whatsappNumber,
+        number,
         "_blank"
     );
 
@@ -2516,7 +3165,8 @@ window.contactSeller = function(phone){
    HEART
 ========================================= */
 
-window.toggleHeart = function(element){
+window.toggleHeart =
+function(element){
 
     element.innerHTML =
         element.innerHTML === "♡"
@@ -2532,7 +3182,8 @@ window.toggleHeart = function(element){
    MY ADS
 ========================================= */
 
-window.showMyAds = function(){
+window.showMyAds =
+function(){
 
     if(!currentUser){
 
@@ -2543,34 +3194,57 @@ window.showMyAds = function(){
         openLogin();
 
         return;
+
     }
 
 
     alert(
-        "My Ads section માટે Firestore user dashboard આગળ જોડાશે."
+        "My Ads Dashboard આગળના stepમાં જોડાશે."
     );
 
 };
 
 
 /* =========================================
-   ESCAPE HTML
+   ESCAPE
 ========================================= */
 
 function escapeHTML(value){
 
-    return String(value || "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    return String(
+        value || ""
+    )
+
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+
+    .replace(
+        /</g,
+        "&lt;"
+    )
+
+    .replace(
+        />/g,
+        "&gt;"
+    )
+
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+
+    .replace(
+        /'/g,
+        "&#039;"
+    );
 
 }
 
 
 /* =========================================
-   CLOSE MODALS OUTSIDE
+   MODAL OUTSIDE CLICK
 ========================================= */
 
 window.addEventListener(
@@ -2581,9 +3255,11 @@ window.addEventListener(
             document
             .getElementById("postModal");
 
+
         const login =
             document
             .getElementById("loginModal");
+
 
         const payment =
             document
@@ -2615,7 +3291,7 @@ window.addEventListener(
 
 
 /* =========================================
-   LOAD
+   START
 ========================================= */
 
 loadAds();
