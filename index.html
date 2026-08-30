@@ -2,12 +2,12 @@
 <html lang="gu">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>આપણું બોટાદ | Local Marketplace</title>
+<title>આપણું બોટાદ | Botad Local Marketplace</title>
 
 <meta name="description"
-content="આપણું બોટાદ - બોટાદનું પોતાનું Local Marketplace.">
+content="આપણું બોટાદ - બોટાદનું પોતાનું Local Marketplace">
 
 <style>
 
@@ -23,6 +23,7 @@ content="આપણું બોટાદ - બોટાદનું પોતા
     --dark:#102b57;
     --purple:#6438c8;
     --green:#18a957;
+    --red:#e53935;
     --bg:#f6f7fb;
     --white:#fff;
     --text:#172033;
@@ -37,13 +38,18 @@ body{
     color:var(--text);
 }
 
+button,input,select,textarea{
+    font:inherit;
+}
+
 button{
-    font-family:inherit;
     cursor:pointer;
 }
 
+/* HEADER */
+
 header{
-    background:#fff;
+    background:white;
     border-bottom:1px solid var(--border);
     position:sticky;
     top:0;
@@ -53,8 +59,8 @@ header{
 .navbar{
     max-width:1450px;
     margin:auto;
-    min-height:76px;
-    padding:10px 22px;
+    min-height:75px;
+    padding:10px 20px;
     display:flex;
     align-items:center;
     gap:15px;
@@ -64,15 +70,15 @@ header{
     display:flex;
     align-items:center;
     gap:10px;
-    min-width:245px;
+    min-width:240px;
 }
 
 .logo-icon{
     width:50px;
     height:50px;
     border-radius:14px;
-    background:linear-gradient(135deg,var(--orange),#ff9d42);
-    color:#fff;
+    background:linear-gradient(135deg,#ff6b00,#ff9d42);
+    color:white;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -81,7 +87,7 @@ header{
 
 .logo h1{
     color:var(--dark);
-    font-size:27px;
+    font-size:26px;
 }
 
 .logo h1 span{
@@ -95,19 +101,19 @@ header{
 }
 
 .location{
-    background:#fff;
+    background:white;
     border:1px solid var(--border);
     border-radius:10px;
-    padding:12px 14px;
+    padding:11px 14px;
 }
 
 .top-search{
     flex:1;
-    max-width:470px;
-    height:46px;
+    max-width:450px;
+    height:45px;
     display:flex;
     border:1px solid var(--border);
-    border-radius:11px;
+    border-radius:10px;
     overflow:hidden;
 }
 
@@ -115,14 +121,14 @@ header{
     flex:1;
     border:0;
     outline:0;
-    padding:0 15px;
+    padding:0 14px;
 }
 
 .top-search button{
-    width:75px;
     border:0;
     background:var(--orange);
-    color:#fff;
+    color:white;
+    padding:0 18px;
     font-weight:bold;
 }
 
@@ -134,7 +140,7 @@ header{
 }
 
 .login-btn{
-    background:#fff;
+    background:white;
     border:1px solid var(--border);
     border-radius:9px;
     padding:11px 14px;
@@ -142,34 +148,52 @@ header{
 
 .post-btn{
     background:var(--orange);
-    color:#fff;
+    color:white;
     border:0;
-    border-radius:10px;
-    padding:13px 16px;
+    border-radius:9px;
+    padding:12px 15px;
     font-weight:bold;
 }
+
+/* MAIN */
 
 .container{
     max-width:1450px;
     margin:20px auto;
-    padding:0 22px;
+    padding:0 20px;
 }
 
 .hero{
     min-height:290px;
     border-radius:20px;
     overflow:hidden;
+    position:relative;
     background:linear-gradient(100deg,#fff3e8,#f1e9ff);
     box-shadow:var(--shadow);
 }
 
+.hero-decoration{
+    position:absolute;
+    right:20px;
+    bottom:-100px;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    background:radial-gradient(
+        circle,
+        rgba(255,137,53,.3),
+        rgba(110,55,200,.08),
+        transparent 65%
+    );
+}
+
 .hero-content{
-    padding:48px 55px;
-    max-width:1050px;
+    position:relative;
+    padding:48px 50px;
 }
 
 .hero h2{
-    font-size:43px;
+    font-size:42px;
     color:var(--dark);
     margin-bottom:8px;
 }
@@ -186,7 +210,7 @@ header{
 }
 
 .main-search{
-    background:#fff;
+    background:white;
     max-width:950px;
     padding:6px;
     border-radius:13px;
@@ -206,43 +230,50 @@ header{
 }
 
 .main-search select{
-    width:170px;
+    width:165px;
     border-left:1px solid var(--border);
 }
 
 .search-btn{
     background:var(--orange);
-    color:#fff;
+    color:white;
     border:0;
     border-radius:9px;
     padding:0 25px;
     font-weight:bold;
 }
 
+/* NOTICE */
+
 .notice{
     margin-top:15px;
     background:#fff8ef;
     border:1px solid #ffd9b5;
     border-radius:12px;
-    padding:13px 17px;
+    padding:14px 17px;
     color:#75420d;
 }
+
+/* TITLES */
 
 .section-title{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin:23px 0 12px;
+    margin:24px 0 12px;
 }
 
 .section-title h2{
-    font-size:23px;
+    font-size:22px;
 }
 
 .view-all{
     color:var(--purple);
     font-weight:bold;
+    cursor:pointer;
 }
+
+/* CATEGORY */
 
 .categories{
     display:grid;
@@ -251,10 +282,10 @@ header{
 }
 
 .category{
-    background:#fff;
+    background:white;
     border:1px solid var(--border);
     border-radius:13px;
-    padding:15px 5px;
+    padding:14px 4px;
     text-align:center;
     transition:.2s;
 }
@@ -270,30 +301,12 @@ header{
 
 .category-name{
     display:block;
-    font-weight:bold;
     font-size:13px;
-    margin-top:7px;
+    font-weight:bold;
+    margin-top:6px;
 }
 
-.filters{
-    display:flex;
-    gap:8px;
-    overflow:auto;
-    padding-bottom:4px;
-}
-
-.filter{
-    white-space:nowrap;
-    background:#fff;
-    border:1px solid var(--border);
-    padding:8px 15px;
-    border-radius:20px;
-}
-
-.filter.active{
-    background:var(--orange);
-    color:#fff;
-}
+/* ADS */
 
 .ads-grid{
     display:grid;
@@ -302,7 +315,7 @@ header{
 }
 
 .ad-card{
-    background:#fff;
+    background:white;
     border:1px solid var(--border);
     border-radius:14px;
     overflow:hidden;
@@ -311,12 +324,11 @@ header{
 }
 
 .ad-image{
-    height:160px;
-    background:#eef1f5;
+    height:165px;
+    background:#eef1f6;
     display:flex;
-    justify-content:center;
     align-items:center;
-    font-size:58px;
+    justify-content:center;
     overflow:hidden;
 }
 
@@ -326,12 +338,16 @@ header{
     object-fit:cover;
 }
 
+.ad-placeholder{
+    font-size:55px;
+}
+
 .ad-badge{
     position:absolute;
     top:9px;
     left:9px;
     background:var(--purple);
-    color:#fff;
+    color:white;
     font-size:10px;
     padding:5px 8px;
     border-radius:5px;
@@ -364,40 +380,42 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-top:8px;
+    margin-top:9px;
 }
 
 .whatsapp{
     width:32px;
     height:32px;
     border-radius:50%;
-    background:var(--green);
-    color:#fff;
+    background:#18a957;
+    color:white;
     display:flex;
-    justify-content:center;
     align-items:center;
-    font-size:11px;
+    justify-content:center;
+    font-size:12px;
     font-weight:bold;
 }
 
+/* BANNER */
+
 .price-banner{
-    margin-top:18px;
+    margin-top:20px;
     border-radius:17px;
     padding:25px 30px;
     background:linear-gradient(120deg,#5b2bc1,#7a45dd);
-    color:#fff;
+    color:white;
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
 .price-banner h3{
-    font-size:24px;
+    font-size:23px;
     margin-bottom:6px;
 }
 
 .price-banner p{
-    color:#e9e5ff;
+    color:#eee8ff;
 }
 
 .price-box{
@@ -412,12 +430,36 @@ header{
 .price-box button{
     margin-top:8px;
     background:var(--orange);
-    color:#fff;
-    padding:11px 20px;
+    color:white;
     border:0;
+    padding:11px 20px;
     border-radius:8px;
     font-weight:bold;
 }
+
+/* FILTER */
+
+.filters{
+    display:flex;
+    gap:8px;
+    overflow:auto;
+    padding-bottom:5px;
+}
+
+.filter{
+    white-space:nowrap;
+    background:white;
+    border:1px solid var(--border);
+    padding:8px 15px;
+    border-radius:20px;
+}
+
+.filter.active{
+    background:var(--orange);
+    color:white;
+}
+
+/* TRUST */
 
 .trust{
     display:grid;
@@ -427,7 +469,7 @@ header{
 }
 
 .trust-card{
-    background:#fff;
+    background:white;
     border:1px solid var(--border);
     border-radius:12px;
     padding:17px;
@@ -443,10 +485,12 @@ header{
     margin:6px 0 3px;
 }
 
+/* FOOTER */
+
 footer{
     background:var(--dark);
-    color:#fff;
-    padding:32px 22px;
+    color:white;
+    padding:32px 20px;
 }
 
 .footer{
@@ -462,6 +506,8 @@ footer{
     font-size:14px;
     line-height:1.7;
 }
+
+/* MODAL */
 
 .modal{
     display:none;
@@ -479,9 +525,9 @@ footer{
 }
 
 .modal-box{
-    background:#fff;
+    background:white;
     width:min(620px,100%);
-    max-height:92vh;
+    max-height:94vh;
     overflow:auto;
     border-radius:17px;
     padding:23px;
@@ -491,21 +537,20 @@ footer{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:15px;
+    margin-bottom:16px;
 }
 
 .close{
     width:35px;
     height:35px;
     border:0;
-    background:#f0f1f5;
     border-radius:50%;
     font-size:22px;
 }
 
 .form{
     display:grid;
-    gap:12px;
+    gap:11px;
 }
 
 .form label{
@@ -532,7 +577,6 @@ footer{
     border-radius:10px;
     padding:18px;
     text-align:center;
-    color:var(--muted);
 }
 
 .payment-box{
@@ -547,55 +591,72 @@ footer{
     font-size:25px;
 }
 
+.upi-box{
+    background:#f3f0ff;
+    border:1px solid #ddd3ff;
+    padding:15px;
+    border-radius:11px;
+}
+
 .upi-id{
-    background:#fff;
-    border:1px dashed var(--orange);
-    border-radius:8px;
-    padding:10px;
-    margin-top:8px;
     font-weight:bold;
+    color:#4b2ca3;
     word-break:break-all;
+    margin:6px 0;
 }
 
 .pay-button{
     background:var(--orange);
-    color:#fff;
+    color:white;
     border:0;
     border-radius:10px;
     padding:14px;
     font-weight:bold;
     font-size:16px;
+    width:100%;
 }
 
-.secondary-button{
-    background:#eef1f5;
-    color:#172033;
-    border:0;
-    border-radius:10px;
+.secondary{
+    background:#eef0f5;
+    color:#222;
+}
+
+/* USER */
+
+.user-box{
+    background:#f5f7fb;
+    border:1px solid var(--border);
     padding:13px;
-    font-weight:bold;
+    border-radius:10px;
 }
 
-.user-status{
+.status{
+    padding:8px 10px;
+    border-radius:7px;
     font-size:13px;
-    color:var(--green);
-    margin-top:5px;
+    font-weight:bold;
+    margin-top:8px;
 }
 
-.loading{
+.status.pending{
+    background:#fff3cd;
+    color:#7a5900;
+}
+
+.status.paid{
+    background:#d7f5e4;
+    color:#087a3c;
+}
+
+/* LOADER */
+
+.loader{
     text-align:center;
     padding:30px;
     color:var(--muted);
 }
 
-.empty{
-    grid-column:1/-1;
-    background:#fff;
-    padding:30px;
-    border-radius:12px;
-    text-align:center;
-    color:var(--muted);
-}
+/* RESPONSIVE */
 
 @media(max-width:1150px){
 
@@ -626,7 +687,7 @@ footer{
     }
 
     .hero-content{
-        padding:32px 20px;
+        padding:35px 20px;
     }
 
     .hero h2{
@@ -643,7 +704,6 @@ footer{
 
     .main-search select{
         width:50%;
-        border-left:0;
         border-top:1px solid var(--border);
     }
 
@@ -676,17 +736,16 @@ footer{
     }
 
     .logo h1{
-        font-size:23px;
+        font-size:22px;
     }
 
     .logo-icon{
         width:43px;
         height:43px;
-        font-size:23px;
     }
 
     .post-btn{
-        padding:10px;
+        padding:9px;
     }
 
     .categories{
@@ -695,11 +754,11 @@ footer{
     }
 
     .category{
-        padding:10px 2px;
+        padding:9px 2px;
     }
 
     .category-icon{
-        font-size:22px;
+        font-size:21px;
     }
 
     .category-name{
@@ -725,14 +784,6 @@ footer{
 
 }
 
-@media(max-width:390px){
-
-    .ads-grid{
-        grid-template-columns:1fr;
-    }
-
-}
-
 </style>
 </head>
 
@@ -742,54 +793,51 @@ footer{
 
 <div class="navbar">
 
-<div class="logo">
+    <div class="logo">
 
-<div class="logo-icon">
-🏛️
-</div>
+        <div class="logo-icon">🏛️</div>
 
-<div>
-<h1>આપણું <span>બોટાદ</span></h1>
-<p>આપણું શહેર • આપણું માર્કેટ</p>
-</div>
+        <div>
+            <h1>આપણું <span>બોટાદ</span></h1>
+            <p>આપણું શહેર • આપણું માર્કેટ</p>
+        </div>
 
-</div>
+    </div>
 
-<button class="location">
-📍 બોટાદ
-</button>
+    <button class="location">
+        📍 બોટાદ
+    </button>
 
-<div class="top-search">
+    <div class="top-search">
 
-<input
-id="topSearch"
-type="text"
-placeholder="શું શોધી રહ્યા છો?"
->
+        <input
+            id="topSearch"
+            placeholder="શું શોધી રહ્યા છો?"
+        >
 
-<button onclick="searchAds()">
-શોધો
-</button>
+        <button onclick="searchAds()">
+            શોધો
+        </button>
 
-</div>
+    </div>
 
-<div class="nav-actions">
+    <div class="nav-actions">
 
-<button
-class="login-btn"
-onclick="openLogin()"
->
-👤 Login
-</button>
+        <button
+            class="login-btn"
+            onclick="openLogin()"
+        >
+            👤 Login
+        </button>
 
-<button
-class="post-btn"
-onclick="openPostAd()"
->
-📢 ₹99માં જાહેરાત
-</button>
+        <button
+            class="post-btn"
+            onclick="openPostAd()"
+        >
+            📢 ₹99માં જાહેરાત મૂકો
+        </button>
 
-</div>
+    </div>
 
 </div>
 
@@ -800,6 +848,8 @@ onclick="openPostAd()"
 
 <section class="hero">
 
+<div class="hero-decoration"></div>
+
 <div class="hero-content">
 
 <h2>
@@ -808,16 +858,15 @@ onclick="openPostAd()"
 </h2>
 
 <p class="hero-subtitle">
-વસ્તુઓ, વાહન, પ્રોપર્ટી, બિઝનેસ, સેવાઓ,
-નોકરીઓ અને ઘણું બધું.
+વસ્તુઓ, વાહન, પ્રોપર્ટી, બિઝનેસ,
+સેવાઓ, નોકરીઓ અને ઘણું બધું.
 </p>
 
 <div class="main-search">
 
 <input
-id="mainSearch"
-type="text"
-placeholder="જેમ કે કાર, મકાન, નોકરી..."
+    id="mainSearch"
+    placeholder="જેમ કે કાર, મકાન, નોકરી..."
 >
 
 <select id="mainCategory">
@@ -839,7 +888,7 @@ placeholder="જેમ કે કાર, મકાન, નોકરી..."
 
 </select>
 
-<select id="locationSelect">
+<select id="mainLocation">
 
 <option value="Botad">
 📍 બોટાદ
@@ -864,22 +913,19 @@ onclick="searchAds()"
 <div class="notice">
 
 💡
-
-<span>
 <strong>જાહેરાત મૂકવાની ફી ₹99 છે.</strong>
-Payment successful થયા પછી જાહેરાત Publish કરવામાં આવશે.
-</span>
+Payment verify થયા પછી જ જાહેરાત public થશે.
 
 </div>
 
 
 <div class="section-title">
 
-<h2>📂 કેટેગરી પસંદ કરો</h2>
+<h2>📂 કેટેગરી</h2>
 
 <span
 class="view-all"
-onclick="filterAds('all')"
+onclick="loadAds()"
 >
 બધી કેટેગરી →
 </span>
@@ -944,16 +990,24 @@ onclick="filterAds('all')"
 
 <div class="section-title">
 
-<h2>⭐ Featured જાહેરાતો</h2>
+<h2>⭐ જાહેરાતો</h2>
+
+<span
+class="view-all"
+onclick="loadAds()"
+>
+બધી જુઓ →
+</span>
 
 </div>
 
+
 <div
+id="adsGrid"
 class="ads-grid"
-id="featuredAds"
 >
 
-<div class="loading">
+<div class="loader">
 જાહેરાતો લોડ થઈ રહી છે...
 </div>
 
@@ -989,73 +1043,7 @@ id="featuredAds"
 
 <div class="section-title">
 
-<h2>🆕 તાજેતરની જાહેરાતો</h2>
-
-</div>
-
-
-<div class="filters">
-
-<button
-class="filter active"
-onclick="filterAds('all',this)"
->
-બધી
-</button>
-
-<button
-class="filter"
-onclick="filterAds('Business',this)"
->
-બિઝનેસ
-</button>
-
-<button
-class="filter"
-onclick="filterAds('Services',this)"
->
-સેવાઓ
-</button>
-
-<button
-class="filter"
-onclick="filterAds('Vehicles',this)"
->
-વાહન
-</button>
-
-<button
-class="filter"
-onclick="filterAds('Property',this)"
->
-પ્રોપર્ટી
-</button>
-
-<button
-class="filter"
-onclick="filterAds('Jobs',this)"
->
-નોકરી
-</button>
-
-<button
-class="filter"
-onclick="filterAds('Buy & Sell',this)"
->
-Buy & Sell
-</button>
-
-</div>
-
-
-<div
-class="ads-grid"
-id="latestAds"
->
-
-<div class="loading">
-જાહેરાતો લોડ થઈ રહી છે...
-</div>
+<h2>🛡️ વિશ્વાસ</h2>
 
 </div>
 
@@ -1063,27 +1051,43 @@ id="latestAds"
 <div class="trust">
 
 <div class="trust-card">
+
 <div class="icon">📍</div>
+
 <strong>ખાસ બોટાદ માટે</strong>
+
 <span>Local Marketplace</span>
+
 </div>
 
 <div class="trust-card">
+
 <div class="icon">📱</div>
-<strong>Mobile OTP Login</strong>
-<span>સુરક્ષિત Login</span>
+
+<strong>Mobile OTP</strong>
+
+<span>Secure Login</span>
+
 </div>
 
 <div class="trust-card">
+
 <div class="icon">💳</div>
-<strong>₹99 Advertisement</strong>
-<span>Paid Listing</span>
+
+<strong>₹99 Listing</strong>
+
+<span>Paid Advertisement</span>
+
 </div>
 
 <div class="trust-card">
+
 <div class="icon">🛡️</div>
-<strong>સુરક્ષિત Marketplace</strong>
-<span>Firebase System</span>
+
+<strong>Secure System</strong>
+
+<span>Firebase Protected</span>
+
 </div>
 
 </div>
@@ -1101,9 +1105,8 @@ id="latestAds"
 
 <p>
 બોટાદનું પોતાનું Local Marketplace.
-અહીં બોટાદના લોકો વસ્તુઓ, સેવાઓ,
-બિઝનેસ, વાહન, પ્રોપર્ટી અને નોકરીઓ
-શોધી શકે છે.
+વસ્તુઓ, વાહન, પ્રોપર્ટી, બિઝનેસ,
+સેવાઓ અને નોકરીઓ માટે.
 </p>
 
 </div>
@@ -1139,7 +1142,7 @@ Privacy Policy
 <h3>જાહેરાત</h3>
 
 <p>
-તમારી જાહેરાત માત્ર ₹99માં
+₹99માં તમારી જાહેરાત
 બોટાદના લોકો સુધી પહોંચાડો.
 </p>
 
@@ -1153,8 +1156,8 @@ Privacy Policy
 <!-- POST AD -->
 
 <div
-class="modal"
 id="postModal"
+class="modal"
 >
 
 <div class="modal-box">
@@ -1174,11 +1177,14 @@ onclick="closePostAd()"
 
 
 <div
-id="postUserStatus"
-class="user-status"
+id="postLoginWarning"
+class="user-box"
 >
-Login જરૂરી છે
+🔐 જાહેરાત મૂકવા માટે Login જરૂરી છે.
 </div>
+
+
+<br>
 
 
 <div class="form">
@@ -1189,7 +1195,6 @@ Login જરૂરી છે
 
 <input
 id="adTitle"
-type="text"
 placeholder="જેમ કે Maruti Swift VXI"
 >
 
@@ -1220,7 +1225,6 @@ placeholder="જેમ કે Maruti Swift VXI"
 
 <input
 id="adPrice"
-type="text"
 placeholder="₹50,000"
 >
 
@@ -1231,12 +1235,10 @@ placeholder="₹50,000"
 
 <div class="upload">
 
-📸<br><br>
-
 <input
 id="adPhoto"
 type="file"
-accept="image/jpeg,image/png,image/webp"
+accept="image/*"
 >
 
 </div>
@@ -1248,7 +1250,7 @@ accept="image/jpeg,image/png,image/webp"
 
 <textarea
 id="adDescription"
-placeholder="તમારી જાહેરાત વિશે માહિતી..."
+placeholder="જાહેરાત વિશે માહિતી..."
 ></textarea>
 
 
@@ -1272,39 +1274,43 @@ placeholder="10 અંકનો મોબાઇલ નંબર"
 
 <strong>₹99</strong>
 
+<div style="font-size:12px">
+Payment verify થયા પછી જ જાહેરાત public થશે.
+</div>
+
+</div>
+
+
+<div class="upi-box">
+
+<div>
+💳 UPI દ્વારા ₹99 ચૂકવો
+</div>
+
 <div class="upi-id">
-UPI: khacharudayraj185-2@okicici
+khacharudayraj185-2@okicici
 </div>
-
-</div>
-
 
 <button
+type="button"
 class="pay-button"
-onclick="makeUPIPayment()"
+onclick="openUPIPayment()"
 >
-💳 ₹99 UPI Payment કરો
+📲 UPI App ખોલો અને ₹99 ચૂકવો
 </button>
+
+</div>
+
+
+<br>
 
 
 <button
-class="secondary-button"
-onclick="publishAfterPayment()"
+class="pay-button secondary"
+onclick="submitAdvertisement()"
 >
-✅ Payment કર્યા પછી Publish કરો
+📤 Payment કર્યા પછી જાહેરાત Submit કરો
 </button>
-
-
-<div
-style="
-font-size:12px;
-color:#777;
-margin-top:5px;
-"
->
-Payment button તમારા ફોનમાં ઉપલબ્ધ UPI app ખોલશે.
-જાહેરાત publish કરતા પહેલાં payment કરેલું હોવું જરૂરી છે.
-</div>
 
 </div>
 
@@ -1316,8 +1322,8 @@ Payment button તમારા ફોનમાં ઉપલબ્ધ UPI app ખ
 <!-- LOGIN -->
 
 <div
-class="modal"
 id="loginModal"
+class="modal"
 >
 
 <div class="modal-box">
@@ -1336,6 +1342,11 @@ onclick="closeLogin()"
 </div>
 
 
+<div
+id="recaptcha-container"
+></div>
+
+
 <div class="form">
 
 <label>
@@ -1350,14 +1361,11 @@ placeholder="10 અંકનો મોબાઇલ નંબર"
 >
 
 
-<div id="recaptcha-container"></div>
-
-
 <button
 class="pay-button"
 onclick="sendOTP()"
 >
-OTP મોકલો
+📱 OTP મોકલો
 </button>
 
 
@@ -1372,7 +1380,6 @@ OTP
 
 <input
 id="otp"
-type="text"
 maxlength="6"
 placeholder="6 digit OTP"
 >
@@ -1382,7 +1389,7 @@ placeholder="6 digit OTP"
 class="pay-button"
 onclick="verifyOTP()"
 >
-OTP Verify કરો
+✅ OTP Verify કરો
 </button>
 
 </div>
@@ -1394,961 +1401,1346 @@ OTP Verify કરો
 </div>
 
 
+<!-- USER ADS -->
+
+<div
+id="myAdsModal"
+class="modal"
+>
+
+<div class="modal-box">
+
+<div class="modal-header">
+
+<h2>📋 મારી જાહેરાતો</h2>
+
+<button
+class="close"
+onclick="closeMyAds()"
+>
+×
+</button>
+
+</div>
+
+<div id="myAdsList"></div>
+
+</div>
+
+</div>
+
+
 <script type="module">
 
 import {
-initializeApp
+    initializeApp
 }
-from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
 
 import {
-getFirestore,
-collection,
-addDoc,
-getDocs,
-query,
-orderBy,
-serverTimestamp
+    getAuth,
+    RecaptchaVerifier,
+    signInWithPhoneNumber,
+    onAuthStateChanged
 }
-from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
 import {
-getAuth,
-RecaptchaVerifier,
-signInWithPhoneNumber,
-onAuthStateChanged
+    getFirestore,
+    collection,
+    addDoc,
+    query,
+    where,
+    orderBy,
+    limit,
+    getDocs,
+    doc,
+    getDoc,
+    serverTimestamp
 }
-from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
+
+import {
+    getStorage,
+    ref,
+    uploadBytes,
+    getDownloadURL
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js";
+
+
+/* =========================================
+   FIREBASE CONFIG
+========================================= */
 
 const firebaseConfig = {
 
-apiKey:
-"AIzaSyCpf3StVGaPJoiZcm2AfxoJ8N-Anp1kxLI",
+    apiKey:
+    "AIzaSyCpf3StVGaPJoiZcm2AfxoJ8N-Anp1kxLI",
 
-authDomain:
-"apnu-botad.firebaseapp.com",
+    authDomain:
+    "apnu-botad.firebaseapp.com",
 
-projectId:
-"apnu-botad",
+    projectId:
+    "apnu-botad",
 
-storageBucket:
-"apnu-botad.firebasestorage.app",
+    storageBucket:
+    "apnu-botad.firebasestorage.app",
 
-messagingSenderId:
-"134409761224",
+    messagingSenderId:
+    "134409761224",
 
-appId:
-"1:134409761224:web:9a7fa68403e631a90810fd",
+    appId:
+    "1:134409761224:web:9a7fa68403e631a90810fd",
 
-measurementId:
-"G-D4JRJXG3DQ"
-
+    measurementId:
+    "G-D4JRJXG3DQ"
 };
 
 
-const app = initializeApp(firebaseConfig);
-
-const db = getFirestore(app);
-
-const auth = getAuth(app);
+const app =
+initializeApp(firebaseConfig);
 
 
-let confirmationResult = null;
+const auth =
+getAuth(app);
+
+
+const db =
+getFirestore(app);
+
+
+const storage =
+getStorage(app);
+
+
+/* =========================================
+   UPI
+========================================= */
+
+const UPI_ID =
+"khacharudayraj185-2@okicici";
+
+const PAYMENT_AMOUNT =
+99;
+
+
+/* =========================================
+   GLOBAL
+========================================= */
 
 let currentUser = null;
 
-let paymentStarted = false;
+let confirmationResult = null;
 
 
-/* ================= AUTH ================= */
+/* =========================================
+   AUTH STATE
+========================================= */
 
-onAuthStateChanged(auth,(user)=>{
+onAuthStateChanged(
+    auth,
+    async user => {
 
-currentUser = user;
+        currentUser = user;
 
-const status =
-document.getElementById("postUserStatus");
+        updateLoginButton();
 
-if(user){
+        if(user){
 
-status.innerHTML =
-"✅ Login થયેલ છે: " +
-(user.phoneNumber || "");
+            document
+            .getElementById("postLoginWarning")
+            .innerHTML =
+            "✅ Login થયેલું છે: " +
+            user.phoneNumber;
 
-}else{
+        }
 
-status.innerHTML =
-"⚠️ જાહેરાત મૂકવા માટે પહેલા Mobile OTP Login કરો.";
+        else{
+
+            document
+            .getElementById("postLoginWarning")
+            .innerHTML =
+            "🔐 જાહેરાત મૂકવા માટે પહેલા Login કરો.";
+
+        }
+
+        loadAds();
+
+    }
+);
+
+
+/* =========================================
+   LOGIN BUTTON
+========================================= */
+
+function updateLoginButton(){
+
+    const buttons =
+    document.querySelectorAll(".login-btn");
+
+    buttons.forEach(button => {
+
+        if(currentUser){
+
+            button.innerText =
+            "👤 My Account";
+
+            button.onclick =
+            openMyAds;
+
+        }
+
+        else{
+
+            button.innerText =
+            "👤 Login";
+
+            button.onclick =
+            openLogin;
+
+        }
+
+    });
 
 }
 
-});
+
+/* =========================================
+   OPEN LOGIN
+========================================= */
+
+window.openLogin =
+function(){
+
+    document
+    .getElementById("loginModal")
+    .classList
+    .add("show");
 
 
-window.openLogin = function(){
-
-document
-.getElementById("loginModal")
-.classList
-.add("show");
+    setupRecaptcha();
 
 };
 
 
-window.closeLogin = function(){
+/* =========================================
+   CLOSE LOGIN
+========================================= */
 
-document
-.getElementById("loginModal")
-.classList
-.remove("show");
+window.closeLogin =
+function(){
 
-};
-
-
-window.sendOTP = async function(){
-
-const phone =
-document
-.getElementById("loginPhone")
-.value
-.trim();
-
-
-if(!/^[0-9]{10}$/.test(phone)){
-
-alert(
-"સાચો 10 અંકનો મોબાઇલ નંબર નાખો."
-);
-
-return;
-
-}
-
-
-try{
-
-if(!window.recaptchaVerifier){
-
-window.recaptchaVerifier =
-new RecaptchaVerifier(
-auth,
-"recaptcha-container",
-{
-size:"normal"
-}
-);
-
-}
-
-
-const fullPhone =
-"+91"+phone;
-
-
-confirmationResult =
-await signInWithPhoneNumber(
-auth,
-fullPhone,
-window.recaptchaVerifier
-);
-
-
-document
-.getElementById("otpArea")
-.style
-.display="grid";
-
-
-alert(
-"OTP તમારા મોબાઇલ પર મોકલવામાં આવ્યો છે."
-);
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"OTP મોકલવામાં સમસ્યા આવી. Firebase Phone Authentication અને Authorized Domain ચેક કરો."
-);
-
-}
+    document
+    .getElementById("loginModal")
+    .classList
+    .remove("show");
 
 };
 
 
-window.verifyOTP = async function(){
+/* =========================================
+   RECAPTCHA
+========================================= */
 
-const otp =
-document
-.getElementById("otp")
-.value
-.trim();
+let recaptchaVerifier = null;
 
 
-if(!/^[0-9]{6}$/.test(otp)){
+function setupRecaptcha(){
 
-alert("6 અંકનો OTP નાખો.");
-
-return;
-
-}
+    if(recaptchaVerifier)
+        return;
 
 
-if(!confirmationResult){
+    recaptchaVerifier =
+    new RecaptchaVerifier(
+        auth,
+        "recaptcha-container",
+        {
+            size:"normal"
+        }
+    );
 
-alert("પહેલા OTP મોકલો.");
 
-return;
-
-}
-
-
-try{
-
-await confirmationResult.confirm(otp);
-
-alert(
-"✅ Login સફળ થયું."
-);
-
-closeLogin();
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"❌ OTP ખોટો છે અથવા expire થઈ ગયો છે."
-);
+    recaptchaVerifier.render();
 
 }
+
+
+/* =========================================
+   SEND OTP
+========================================= */
+
+window.sendOTP =
+async function(){
+
+    const phone =
+    document
+    .getElementById("loginPhone")
+    .value
+    .trim();
+
+
+    if(!/^[0-9]{10}$/.test(phone)){
+
+        alert(
+            "સાચો 10 અંકનો મોબાઇલ નંબર નાખો."
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        setupRecaptcha();
+
+
+        confirmationResult =
+        await signInWithPhoneNumber(
+            auth,
+            "+91" + phone,
+            recaptchaVerifier
+        );
+
+
+        document
+        .getElementById("otpArea")
+        .style
+        .display="block";
+
+
+        alert(
+            "OTP તમારા મોબાઇલ પર મોકલવામાં આવ્યો છે."
+        );
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "OTP મોકલી શકાયો નથી: " +
+            error.message
+        );
+
+    }
 
 };
 
 
-/* ================= POST AD ================= */
+/* =========================================
+   VERIFY OTP
+========================================= */
 
-window.openPostAd = function(){
+window.verifyOTP =
+async function(){
 
-document
-.getElementById("postModal")
-.classList
-.add("show");
-
-};
-
-
-window.closePostAd = function(){
-
-document
-.getElementById("postModal")
-.classList
-.remove("show");
-
-};
+    const otp =
+    document
+    .getElementById("otp")
+    .value
+    .trim();
 
 
-/* ================= IMAGE ================= */
+    if(!/^[0-9]{6}$/.test(otp)){
 
-function compressImage(file){
+        alert("6 અંકનો OTP નાખો.");
 
-return new Promise((resolve,reject)=>{
+        return;
 
-const reader = new FileReader();
-
-reader.onload = function(event){
-
-const img = new Image();
-
-img.onload = function(){
-
-const canvas =
-document.createElement("canvas");
-
-const maxWidth = 800;
-
-let width = img.width;
-
-let height = img.height;
+    }
 
 
-if(width > maxWidth){
+    if(!confirmationResult){
 
-height =
-height * maxWidth / width;
+        alert(
+            "પહેલા OTP મોકલો."
+        );
 
-width = maxWidth;
+        return;
 
-}
-
-
-canvas.width = width;
-
-canvas.height = height;
+    }
 
 
-const ctx =
-canvas.getContext("2d");
+    try{
 
-ctx.drawImage(
-img,
-0,
-0,
-width,
-height
-);
+        await confirmationResult.confirm(otp);
 
+        alert(
+            "✅ Login સફળ થયું."
+        );
 
-resolve(
-canvas.toDataURL(
-"image/jpeg",
-0.65
-)
-);
+        closeLogin();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "OTP ખોટો છે."
+        );
+
+    }
 
 };
 
 
-img.onerror = reject;
+/* =========================================
+   OPEN POST AD
+========================================= */
 
-img.src = event.target.result;
+window.openPostAd =
+function(){
 
-};
-
-reader.onerror = reject;
-
-reader.readAsDataURL(file);
-
-});
-
-}
+    document
+    .getElementById("postModal")
+    .classList
+    .add("show");
 
 
-/* ================= UPI ================= */
+    if(!currentUser){
 
-window.makeUPIPayment = function(){
+        document
+        .getElementById("postLoginWarning")
+        .innerHTML =
+        "🔐 પહેલા Login કરો.";
 
-const title =
-document
-.getElementById("adTitle")
-.value
-.trim();
-
-
-if(!title){
-
-alert(
-"પહેલા જાહેરાતનું નામ લખો."
-);
-
-return;
-
-}
-
-
-paymentStarted = true;
-
-
-const upi =
-"upi://pay?" +
-"pa=khacharudayraj185-2@okicici" +
-"&pn=Aapnu%20Botad" +
-"&am=99" +
-"&cu=INR" +
-"&tn=Advertisement%20Fee";
-
-
-window.location.href = upi;
+    }
 
 };
 
 
-/* ================= PUBLISH ================= */
-
-window.publishAfterPayment = async function(){
-
-if(!currentUser){
-
-alert(
-"જાહેરાત Publish કરવા માટે પહેલા Login કરો."
-);
-
-openLogin();
-
-return;
-
-}
-
-
-if(!paymentStarted){
-
-alert(
-"પહેલા ₹99 UPI Payment કરો."
-);
-
-return;
-
-}
-
-
-const title =
-document
-.getElementById("adTitle")
-.value
-.trim();
-
-
-const category =
-document
-.getElementById("adCategory")
-.value;
-
-
-const price =
-document
-.getElementById("adPrice")
-.value
-.trim();
-
-
-const description =
-document
-.getElementById("adDescription")
-.value
-.trim();
-
-
-const phone =
-document
-.getElementById("adPhone")
-.value
-.trim();
-
-
-const photo =
-document
-.getElementById("adPhoto")
-.files[0];
-
-
-if(!title){
-
-alert("જાહેરાતનું નામ લખો.");
-
-return;
-
-}
-
-
-if(!/^[0-9]{10}$/.test(phone)){
-
-alert(
-"સાચો 10 અંકનો મોબાઇલ નંબર નાખો."
-);
-
-return;
-
-}
-
-
-if(!photo){
-
-alert(
-"જાહેરાતનો ફોટો પસંદ કરો."
-);
-
-return;
-
-}
-
-
-try{
-
-const imageData =
-await compressImage(photo);
-
-
-if(imageData.length > 900000){
-
-alert(
-"ફોટો ખૂબ મોટો છે. નાનો ફોટો પસંદ કરો."
-);
-
-return;
-
-}
-
-
-await addDoc(
-collection(db,"ads"),
-{
-
-title:title,
-
-category:category,
-
-price:price,
-
-description:description,
-
-phone:phone,
-
-image:imageData,
-
-location:"Botad",
-
-uid:currentUser.uid,
-
-status:"pending_payment_verification",
-
-paymentAmount:99,
-
-paymentUpi:
-"khacharudayraj185-2@okicici",
-
-createdAt:
-serverTimestamp()
-
-}
-
-);
-
-
-alert(
-"✅ તમારી જાહેરાત Firebaseમાં નોંધાઈ ગઈ છે.\n\nPayment verification પછી Admin તેને Publish કરી શકે છે."
-);
-
-
-document
-.getElementById("postModal")
-.classList
-.remove("show");
-
-
-document
-.getElementById("adTitle")
-.value="";
-
-
-document
-.getElementById("adPrice")
-.value="";
-
-
-document
-.getElementById("adDescription")
-.value="";
-
-
-document
-.getElementById("adPhone")
-.value="";
-
-
-document
-.getElementById("adPhoto")
-.value="";
-
-
-paymentStarted=false;
-
-
-loadAds();
-
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"જાહેરાત save કરવામાં સમસ્યા આવી: "+
-error.message
-);
-
-}
+/* =========================================
+   CLOSE POST
+========================================= */
+
+window.closePostAd =
+function(){
+
+    document
+    .getElementById("postModal")
+    .classList
+    .remove("show");
 
 };
 
 
-/* ================= ADS ================= */
+/* =========================================
+   UPI PAYMENT
+========================================= */
 
-let allAds = [];
+window.openUPIPayment =
+function(){
 
+    const upiURL =
+    "upi://pay" +
+    "?pa=" +
+    encodeURIComponent(UPI_ID) +
+    "&pn=" +
+    encodeURIComponent("આપણું બોટાદ") +
+    "&am=99" +
+    "&cu=INR" +
+    "&tn=" +
+    encodeURIComponent("આપણું બોટાદ Advertisement ₹99");
+
+
+    window.location.href =
+    upiURL;
+
+};
+
+
+/* =========================================
+   SUBMIT AD
+========================================= */
+
+window.submitAdvertisement =
+async function(){
+
+    if(!currentUser){
+
+        alert(
+            "જાહેરાત મૂકવા માટે પહેલા Login કરો."
+        );
+
+        openLogin();
+
+        return;
+
+    }
+
+
+    const title =
+    document
+    .getElementById("adTitle")
+    .value
+    .trim();
+
+
+    const category =
+    document
+    .getElementById("adCategory")
+    .value;
+
+
+    const price =
+    document
+    .getElementById("adPrice")
+    .value
+    .trim();
+
+
+    const description =
+    document
+    .getElementById("adDescription")
+    .value
+    .trim();
+
+
+    const phone =
+    document
+    .getElementById("adPhone")
+    .value
+    .trim();
+
+
+    const photo =
+    document
+    .getElementById("adPhoto")
+    .files[0];
+
+
+    if(!title){
+
+        alert(
+            "જાહેરાતનું નામ નાખો."
+        );
+
+        return;
+
+    }
+
+
+    if(!description){
+
+        alert(
+            "જાહેરાત વિશે માહિતી નાખો."
+        );
+
+        return;
+
+    }
+
+
+    if(!/^[0-9]{10}$/.test(phone)){
+
+        alert(
+            "સાચો 10 અંકનો મોબાઇલ નંબર નાખો."
+        );
+
+        return;
+
+    }
+
+
+    if(!photo){
+
+        alert(
+            "જાહેરાતનો ફોટો પસંદ કરો."
+        );
+
+        return;
+
+    }
+
+
+    if(photo.size > 5 * 1024 * 1024){
+
+        alert(
+            "ફોટો 5MBથી નાનો હોવો જોઈએ."
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        const submitButton =
+        document.querySelector(
+            "#postModal .secondary"
+        );
+
+
+        submitButton.disabled =
+        true;
+
+        submitButton.innerText =
+        "⏳ Upload થઈ રહ્યું છે...";
+
+
+        /* PHOTO UPLOAD */
+
+        const fileName =
+        Date.now() +
+        "_" +
+        currentUser.uid +
+        "_" +
+        photo.name.replace(
+            /[^a-zA-Z0-9._-]/g,
+            "_"
+        );
+
+
+        const storageRef =
+        ref(
+            storage,
+            "ads/" +
+            currentUser.uid +
+            "/" +
+            fileName
+        );
+
+
+        await uploadBytes(
+            storageRef,
+            photo
+        );
+
+
+        const photoURL =
+        await getDownloadURL(
+            storageRef
+        );
+
+
+        /* FIRESTORE */
+
+        await addDoc(
+            collection(db,"ads"),
+            {
+
+                title:title,
+
+                category:category,
+
+                price:price,
+
+                description:description,
+
+                phone:phone,
+
+                photoURL:photoURL,
+
+                userId:currentUser.uid,
+
+                userPhone:
+                currentUser.phoneNumber || "",
+
+                location:"Botad",
+
+                status:"pending",
+
+                paymentStatus:"pending",
+
+                paymentAmount:99,
+
+                paymentUPI:UPI_ID,
+
+                createdAt:
+                serverTimestamp()
+
+            }
+        );
+
+
+        alert(
+            "✅ જાહેરાત Submit થઈ ગઈ.\n\n" +
+            "હવે ₹99 payment verify થયા પછી " +
+            "જાહેરાત Publish થશે."
+        );
+
+
+        closePostAd();
+
+
+        document
+        .getElementById("adTitle")
+        .value="";
+
+
+        document
+        .getElementById("adPrice")
+        .value="";
+
+
+        document
+        .getElementById("adDescription")
+        .value="";
+
+
+        document
+        .getElementById("adPhone")
+        .value="";
+
+
+        document
+        .getElementById("adPhoto")
+        .value="";
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "જાહેરાત Submit થઈ નથી:\n" +
+            error.message
+        );
+
+    }
+
+    finally{
+
+        const submitButton =
+        document.querySelector(
+            "#postModal .secondary"
+        );
+
+
+        submitButton.disabled =
+        false;
+
+        submitButton.innerText =
+        "📤 Payment કર્યા પછી જાહેરાત Submit કરો";
+
+    }
+
+};
+
+
+/* =========================================
+   LOAD ADS
+========================================= */
 
 async function loadAds(){
 
-const featured =
-document.getElementById("featuredAds");
-
-const latest =
-document.getElementById("latestAds");
+    const grid =
+    document
+    .getElementById("adsGrid");
 
 
-try{
-
-const q =
-query(
-collection(db,"ads"),
-orderBy("createdAt","desc")
-);
+    grid.innerHTML =
+    '<div class="loader">જાહેરાતો લોડ થઈ રહી છે...</div>';
 
 
-const snapshot =
-await getDocs(q);
+    try{
+
+        const q =
+        query(
+            collection(db,"ads"),
+            where(
+                "status",
+                "==",
+                "published"
+            ),
+            orderBy(
+                "createdAt",
+                "desc"
+            ),
+            limit(50)
+        );
 
 
-allAds=[];
+        const snapshot =
+        await getDocs(q);
 
 
-snapshot.forEach(doc=>{
+        const ads =
+        [];
 
-const ad = doc.data();
+
+        snapshot.forEach(
+            docSnap => {
+
+                ads.push({
+                    id:docSnap.id,
+                    ...docSnap.data()
+                });
+
+            }
+        );
 
 
-if(
-ad.status === "published"
-){
+        renderAds(ads);
 
-allAds.push({
-id:doc.id,
-...ad
-});
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        grid.innerHTML =
+        `
+        <div class="loader">
+        જાહેરાતો લોડ કરવામાં સમસ્યા આવી.
+        <br><br>
+        ${error.message}
+        </div>
+        `;
+
+    }
 
 }
 
-});
+
+/* =========================================
+   RENDER
+========================================= */
+
+function renderAds(ads){
+
+    const grid =
+    document
+    .getElementById("adsGrid");
 
 
-renderAds(allAds);
+    if(!ads.length){
+
+        grid.innerHTML =
+        `
+        <div class="loader">
+        હાલમાં કોઈ Published જાહેરાત નથી.
+        </div>
+        `;
+
+        return;
+
+    }
 
 
-}catch(error){
-
-console.error(error);
-
-featured.innerHTML =
-`
-<div class="empty">
-જાહેરાતો લોડ થઈ શકી નથી.
-</div>
-`;
-
-latest.innerHTML =
-`
-<div class="empty">
-Firebase connection ચેક કરો.
-</div>
-`;
+    grid.innerHTML =
+    ads.map(createCard).join("");
 
 }
 
-}
 
-
-/* ================= CARD ================= */
+/* =========================================
+   CARD
+========================================= */
 
 function createCard(ad){
 
-const image =
-ad.image
-?
-`
-<img
-src="${ad.image}"
-alt="${escapeHTML(ad.title)}"
->
-`
-:
-"📢";
+    const phone =
+    String(ad.phone || "")
+    .replace(/\D/g,"");
 
 
-return `
-
-<div class="ad-card">
-
-<div class="ad-image">
-
-${image}
-
-</div>
+    const whatsapp =
+    phone.length === 10
+    ?
+    "https://wa.me/91" + phone
+    :
+    "#";
 
 
-<div class="ad-info">
+    return `
 
-<div class="ad-price">
+    <div class="ad-card">
 
-${escapeHTML(ad.price || "ભાવ માટે સંપર્ક કરો")}
+        <div class="ad-image">
 
-</div>
+            ${
+                ad.photoURL
+                ?
+                `<img
+                    src="${escapeHTML(ad.photoURL)}"
+                    alt="${escapeHTML(ad.title || "જાહેરાત")}"
+                >`
+                :
+                `<div class="ad-placeholder">
+                    📢
+                </div>`
+            }
 
+        </div>
 
-<div class="ad-title">
+        <div class="ad-info">
 
-${escapeHTML(ad.title)}
+            <div class="ad-price">
+                ${escapeHTML(ad.price || "Contact")}
+            </div>
 
-</div>
+            <div class="ad-title">
+                ${escapeHTML(ad.title || "")}
+            </div>
 
+            <div class="ad-meta">
 
-<div class="ad-meta">
+                ${escapeHTML(ad.description || "")}
 
-${escapeHTML(ad.description || "")}
+                <br>
 
-<br>
+                📍 ${escapeHTML(ad.location || "Botad")}
 
-📍 ${escapeHTML(ad.location || "Botad")}
+            </div>
 
-</div>
+            <div class="ad-bottom">
 
+                <span class="ad-meta">
+                    ${escapeHTML(ad.category || "")}
+                </span>
 
-<div class="ad-bottom">
+                ${
+                    phone.length === 10
+                    ?
+                    `
+                    <a
+                        class="whatsapp"
+                        href="${whatsapp}"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        WA
+                    </a>
+                    `
+                    :
+                    ""
+                }
 
-<span class="ad-meta">
+            </div>
 
-${escapeHTML(ad.category)}
+        </div>
 
-</span>
+    </div>
 
-
-<span
-class="whatsapp"
-onclick="contactSeller('${escapeHTML(ad.phone || "")}')"
->
-WA
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-`;
+    `;
 
 }
 
+
+/* =========================================
+   FILTER
+========================================= */
+
+window.filterAds =
+async function(category){
+
+    const grid =
+    document
+    .getElementById("adsGrid");
+
+
+    grid.innerHTML =
+    '<div class="loader">શોધી રહ્યા છીએ...</div>';
+
+
+    try{
+
+        let q;
+
+
+        if(category === "all"){
+
+            q =
+            query(
+                collection(db,"ads"),
+                where(
+                    "status",
+                    "==",
+                    "published"
+                ),
+                orderBy(
+                    "createdAt",
+                    "desc"
+                ),
+                limit(50)
+            );
+
+        }
+
+        else{
+
+            q =
+            query(
+                collection(db,"ads"),
+                where(
+                    "status",
+                    "==",
+                    "published"
+                ),
+                where(
+                    "category",
+                    "==",
+                    category
+                ),
+                limit(50)
+            );
+
+        }
+
+
+        const snapshot =
+        await getDocs(q);
+
+
+        const ads =
+        [];
+
+
+        snapshot.forEach(
+            docSnap => {
+
+                ads.push({
+                    id:docSnap.id,
+                    ...docSnap.data()
+                });
+
+            }
+        );
+
+
+        renderAds(ads);
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "Filter કરવામાં સમસ્યા આવી."
+        );
+
+    }
+
+};
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+window.searchAds =
+async function(){
+
+    const queryText =
+    (
+        document
+        .getElementById("mainSearch")
+        .value
+        .trim()
+        ||
+        document
+        .getElementById("topSearch")
+        .value
+        .trim()
+    )
+    .toLowerCase();
+
+
+    const category =
+    document
+    .getElementById("mainCategory")
+    .value;
+
+
+    try{
+
+        const q =
+        query(
+            collection(db,"ads"),
+            where(
+                "status",
+                "==",
+                "published"
+            ),
+            limit(100)
+        );
+
+
+        const snapshot =
+        await getDocs(q);
+
+
+        let ads=[];
+
+
+        snapshot.forEach(
+            docSnap => {
+
+                const ad =
+                {
+                    id:docSnap.id,
+                    ...docSnap.data()
+                };
+
+
+                const text =
+                (
+                    (ad.title || "") +
+                    " " +
+                    (ad.description || "") +
+                    " " +
+                    (ad.category || "") +
+                    " " +
+                    (ad.price || "")
+                )
+                .toLowerCase();
+
+
+                const matchText =
+                !queryText ||
+                text.includes(queryText);
+
+
+                const matchCategory =
+                category === "all" ||
+                ad.category === category;
+
+
+                if(
+                    matchText &&
+                    matchCategory
+                ){
+
+                    ads.push(ad);
+
+                }
+
+            }
+        );
+
+
+        renderAds(ads);
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "Searchમાં સમસ્યા આવી."
+        );
+
+    }
+
+};
+
+
+/* =========================================
+   MY ADS
+========================================= */
+
+window.openMyAds =
+async function(){
+
+    if(!currentUser){
+
+        openLogin();
+
+        return;
+
+    }
+
+
+    document
+    .getElementById("myAdsModal")
+    .classList
+    .add("show");
+
+
+    const box =
+    document
+    .getElementById("myAdsList");
+
+
+    box.innerHTML =
+    '<div class="loader">લોડ થઈ રહ્યું છે...</div>';
+
+
+    try{
+
+        const q =
+        query(
+            collection(db,"ads"),
+            where(
+                "userId",
+                "==",
+                currentUser.uid
+            ),
+            limit(50)
+        );
+
+
+        const snapshot =
+        await getDocs(q);
+
+
+        if(snapshot.empty){
+
+            box.innerHTML =
+            "<p>તમારી કોઈ જાહેરાત નથી.</p>";
+
+            return;
+
+        }
+
+
+        let html="";
+
+
+        snapshot.forEach(
+            docSnap => {
+
+                const ad =
+                docSnap.data();
+
+
+                html += `
+
+                <div class="user-box">
+
+                    <strong>
+                    ${escapeHTML(ad.title || "")}
+                    </strong>
+
+                    <br>
+
+                    ₹${escapeHTML(ad.price || "")}
+
+                    <div
+                    class="status ${
+                        ad.paymentStatus === "paid"
+                        ?
+                        "paid"
+                        :
+                        "pending"
+                    }"
+                    >
+
+                    ${
+                        ad.status === "published"
+                        ?
+                        "🟢 Published"
+                        :
+                        ad.paymentStatus === "paid"
+                        ?
+                        "🟡 Payment Verified"
+                        :
+                        "🟠 Payment Pending"
+                    }
+
+                    </div>
+
+                </div>
+
+                <br>
+
+                `;
+
+            }
+        );
+
+
+        box.innerHTML=html;
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        box.innerHTML =
+        "જાહેરાતો લોડ થઈ શકી નથી.";
+
+    }
+
+};
+
+
+/* =========================================
+   CLOSE MY ADS
+========================================= */
+
+window.closeMyAds =
+function(){
+
+    document
+    .getElementById("myAdsModal")
+    .classList
+    .remove("show");
+
+};
+
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
 
 function escapeHTML(value){
 
-return String(value || "")
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
+    return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 
 }
 
 
-/* ================= RENDER ================= */
-
-function renderAds(list){
-
-const featured =
-document.getElementById("featuredAds");
-
-const latest =
-document.getElementById("latestAds");
-
-
-if(!list.length){
-
-featured.innerHTML =
-`
-<div class="empty">
-હાલમાં કોઈ Published જાહેરાત નથી.
-</div>
-`;
-
-latest.innerHTML =
-`
-<div class="empty">
-હાલમાં કોઈ Published જાહેરાત નથી.
-</div>
-`;
-
-return;
-
-}
-
-
-featured.innerHTML =
-list
-.slice(0,5)
-.map(createCard)
-.join("");
-
-
-latest.innerHTML =
-list
-.slice(0,20)
-.map(createCard)
-.join("");
-
-}
-
-
-/* ================= FILTER ================= */
-
-window.filterAds = function(category,button){
-
-let result = allAds;
-
-
-if(category !== "all"){
-
-result =
-allAds.filter(
-ad=>ad.category===category
-);
-
-}
-
-
-renderAds(result);
-
-
-document
-.querySelectorAll(".filter")
-.forEach(btn=>{
-btn.classList.remove("active");
-});
-
-
-if(button){
-
-button.classList.add("active");
-
-}
-
-};
-
-
-/* ================= SEARCH ================= */
-
-window.searchAds = function(){
-
-const main =
-document
-.getElementById("mainSearch")
-.value
-.toLowerCase()
-.trim();
-
-
-const top =
-document
-.getElementById("topSearch")
-.value
-.toLowerCase()
-.trim();
-
-
-const queryText =
-main || top;
-
-
-const category =
-document
-.getElementById("mainCategory")
-.value;
-
-
-const result =
-allAds.filter(ad=>{
-
-const text =
-(
-ad.title+" "+
-ad.description+" "+
-ad.category+" "+
-ad.location
-)
-.toLowerCase();
-
-
-const matchSearch =
-!queryText ||
-text.includes(queryText);
-
-
-const matchCategory =
-category==="all" ||
-ad.category===category;
-
-
-return (
-matchSearch &&
-matchCategory
-);
-
-});
-
-
-renderAds(result);
-
-};
-
-
-/* ================= WHATSAPP ================= */
-
-window.contactSeller = function(phone){
-
-if(!phone){
-
-alert(
-"આ જાહેરાત માટે Contact Number ઉપલબ્ધ નથી."
-);
-
-return;
-
-}
-
-
-const url =
-"https://wa.me/91"+phone;
-
-
-window.open(
-url,
-"_blank"
-);
-
-};
-
-
-/* ================= MODAL OUTSIDE CLICK ================= */
+/* =========================================
+   MODAL OUTSIDE CLICK
+========================================= */
 
 window.addEventListener(
 "click",
-function(event){
+event => {
 
-const post =
-document.getElementById("postModal");
+    const post =
+    document.getElementById("postModal");
 
-const login =
-document.getElementById("loginModal");
+    const login =
+    document.getElementById("loginModal");
 
-
-if(event.target===post){
-
-closePostAd();
-
-}
+    const myAds =
+    document.getElementById("myAdsModal");
 
 
-if(event.target===login){
+    if(event.target === post)
+        closePostAd();
 
-closeLogin();
 
-}
+    if(event.target === login)
+        closeLogin();
+
+
+    if(event.target === myAds)
+        closeMyAds();
 
 });
 
 
-/* ================= START ================= */
+/* =========================================
+   INITIAL
+========================================= */
 
 loadAds();
 
