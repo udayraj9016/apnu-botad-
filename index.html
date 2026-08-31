@@ -9,6 +9,7 @@
 <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-storage-compat.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
@@ -121,6 +122,12 @@ border:1px solid #ddd!important;
 border-radius:8px;
 }
 
+.admin-button{
+background:#111827!important;
+color:#fff!important;
+border-radius:8px;
+}
+
 main{
 max-width:1500px;
 margin:15px auto;
@@ -179,7 +186,6 @@ margin-top:6px;
 min-height:245px;
 border-radius:17px;
 overflow:hidden;
-
 background:
 linear-gradient(
 90deg,
@@ -329,6 +335,7 @@ font-size:10px;
 font-weight:bold;
 padding:5px 7px;
 border-radius:5px;
+z-index:2;
 }
 
 .card-body{
@@ -371,24 +378,6 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-decoration:none;
-}
-
-.call-btn{
-width:30px;
-height:30px;
-border-radius:50%;
-background:#2563eb;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-text-decoration:none;
-margin-right:5px;
-}
-
-.contact-buttons{
-display:flex;
-align-items:center;
 }
 
 .empty{
@@ -543,6 +532,17 @@ border-radius:8px;
 font-weight:bold;
 }
 
+.secondary{
+width:100%;
+margin-top:10px;
+border:1px solid #ddd;
+background:#fff;
+color:#222;
+padding:13px;
+border-radius:8px;
+font-weight:bold;
+}
+
 .payment{
 text-align:center;
 }
@@ -632,23 +632,55 @@ border-radius:8px;
 margin-top:10px;
 }
 
-.admin-status{
-background:#ecfdf5;
-border:1px solid #bbf7d0;
-color:#166534;
-padding:10px;
-border-radius:8px;
-margin-bottom:12px;
-font-weight:bold;
+.upload-box{
+border:2px dashed #ccc;
+border-radius:10px;
+padding:18px;
+text-align:center;
+background:#fafafa;
+margin-top:6px;
 }
 
-.error-box{
-background:#fef2f2;
-border:1px solid #fecaca;
-color:#991b1b;
-padding:12px;
-border-radius:8px;
+.upload-box input{
+border:0;
+padding:5px;
+background:transparent;
+}
+
+.preview{
+width:100%;
+max-height:220px;
+object-fit:cover;
+border-radius:9px;
 margin-top:10px;
+display:none;
+}
+
+.progress{
+display:none;
+margin-top:10px;
+}
+
+.progress-bar{
+height:8px;
+background:#eee;
+border-radius:20px;
+overflow:hidden;
+}
+
+.progress-fill{
+height:100%;
+width:0%;
+background:#f15a24;
+}
+
+.admin-user{
+background:#f3f4f6;
+padding:12px;
+border-radius:10px;
+margin-bottom:12px;
+font-size:13px;
+line-height:1.7;
 }
 
 @media(max-width:1200px){
@@ -733,10 +765,6 @@ font-size:9px;
 font-size:11px!important;
 }
 
-.login-btn{
-font-size:11px!important;
-}
-
 .grid{
 grid-template-columns:1fr;
 }
@@ -810,7 +838,7 @@ onclick="openPost()">
 <button
 id="loginButton"
 class="login-btn"
-onclick="openUserLogin()">
+onclick="handleAccountButton()">
 
 👤 લોગિન / સાઇનઅપ
 
@@ -829,49 +857,18 @@ onclick="openUserLogin()">
 
 <aside class="sidebar">
 
-<h2>
-બધી કેટેગરી
-</h2>
+<h2>બધી કેટેગરી</h2>
 
-<button class="cat">
-🏪 બિઝનેસ <span>›</span>
-</button>
-
-<button class="cat">
-🔧 સેવાઓ <span>›</span>
-</button>
-
-<button class="cat">
-🚗 વાહન <span>›</span>
-</button>
-
-<button class="cat">
-🏠 પ્રોપર્ટી <span>›</span>
-</button>
-
-<button class="cat">
-💼 નોકરીઓ <span>›</span>
-</button>
-
-<button class="cat">
-🛒 બાય & સેલ <span>›</span>
-</button>
-
-<button class="cat">
-📱 મોબાઇલ & ગેજેટ્સ <span>›</span>
-</button>
-
-<button class="cat">
-🍴 રેસ્ટોરન્ટ <span>›</span>
-</button>
-
-<button class="cat">
-💍 વેડિંગ સર્વિસ <span>›</span>
-</button>
-
-<button class="cat">
-🎓 એજ્યુકેશન <span>›</span>
-</button>
+<button class="cat">🏪 બિઝનેસ <span>›</span></button>
+<button class="cat">🔧 સેવાઓ <span>›</span></button>
+<button class="cat">🚗 વાહન <span>›</span></button>
+<button class="cat">🏠 પ્રોપર્ટી <span>›</span></button>
+<button class="cat">💼 નોકરીઓ <span>›</span></button>
+<button class="cat">🛒 બાય & સેલ <span>›</span></button>
+<button class="cat">📱 મોબાઇલ & ગેજેટ્સ <span>›</span></button>
+<button class="cat">🍴 રેસ્ટોરન્ટ <span>›</span></button>
+<button class="cat">💍 વેડિંગ સર્વિસ <span>›</span></button>
+<button class="cat">🎓 એજ્યુકેશન <span>›</span></button>
 
 <button class="cat allcat">
 ••• બધી કેટેગરી જુઓ
@@ -903,50 +900,20 @@ placeholder="શું શોધી રહ્યા છો?">
 
 <select id="categoryFilter">
 
-<option value="">
-બધી કેટેગરી
-</option>
-
-<option>
-બિઝનેસ
-</option>
-
-<option>
-સેવાઓ
-</option>
-
-<option>
-વાહન
-</option>
-
-<option>
-પ્રોપર્ટી
-</option>
-
-<option>
-નોકરીઓ
-</option>
-
-<option>
-બાય & સેલ
-</option>
-
-<option>
-મોબાઇલ
-</option>
-
-<option>
-રેસ્ટોરન્ટ
-</option>
+<option value="">બધી કેટેગરી</option>
+<option>બિઝનેસ</option>
+<option>સેવાઓ</option>
+<option>વાહન</option>
+<option>પ્રોપર્ટી</option>
+<option>નોકરીઓ</option>
+<option>બાય & સેલ</option>
+<option>મોબાઇલ</option>
+<option>રેસ્ટોરન્ટ</option>
 
 </select>
 
 <select>
-
-<option>
-📍 Botad
-</option>
-
+<option>📍 Botad</option>
 </select>
 
 <button onclick="searchAds()">
@@ -1027,9 +994,8 @@ Approved
 
 </div>
 
-<div
-id="featuredAds"
-class="grid">
+
+<div id="featuredAds" class="grid">
 
 <div class="empty">
 જાહેરાતો લોડ થઈ રહી છે...
@@ -1050,9 +1016,8 @@ class="grid">
 
 </div>
 
-<div
-id="recentAds"
-class="grid">
+
+<div id="recentAds" class="grid">
 
 <div class="empty">
 જાહેરાતો લોડ થઈ રહી છે...
@@ -1069,17 +1034,9 @@ class="grid">
 તમારા બિઝનેસને નવા ગ્રાહકો સુધી પહોંચાડો!
 </h2>
 
-<p>
-✓ પ્રીમિયમ લિસ્ટિંગ
-</p>
-
-<p>
-✓ વધુ લોકો સુધી પહોંચ
-</p>
-
-<p>
-✓ બોટાદ માટે સ્થાનિક marketplace
-</p>
+<p>✓ પ્રીમિયમ લિસ્ટિંગ</p>
+<p>✓ વધુ લોકો સુધી પહોંચ</p>
+<p>✓ બોટાદ માટે સ્થાનિક marketplace</p>
 
 </div>
 
@@ -1093,67 +1050,27 @@ class="grid">
 <div class="trust">
 
 <div>
-
-<div class="trust-icon">
-🛡️
-</div>
-
-<b>
-ભરોસાપાત્ર
-</b>
-
-<small>
-ચકાસેલી જાહેરાતો
-</small>
-
+<div class="trust-icon">🛡️</div>
+<b>ભરોસાપાત્ર</b>
+<small>ચકાસેલી જાહેરાતો</small>
 </div>
 
 <div>
-
-<div class="trust-icon">
-🔒
-</div>
-
-<b>
-સુરક્ષિત
-</b>
-
-<small>
-તમારો ડેટા સુરક્ષિત
-</small>
-
+<div class="trust-icon">🔒</div>
+<b>સુરક્ષિત</b>
+<small>તમારો ડેટા સુરક્ષિત</small>
 </div>
 
 <div>
-
-<div class="trust-icon">
-🎧
-</div>
-
-<b>
-સપોર્ટ
-</b>
-
-<small>
-ઝડપી Help
-</small>
-
+<div class="trust-icon">🎧</div>
+<b>સપોર્ટ</b>
+<small>ઝડપી Help</small>
 </div>
 
 <div>
-
-<div class="trust-icon">
-♡
-</div>
-
-<b>
-આપણું બોટાદ
-</b>
-
-<small>
-સ્થાનિક marketplace
-</small>
-
+<div class="trust-icon">♡</div>
+<b>આપણું બોટાદ</b>
+<small>સ્થાનિક marketplace</small>
 </div>
 
 </div>
@@ -1213,10 +1130,12 @@ Local Marketplace
 <button
 class="close"
 onclick="closeModal('loginModal')">
+
 ×
 </button>
 
 </div>
+
 
 <div class="form">
 
@@ -1229,6 +1148,7 @@ id="loginEmail"
 type="email"
 placeholder="તમારો Email">
 
+
 <label>
 Password
 </label>
@@ -1238,6 +1158,7 @@ id="loginPassword"
 type="password"
 placeholder="Password">
 
+
 <button
 class="primary"
 onclick="loginUser()">
@@ -1246,11 +1167,21 @@ Login
 
 </button>
 
+
 <button
-class="primary"
+class="secondary"
 onclick="signupUser()">
 
 નવું Account બનાવો
+
+</button>
+
+
+<button
+class="secondary"
+onclick="resetPassword()">
+
+Password ભૂલી ગયા?
 
 </button>
 
@@ -1276,6 +1207,7 @@ onclick="signupUser()">
 <button
 class="close"
 onclick="closeModal('postModal')">
+
 ×
 </button>
 
@@ -1301,37 +1233,14 @@ placeholder="ઉદાહરણ: મારું બિઝનેસ">
 
 <select id="adCategory">
 
-<option>
-બિઝનેસ
-</option>
-
-<option>
-સેવાઓ
-</option>
-
-<option>
-વાહન
-</option>
-
-<option>
-પ્રોપર્ટી
-</option>
-
-<option>
-નોકરીઓ
-</option>
-
-<option>
-બાય & સેલ
-</option>
-
-<option>
-મોબાઇલ
-</option>
-
-<option>
-રેસ્ટોરન્ટ
-</option>
+<option>બિઝનેસ</option>
+<option>સેવાઓ</option>
+<option>વાહન</option>
+<option>પ્રોપર્ટી</option>
+<option>નોકરીઓ</option>
+<option>બાય & સેલ</option>
+<option>મોબાઇલ</option>
+<option>રેસ્ટોરન્ટ</option>
 
 </select>
 
@@ -1351,7 +1260,8 @@ placeholder="₹">
 
 <textarea
 id="adDescription"
-placeholder="તમારી જાહેરાત વિશે લખો"></textarea>
+placeholder="તમારી જાહેરાત વિશે લખો">
+</textarea>
 
 
 <label>
@@ -1361,23 +1271,50 @@ placeholder="તમારી જાહેરાત વિશે લખો"></tex
 <input
 id="adPhone"
 type="tel"
-maxlength="10"
 placeholder="મોબાઇલ નંબર">
 
 
 <label>
-ફોટોનો URL
+ફોટો Upload કરો
 </label>
 
+<div class="upload-box">
+
 <input
-id="adImageUrl"
-placeholder="https://example.com/photo.jpg">
+id="adImage"
+type="file"
+accept="image/*"
+onchange="previewImage(event)">
 
-<small style="color:#777">
+<p>
+📷 ફોટો પસંદ કરો
+</p>
 
-Firebase Storage વગર હાલ ફોટા માટે Image URL વાપરવામાં આવે છે.
+<img
+id="imagePreview"
+class="preview">
 
+</div>
+
+
+<div
+id="uploadProgress"
+class="progress">
+
+<div class="progress-bar">
+
+<div
+id="progressFill"
+class="progress-fill">
+</div>
+
+</div>
+
+<small>
+ફોટો upload થઈ રહ્યો છે...
 </small>
+
+</div>
 
 
 <button
@@ -1431,6 +1368,7 @@ onclick="openUPI()">
 
 </button>
 
+
 <button
 class="primary"
 onclick="submitAd()">
@@ -1463,22 +1401,39 @@ onclick="submitAd()">
 <button
 class="close"
 onclick="closeModal('adminModal')">
+
 ×
 </button>
 
 </div>
 
-<div class="admin-status">
 
-👑 Admin તરીકે Login થયેલ છે
+<div class="admin-user">
+
+<b>Admin Account</b>
+<br>
+
+Email:
+<span id="adminEmail">
+-
+</span>
+
+<br>
+
+UID:
+<span id="adminUid">
+-
+</span>
 
 </div>
+
 
 <div id="adminList">
 
 Pending જાહેરાતો લોડ થઈ રહી છે...
 
 </div>
+
 
 <button
 class="logout"
@@ -1495,9 +1450,9 @@ Logout
 
 <script>
 
-/* =====================================================
+/* =========================================
 FIREBASE CONFIG
-===================================================== */
+========================================= */
 
 const firebaseConfig = {
 
@@ -1525,9 +1480,9 @@ measurementId:
 };
 
 
-/* =====================================================
-FIREBASE INIT
-===================================================== */
+/* =========================================
+INITIALIZE FIREBASE
+========================================= */
 
 firebase.initializeApp(firebaseConfig);
 
@@ -1537,21 +1492,17 @@ firebase.auth();
 const db =
 firebase.firestore();
 
+const storage =
+firebase.storage();
 
-/* =====================================================
-ADMIN SETTINGS
-===================================================== */
+
+/* =========================================
+ADMIN
+========================================= */
 
 const ADMIN_UID =
 "OuqDvIyDBqhnKjOFyEBdGt5WmvI3";
 
-const ADMIN_EMAIL =
-"udayrajkhachar125@gmail.com";
-
-
-/* =====================================================
-UPI
-===================================================== */
 
 const UPI_ID =
 "khacharudayraj185-2@okicici";
@@ -1562,31 +1513,9 @@ let currentUser = null;
 let currentUPILink = "";
 
 
-/* =====================================================
-ADMIN CHECK
-===================================================== */
-
-function isAdmin(){
-
-if(!currentUser){
-return false;
-}
-
-const uidMatch =
-currentUser.uid === ADMIN_UID;
-
-const emailMatch =
-(currentUser.email || "").toLowerCase() ===
-ADMIN_EMAIL.toLowerCase();
-
-return uidMatch || emailMatch;
-
-}
-
-
-/* =====================================================
+/* =========================================
 AUTH STATE
-===================================================== */
+========================================= */
 
 auth.onAuthStateChanged(async function(user){
 
@@ -1596,59 +1525,97 @@ updateLoginButton();
 
 loadApprovedAds();
 
-if(user && isAdmin()){
+if(user && user.uid === ADMIN_UID){
 
-console.log("ADMIN LOGIN:",user.email);
-
-}else{
-
-console.log(
-"user login:",
-user ? user.email : "not logged in"
-);
+console.log("ADMIN LOGIN SUCCESS");
 
 }
 
 });
 
 
-/* =====================================================
-UPDATE LOGIN BUTTON
-===================================================== */
+/* =========================================
+UPDATE BUTTON
+========================================= */
 
 function updateLoginButton(){
 
 const btn =
 document.getElementById("loginButton");
 
+
 if(!currentUser){
 
 btn.innerHTML =
 "👤 લોગિન / સાઇનઅપ";
 
+btn.classList.remove("admin-button");
+
 return;
 
 }
 
-if(isAdmin()){
+
+if(currentUser.uid === ADMIN_UID){
 
 btn.innerHTML =
 "👑 Admin Panel";
 
+btn.classList.add("admin-button");
+
 return;
 
 }
 
+
 btn.innerHTML =
-"👤 "+
-(currentUser.email || "Account");
+"👤 "+(currentUser.email || "Account");
+
+btn.classList.remove("admin-button");
 
 }
 
 
-/* =====================================================
+/* =========================================
+ACCOUNT BUTTON
+========================================= */
+
+function handleAccountButton(){
+
+if(!currentUser){
+
+openModal("loginModal");
+
+return;
+
+}
+
+
+if(currentUser.uid === ADMIN_UID){
+
+openAdmin();
+
+return;
+
+}
+
+
+if(
+confirm(
+"શું તમે Logout કરવા માંગો છો?"
+)
+){
+
+logoutUser();
+
+}
+
+}
+
+
+/* =========================================
 MODAL
-===================================================== */
+========================================= */
 
 function openModal(id){
 
@@ -1668,50 +1635,9 @@ document
 }
 
 
-/* =====================================================
-USER LOGIN BUTTON
-===================================================== */
-
-function openUserLogin(){
-
-if(!currentUser){
-
-openModal("loginModal");
-
-return;
-
-}
-
-
-/* ADMIN */
-
-if(isAdmin()){
-
-openAdmin();
-
-return;
-
-}
-
-
-/* NORMAL USER */
-
-if(
-confirm(
-"તમે Logout કરવા માંગો છો?"
-)
-){
-
-logoutUser();
-
-}
-
-}
-
-
-/* =====================================================
+/* =========================================
 LOGIN
-===================================================== */
+========================================= */
 
 async function loginUser(){
 
@@ -1758,25 +1684,29 @@ email,
 password
 );
 
+
 currentUser =
 result.user;
 
-updateLoginButton();
+
+/* Force refresh */
+
+await result.user
+.getIdToken(true);
+
 
 closeModal("loginModal");
 
+updateLoginButton();
 
-if(isAdmin()){
+
+if(result.user.uid === ADMIN_UID){
 
 alert(
 "Admin Login સફળ થયું. 👑"
 );
 
-setTimeout(function(){
-
 openAdmin();
-
-},200);
 
 }else{
 
@@ -1791,9 +1721,64 @@ alert(
 
 console.error(error);
 
+let message =
+error.message;
+
+
+if(
+error.code ===
+"auth/invalid-credential"
+){
+
+message =
+"Email અથવા Password ખોટો છે.";
+
+}
+
+else if(
+error.code ===
+"auth/user-not-found"
+){
+
+message =
+"આ Emailનું Account મળ્યું નથી.";
+
+}
+
+else if(
+error.code ===
+"auth/wrong-password"
+){
+
+message =
+"Password ખોટો છે.";
+
+}
+
+else if(
+error.code ===
+"auth/too-many-requests"
+){
+
+message =
+"ઘણા Login પ્રયાસ થયા છે. થોડા સમય પછી ફરી પ્રયાસ કરો.";
+
+}
+
+else if(
+error.code ===
+"auth/operation-not-allowed"
+){
+
+message =
+"Firebaseમાં Email/Password Login ચાલુ નથી.";
+
+}
+
+
 alert(
-"Login Error:\n"+
-friendlyAuthError(error)
+"Login Error:\n\n"+
+message
 );
 
 }
@@ -1801,40 +1786,9 @@ friendlyAuthError(error)
 }
 
 
-/* =====================================================
-AUTH ERROR
-===================================================== */
-
-function friendlyAuthError(error){
-
-switch(error.code){
-
-case "auth/invalid-credential":
-return "Email અથવા Password ખોટો છે.";
-
-case "auth/user-not-found":
-return "આ Emailથી Account મળ્યું નથી.";
-
-case "auth/wrong-password":
-return "Password ખોટો છે.";
-
-case "auth/invalid-email":
-return "Email format ખોટું છે.";
-
-case "auth/too-many-requests":
-return "ઘણા Login પ્રયાસ થયા છે. થોડા સમય પછી ફરી પ્રયાસ કરો.";
-
-default:
-return error.message || "Unknown error";
-
-}
-
-}
-
-
-/* =====================================================
+/* =========================================
 SIGN UP
-===================================================== */
+========================================= */
 
 async function signupUser(){
 
@@ -1874,17 +1828,21 @@ return;
 
 try{
 
+const result =
 await auth
 .createUserWithEmailAndPassword(
 email,
 password
 );
 
+
 closeModal("loginModal");
+
 
 alert(
 "Account સફળતાપૂર્વક બની ગયું. ✅"
 );
+
 
 }catch(error){
 
@@ -1892,7 +1850,7 @@ console.error(error);
 
 alert(
 "Signup Error:\n"+
-friendlyAuthError(error)
+error.message
 );
 
 }
@@ -1900,9 +1858,54 @@ friendlyAuthError(error)
 }
 
 
-/* =====================================================
+/* =========================================
+PASSWORD RESET
+========================================= */
+
+async function resetPassword(){
+
+const email =
+document
+.getElementById("loginEmail")
+.value
+.trim();
+
+
+if(!email){
+
+alert(
+"પહેલા Email નાખો."
+);
+
+return;
+
+}
+
+
+try{
+
+await auth
+.sendPasswordResetEmail(email);
+
+alert(
+"Password reset email મોકલવામાં આવ્યો છે. 📧"
+);
+
+}catch(error){
+
+alert(
+"Reset Error:\n"+
+error.message
+);
+
+}
+
+}
+
+
+/* =========================================
 LOGOUT
-===================================================== */
+========================================= */
 
 async function logoutUser(){
 
@@ -1916,8 +1919,6 @@ updateLoginButton();
 
 }catch(error){
 
-console.error(error);
-
 alert(
 "Logout Error:\n"+
 error.message
@@ -1928,9 +1929,9 @@ error.message
 }
 
 
-/* =====================================================
-POST
-===================================================== */
+/* =========================================
+OPEN POST
+========================================= */
 
 function openPost(){
 
@@ -1951,18 +1952,76 @@ document
 .getElementById("postStep")
 .style.display="block";
 
+
 document
 .getElementById("paymentStep")
 .style.display="none";
+
 
 openModal("postModal");
 
 }
 
 
-/* =====================================================
+/* =========================================
+IMAGE PREVIEW
+========================================= */
+
+function previewImage(event){
+
+const file =
+event.target.files[0];
+
+const preview =
+document.getElementById("imagePreview");
+
+
+if(!file){
+
+preview.style.display="none";
+
+return;
+
+}
+
+
+if(!file.type.startsWith("image/")){
+
+alert(
+"ફક્ત Image file પસંદ કરો."
+);
+
+event.target.value="";
+
+return;
+
+}
+
+
+if(file.size > 5 * 1024 * 1024){
+
+alert(
+"ફોટો 5 MB કરતાં નાનો હોવો જોઈએ."
+);
+
+event.target.value="";
+
+return;
+
+}
+
+
+preview.src =
+URL.createObjectURL(file);
+
+preview.style.display="block";
+
+}
+
+
+/* =========================================
 PAYMENT
-===================================================== */
+========================================= */
 
 function openPayment(){
 
@@ -2002,11 +2061,11 @@ return;
 
 
 if(
-phone.replace(/\D/g,"").length !== 10
+phone.replace(/\D/g,"").length < 10
 ){
 
 alert(
-"10 અંકનો મોબાઇલ નંબર નાખો."
+"સાચો મોબાઇલ નંબર નાખો."
 );
 
 return;
@@ -2018,23 +2077,26 @@ document
 .getElementById("postStep")
 .style.display="none";
 
+
 document
 .getElementById("paymentStep")
 .style.display="block";
+
 
 createQR();
 
 }
 
 
-/* =====================================================
+/* =========================================
 QR
-===================================================== */
+========================================= */
 
 function createQR(){
 
 const qr =
 document.getElementById("qrcode");
+
 
 qr.innerHTML="";
 
@@ -2065,27 +2127,25 @@ height:220
 }
 
 
-/* =====================================================
-OPEN UPI
-===================================================== */
+/* =========================================
+UPI
+========================================= */
 
 function openUPI(){
 
-if(!currentUPILink){
-
-createQR();
-
-}
+if(currentUPILink){
 
 window.location.href =
 currentUPILink;
 
 }
 
+}
 
-/* =====================================================
+
+/* =========================================
 SUBMIT AD
-===================================================== */
+========================================= */
 
 async function submitAd(){
 
@@ -2129,11 +2189,10 @@ document
 .value
 .trim();
 
-const imageUrl =
+const file =
 document
-.getElementById("adImageUrl")
-.value
-.trim();
+.getElementById("adImage")
+.files[0];
 
 
 if(!title || !phone){
@@ -2149,7 +2208,93 @@ return;
 
 try{
 
-const adData = {
+let imageUrl = "";
+
+
+/* =====================================
+IMAGE UPLOAD
+===================================== */
+
+if(file){
+
+const progress =
+document
+.getElementById("uploadProgress");
+
+const fill =
+document
+.getElementById("progressFill");
+
+
+progress.style.display="block";
+
+
+const fileName =
+Date.now()+"_"+file.name
+.replace(/[^a-zA-Z0-9._-]/g,"_");
+
+
+const storageRef =
+storage
+.ref()
+.child(
+"ads/"+currentUser.uid+"/"+fileName
+);
+
+
+const uploadTask =
+storageRef.put(file);
+
+
+await new Promise(
+function(resolve,reject){
+
+uploadTask.on(
+
+"state_changed",
+
+function(snapshot){
+
+const percent =
+(
+snapshot.bytesTransferred /
+snapshot.totalBytes
+)*100;
+
+fill.style.width =
+percent+"%";
+
+},
+
+function(error){
+
+reject(error);
+
+},
+
+async function(){
+
+imageUrl =
+await uploadTask
+.snapshot.ref
+.getDownloadURL();
+
+resolve();
+
+}
+
+);
+
+}
+
+);
+
+}
+
+
+await db
+.collection("ads")
+.add({
 
 title:title,
 
@@ -2175,17 +2320,12 @@ paymentStatus:"pending",
 createdAt:
 firebase.firestore.FieldValue.serverTimestamp()
 
-};
-
-
-await db
-.collection("ads")
-.add(adData);
+});
 
 
 alert(
 "જાહેરાત સફળતાપૂર્વક મોકલાઈ ગઈ છે. ✅\n\n"+
-"હવે તે Pending છે.\n"+
+"હવે જાહેરાત Pending છે.\n"+
 "Payment ચેક કર્યા પછી Admin Approve કરશે."
 );
 
@@ -2200,7 +2340,7 @@ resetForm();
 console.error(error);
 
 alert(
-"જાહેરાત મોકલવામાં Error:\n"+
+"જાહેરાત મોકલવામાં Error:\n\n"+
 error.message
 );
 
@@ -2209,9 +2349,9 @@ error.message
 }
 
 
-/* =====================================================
-RESET FORM
-===================================================== */
+/* =========================================
+RESET
+========================================= */
 
 function resetForm(){
 
@@ -2219,36 +2359,47 @@ document
 .getElementById("adTitle")
 .value="";
 
+
 document
 .getElementById("adPrice")
 .value="";
+
 
 document
 .getElementById("adDescription")
 .value="";
 
+
 document
 .getElementById("adPhone")
 .value="";
 
+
 document
-.getElementById("adImageUrl")
+.getElementById("adImage")
 .value="";
 
-document
-.getElementById("postStep")
-.style.display="block";
 
 document
-.getElementById("paymentStep")
+.getElementById("imagePreview")
 .style.display="none";
+
+
+document
+.getElementById("uploadProgress")
+.style.display="none";
+
+
+document
+.getElementById("progressFill")
+.style.width="0%";
 
 }
 
 
-/* =====================================================
+/* =========================================
 LOAD APPROVED ADS
-===================================================== */
+========================================= */
 
 async function loadApprovedAds(){
 
@@ -2259,11 +2410,6 @@ document
 const recent =
 document
 .getElementById("recentAds");
-
-
-if(!featured || !recent){
-return;
-}
 
 
 try{
@@ -2304,6 +2450,7 @@ createCard(ad);
 recent.innerHTML +=
 createCard(ad);
 
+
 count++;
 
 });
@@ -2315,6 +2462,7 @@ const empty =
 '<div class="empty">'+
 '📢 હાલમાં કોઈ Approved જાહેરાત નથી.'+
 '</div>';
+
 
 featured.innerHTML=empty;
 
@@ -2329,8 +2477,7 @@ console.error(error);
 
 featured.innerHTML =
 '<div class="empty">'+
-'જાહેરાતો લોડ થઈ શકી નથી.<br><br>'+
-escapeHtml(error.message)+
+'જાહેરાતો લોડ થઈ શકી નથી.'+
 '</div>';
 
 recent.innerHTML =
@@ -2343,9 +2490,9 @@ recent.innerHTML =
 }
 
 
-/* =====================================================
+/* =========================================
 CREATE CARD
-===================================================== */
+========================================= */
 
 function createCard(ad){
 
@@ -2356,7 +2503,9 @@ if(ad.imageUrl){
 
 image =
 '<img class="card-img" '+
-'src="'+escapeHtml(ad.imageUrl)+'" '+
+'src="'+
+escapeHtml(ad.imageUrl)+
+'" '+
 'alt="Advertisement" '+
 'onerror="this.style.display=\'none\'">';
 
@@ -2368,33 +2517,27 @@ image =
 }
 
 
-let contactButtons="";
+let whatsapp="";
 
+
+if(ad.phone){
 
 const phone =
-String(ad.phone || "")
+String(ad.phone)
 .replace(/\D/g,"");
 
 
 if(phone.length >= 10){
 
-contactButtons =
-
-'<div class="contact-buttons">'+
-
-'<a class="call-btn" '+
-'href="tel:+91'+
-phone+
-'">☎</a>'+
-
+whatsapp =
 '<a class="whatsapp" '+
 'target="_blank" '+
 'rel="noopener" '+
 'href="https://wa.me/91'+
 phone+
-'">✆</a>'+
+'">☎</a>';
 
-'</div>';
+}
 
 }
 
@@ -2443,7 +2586,7 @@ Botad
 📍 Botad
 </span>
 
-${contactButtons}
+${whatsapp}
 
 </div>
 
@@ -2456,13 +2599,24 @@ ${contactButtons}
 }
 
 
-/* =====================================================
-ADMIN PANEL
-===================================================== */
+/* =========================================
+OPEN ADMIN
+========================================= */
 
 function openAdmin(){
 
-if(!isAdmin()){
+if(!currentUser){
+
+alert(
+"પહેલા Admin accountથી Login કરો."
+);
+
+return;
+
+}
+
+
+if(currentUser.uid !== ADMIN_UID){
 
 alert(
 "તમને Admin permission નથી."
@@ -2473,25 +2627,31 @@ return;
 }
 
 
+document
+.getElementById("adminEmail")
+.textContent =
+currentUser.email || "-";
+
+
+document
+.getElementById("adminUid")
+.textContent =
+currentUser.uid;
+
+
 openModal("adminModal");
+
 
 loadPendingAds();
 
 }
 
 
-/* =====================================================
+/* =========================================
 LOAD PENDING
-===================================================== */
+========================================= */
 
 async function loadPendingAds(){
-
-if(!isAdmin()){
-
-return;
-
-}
-
 
 const list =
 document
@@ -2539,6 +2699,7 @@ doc.data();
 const div =
 document.createElement("div");
 
+
 div.className =
 "admin-item";
 
@@ -2553,7 +2714,7 @@ image =
 'src="'+
 escapeHtml(ad.imageUrl)+
 '" '+
-'onerror="this.style.display=\'none\'">';
+'alt="Advertisement">';
 
 }
 
@@ -2622,6 +2783,7 @@ onclick="rejectAd('${doc.id}')">
 
 `;
 
+
 list.appendChild(div);
 
 });
@@ -2632,8 +2794,8 @@ list.appendChild(div);
 console.error(error);
 
 list.innerHTML =
-'<div class="error-box">'+
-'Admin data load error:<br>'+
+'<div class="empty">'+
+'Error: '+
 escapeHtml(error.message)+
 '</div>';
 
@@ -2642,13 +2804,16 @@ escapeHtml(error.message)+
 }
 
 
-/* =====================================================
+/* =========================================
 APPROVE
-===================================================== */
+========================================= */
 
 async function approveAd(id){
 
-if(!isAdmin()){
+if(
+!currentUser ||
+currentUser.uid !== ADMIN_UID
+){
 
 alert(
 "ફક્ત Admin જ Approve કરી શકે છે."
@@ -2681,10 +2846,7 @@ status:"approved",
 
 paymentStatus:"paid",
 
-approvedBy:currentUser.uid,
-
-approvedByEmail:
-currentUser.email || "",
+approvedBy:ADMIN_UID,
 
 approvedAt:
 firebase.firestore.FieldValue.serverTimestamp()
@@ -2716,13 +2878,16 @@ error.message
 }
 
 
-/* =====================================================
+/* =========================================
 REJECT
-===================================================== */
+========================================= */
 
 async function rejectAd(id){
 
-if(!isAdmin()){
+if(
+!currentUser ||
+currentUser.uid !== ADMIN_UID
+){
 
 alert(
 "ફક્ત Admin જ Reject કરી શકે છે."
@@ -2753,10 +2918,7 @@ await db
 
 status:"rejected",
 
-rejectedBy:currentUser.uid,
-
-rejectedByEmail:
-currentUser.email || "",
+rejectedBy:ADMIN_UID,
 
 rejectedAt:
 firebase.firestore.FieldValue.serverTimestamp()
@@ -2786,9 +2948,9 @@ error.message
 }
 
 
-/* =====================================================
+/* =========================================
 SEARCH
-===================================================== */
+========================================= */
 
 async function searchAds(){
 
@@ -2799,12 +2961,14 @@ document
 .trim()
 .toLowerCase();
 
+
 const hero =
 document
 .getElementById("heroSearch")
 .value
 .trim()
 .toLowerCase();
+
 
 const text =
 top || hero;
@@ -2904,9 +3068,9 @@ error.message
 }
 
 
-/* =====================================================
+/* =========================================
 ESCAPE HTML
-===================================================== */
+========================================= */
 
 function escapeHtml(value){
 
@@ -2918,30 +3082,6 @@ return String(value || "")
 .replace(/'/g,"&#039;");
 
 }
-
-
-/* =====================================================
-CLOSE MODAL ON BACKDROP
-===================================================== */
-
-document
-.querySelectorAll(".modal")
-.forEach(function(modal){
-
-modal.addEventListener(
-"click",
-function(event){
-
-if(event.target === modal){
-
-modal.classList.remove("show");
-
-}
-
-});
-
-});
-
 
 </script>
 
