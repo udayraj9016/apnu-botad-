@@ -2,33 +2,51 @@
 <html lang="gu">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>આપણું બોટાદ</title>
 
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-storage-compat.js"></script>
 
+<!-- QR Code -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+box-sizing:border-box;
+}
+
 body{
 margin:0;
 font-family:Arial,"Noto Sans Gujarati",sans-serif;
 background:#f7f7f8;
-color:#20242b
+color:#20242b;
 }
-button,input,select,textarea{font-family:inherit}
-button{cursor:pointer}
+
+button,
+input,
+select,
+textarea{
+font-family:inherit;
+}
+
+button{
+cursor:pointer;
+}
+
+/* ================= HEADER ================= */
 
 header{
 background:#fff;
 border-bottom:1px solid #eee;
 position:sticky;
 top:0;
-z-index:100
+z-index:100;
 }
 
 .nav{
@@ -37,113 +55,114 @@ margin:auto;
 min-height:82px;
 display:flex;
 align-items:center;
-gap:16px;
-padding:10px 18px
+gap:15px;
+padding:10px 18px;
 }
 
 .logo{
 display:flex;
 align-items:center;
 gap:10px;
-min-width:330px
+min-width:300px;
 }
 
 .logo-icon{
-font-size:55px;
-line-height:1
+font-size:50px;
 }
 
 .logo h1{
 margin:0;
-font-size:30px;
+font-size:29px;
 font-weight:900;
-color:#16233d
+color:#16233d;
 }
 
 .logo h1 span{
-color:#f15a24
+color:#f15a24;
 }
 
 .logo small{
 font-size:13px;
 font-weight:bold;
-color:#343b4a
 }
 
 .location{
 background:#fff;
 border:1px solid #ddd;
-border-radius:12px;
-padding:13px 16px;
-font-size:15px
+border-radius:10px;
+padding:13px;
+font-size:15px;
 }
 
 .top-search{
-height:48px;
-display:flex;
 flex:1;
-max-width:450px
+max-width:430px;
 }
 
 .top-search input{
 width:100%;
+height:48px;
 border:1px solid #ddd;
 border-radius:12px;
-padding:0 16px;
+padding:0 15px;
 font-size:15px;
-outline:none
+outline:none;
 }
 
 .navlinks{
 display:flex;
 align-items:center;
-gap:8px;
-margin-left:auto
+gap:5px;
+margin-left:auto;
 }
 
 .navlinks button{
 border:0;
 background:#fff;
-padding:12px 10px;
-font-weight:bold
+padding:12px 9px;
+font-weight:bold;
 }
 
 .post-btn{
-background:#f15a24!important;
-color:#fff;
+background:#f15a24 !important;
+color:#fff !important;
 border-radius:10px;
-font-size:15px
+font-size:15px;
 }
 
 .login-btn{
-border:1px solid #ddd!important;
-border-radius:10px
+border:1px solid #ddd !important;
+border-radius:10px;
 }
+
+/* ================= MAIN ================= */
 
 main{
 max-width:1500px;
-margin:10px auto;
-padding:0 18px
+margin:12px auto;
+padding:0 18px;
 }
 
 .layout{
 display:grid;
 grid-template-columns:235px 1fr;
-gap:20px
+gap:20px;
 }
+
+/* ================= SIDEBAR ================= */
 
 .sidebar{
 background:#fff;
 border:1px solid #e7e7e7;
 border-radius:14px;
 padding:12px;
-height:max-content
+height:max-content;
 }
 
 .sidebar h2{
 color:#f15a24;
 font-size:20px;
-margin:5px 8px 12px
+margin:5px 8px 12px;
 }
 
 .cat{
@@ -153,79 +172,80 @@ background:#fff;
 padding:11px 8px;
 display:flex;
 align-items:center;
-gap:12px;
+gap:11px;
 font-size:15px;
 text-align:left;
-border-radius:8px
+border-radius:8px;
 }
 
 .cat:hover{
 background:#fff2eb;
-color:#f15a24
+color:#f15a24;
 }
 
-.cat span:last-child{
-margin-left:auto
+.cat span{
+margin-left:auto;
 }
 
 .allcat{
 background:#fff0cf;
-margin-top:8px;
 justify-content:center;
-font-weight:bold
+font-weight:bold;
+margin-top:8px;
 }
 
+/* ================= HERO ================= */
+
 .hero{
-height:235px;
+height:240px;
 border-radius:18px;
 overflow:hidden;
 position:relative;
+
 background:
 linear-gradient(
 90deg,
-rgba(255,255,255,.97) 0%,
-rgba(255,255,255,.75) 38%,
-rgba(255,255,255,.10) 100%
+rgba(255,255,255,.96),
+rgba(255,255,255,.65),
+rgba(255,255,255,.08)
 ),
 url("https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=1800&q=85");
+
 background-size:cover;
-background-position:center
+background-position:center;
 }
 
 .hero-content{
-position:relative;
-z-index:2;
 text-align:center;
-padding-top:20px
+padding-top:25px;
 }
 
 .hero h2{
 font-size:39px;
 line-height:1.15;
 margin:0;
-color:#16233f
+color:#16233f;
 }
 
 .hero h2 span{
-color:#f15a24
+color:#f15a24;
 }
 
 .hero p{
-margin:8px 0;
 font-size:17px;
 font-weight:bold;
-color:#333
+margin:8px 0;
 }
 
 .hero-search{
 background:#fff;
-border-radius:12px;
-padding:7px;
 max-width:1000px;
 margin:15px auto;
+padding:7px;
+border-radius:12px;
 display:flex;
 gap:7px;
-box-shadow:0 3px 15px #0002
+box-shadow:0 3px 15px #0002;
 }
 
 .hero-search input,
@@ -233,16 +253,16 @@ box-shadow:0 3px 15px #0002
 height:46px;
 border:1px solid #ddd;
 border-radius:8px;
-padding:0 13px;
-font-size:14px
+padding:0 12px;
+font-size:14px;
 }
 
 .hero-search input{
-flex:1
+flex:1;
 }
 
 .hero-search select{
-width:190px
+width:190px;
 }
 
 .hero-search button{
@@ -251,53 +271,60 @@ border:0;
 border-radius:8px;
 background:#f15a24;
 color:#fff;
+font-size:16px;
 font-weight:bold;
-font-size:16px
 }
+
+/* ================= QUICK CATEGORIES ================= */
 
 .quick{
 display:grid;
 grid-template-columns:repeat(10,1fr);
 gap:10px;
-margin:14px 0 18px
+margin:15px 0 18px;
 }
 
 .quick-card{
 background:#fff;
 border:1px solid #eee;
 border-radius:12px;
-padding:8px 4px;
+padding:9px 3px;
 text-align:center;
 font-weight:bold;
-font-size:13px
+font-size:13px;
+cursor:pointer;
 }
 
 .quick-icon{
 font-size:27px;
-margin-bottom:4px
+margin-bottom:4px;
 }
+
+/* ================= SECTIONS ================= */
 
 .section-head{
 display:flex;
 align-items:center;
 justify-content:space-between;
-margin:13px 0 10px
+margin:14px 0 10px;
 }
 
 .section-head h2{
 font-size:21px;
-margin:0
+margin:0;
 }
 
 .section-head span{
 color:#673ab7;
-font-weight:bold
+font-weight:bold;
 }
+
+/* ================= ADS ================= */
 
 .grid{
 display:grid;
 grid-template-columns:repeat(5,1fr);
-gap:12px
+gap:12px;
 }
 
 .card{
@@ -306,19 +333,19 @@ border:1px solid #e7e7e7;
 border-radius:13px;
 overflow:hidden;
 position:relative;
-transition:.2s
+transition:.2s;
 }
 
 .card:hover{
 transform:translateY(-3px);
-box-shadow:0 7px 20px #0001
+box-shadow:0 7px 20px #0001;
 }
 
 .card-img{
-height:145px;
 width:100%;
+height:145px;
 object-fit:cover;
-background:#eee
+background:#eee;
 }
 
 .no-photo{
@@ -327,7 +354,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 font-size:60px;
-background:#fff2eb
+background:#fff2eb;
 }
 
 .badge{
@@ -335,20 +362,20 @@ position:absolute;
 top:8px;
 left:8px;
 background:#12a150;
-color:#fff;
+color:white;
 font-size:10px;
 font-weight:bold;
 padding:5px 8px;
-border-radius:6px
+border-radius:6px;
 }
 
 .card-body{
-padding:10px
+padding:10px;
 }
 
 .card-price{
+font-size:17px;
 font-weight:900;
-font-size:17px
 }
 
 .card-title{
@@ -356,20 +383,20 @@ font-weight:bold;
 margin-top:4px;
 white-space:nowrap;
 overflow:hidden;
-text-overflow:ellipsis
+text-overflow:ellipsis;
 }
 
 .card-meta{
 font-size:11px;
 color:#70757d;
-margin-top:5px
+margin-top:5px;
 }
 
 .card-bottom{
 display:flex;
 align-items:center;
 justify-content:space-between;
-margin-top:8px
+margin-top:8px;
 }
 
 .whatsapp{
@@ -381,8 +408,10 @@ color:#fff;
 display:flex;
 align-items:center;
 justify-content:center;
-text-decoration:none
+text-decoration:none;
 }
+
+/* ================= EMPTY ================= */
 
 .empty{
 background:#fff;
@@ -391,27 +420,29 @@ border-radius:13px;
 padding:45px 20px;
 text-align:center;
 color:#777;
-grid-column:1/-1
+grid-column:1/-1;
 }
 
+/* ================= BANNER ================= */
+
 .ad-banner{
-margin-top:14px;
+margin-top:16px;
 border-radius:14px;
 padding:22px;
 background:linear-gradient(110deg,#57209a,#8520c2);
 color:#fff;
 display:flex;
 align-items:center;
-justify-content:space-between
+justify-content:space-between;
 }
 
 .ad-banner h2{
 margin:0 0 8px;
-font-size:25px
+font-size:25px;
 }
 
 .ad-banner p{
-margin:4px 0
+margin:4px 0;
 }
 
 .ad-banner button{
@@ -420,8 +451,10 @@ color:#fff;
 border:0;
 border-radius:8px;
 padding:11px 16px;
-font-weight:bold
+font-weight:bold;
 }
+
+/* ================= TRUST ================= */
 
 .trust{
 margin-top:15px;
@@ -430,32 +463,34 @@ border-radius:13px;
 padding:15px;
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:10px
+gap:10px;
 }
 
 .trust div{
 text-align:center;
-padding:8px
+padding:8px;
 }
 
 .trust-icon{
-font-size:26px
+font-size:26px;
 }
 
 .trust b{
 display:block;
-margin-top:5px
+margin-top:5px;
 }
 
 .trust small{
-color:#777
+color:#777;
 }
+
+/* ================= FOOTER ================= */
 
 footer{
 background:#181818;
 color:#fff;
 margin-top:30px;
-padding:30px 18px
+padding:30px 18px;
 }
 
 .footer-inner{
@@ -463,14 +498,14 @@ max-width:1500px;
 margin:auto;
 display:flex;
 justify-content:space-between;
-gap:20px
+gap:20px;
 }
 
 footer p{
-color:#aaa
+color:#aaa;
 }
 
-/* MODAL */
+/* ================= MODAL ================= */
 
 .modal{
 display:none;
@@ -479,13 +514,13 @@ inset:0;
 background:#0009;
 z-index:1000;
 padding:15px;
-overflow:auto
+overflow:auto;
 }
 
 .modal.show{
 display:flex;
 align-items:center;
-justify-content:center
+justify-content:center;
 }
 
 .modal-box{
@@ -495,18 +530,18 @@ max-width:570px;
 border-radius:16px;
 padding:20px;
 max-height:94vh;
-overflow:auto
+overflow:auto;
 }
 
 .modal-head{
 display:flex;
 align-items:center;
 justify-content:space-between;
-margin-bottom:15px
+margin-bottom:15px;
 }
 
 .modal-head h2{
-margin:0
+margin:0;
 }
 
 .close{
@@ -515,13 +550,13 @@ background:#eee;
 width:35px;
 height:35px;
 border-radius:50%;
-font-size:22px
+font-size:22px;
 }
 
 .form label{
 display:block;
 font-weight:bold;
-margin:9px 0 5px
+margin:9px 0 5px;
 }
 
 .form input,
@@ -531,12 +566,12 @@ width:100%;
 border:1px solid #ddd;
 border-radius:9px;
 padding:12px;
-outline:none
+outline:none;
 }
 
 .form textarea{
-min-height:90px;
-resize:vertical
+min-height:100px;
+resize:vertical;
 }
 
 .primary{
@@ -548,12 +583,12 @@ color:#fff;
 padding:14px;
 border-radius:9px;
 font-weight:bold;
-font-size:16px
+font-size:16px;
 }
 
 .preview{
 display:none;
-margin-top:8px
+margin-top:8px;
 }
 
 .preview img{
@@ -561,24 +596,41 @@ width:100%;
 max-height:250px;
 object-fit:contain;
 border-radius:9px;
-background:#eee
+background:#eee;
 }
 
+.progress{
+display:none;
+margin-top:8px;
+height:7px;
+background:#eee;
+border-radius:20px;
+overflow:hidden;
+}
+
+.progress-bar{
+height:100%;
+width:0%;
+background:#f15a24;
+}
+
+/* ================= PAYMENT ================= */
+
 .payment{
-text-align:center
+text-align:center;
 }
 
 .amount{
 font-size:38px;
 font-weight:900;
 color:#f15a24;
-margin:10px
+margin:10px;
 }
 
 #qrcode{
 display:flex;
 justify-content:center;
-margin:15px
+margin:15px;
 }
 
 .upi{
@@ -586,7 +638,7 @@ background:#f3f3f3;
 padding:12px;
 border-radius:8px;
 font-weight:bold;
-word-break:break-all
+word-break:break-all;
 }
 
 .pay-btn{
@@ -599,7 +651,7 @@ border:0;
 border-radius:9px;
 padding:13px;
 font-weight:bold;
-text-decoration:none
+text-decoration:none;
 }
 
 .dark-btn{
@@ -609,16 +661,16 @@ background:#333;
 color:#fff;
 border:0;
 padding:12px;
-border-radius:9px
+border-radius:9px;
 }
 
-/* ADMIN */
+/* ================= ADMIN ================= */
 
 .admin-item{
 border:1px solid #ddd;
 border-radius:12px;
 padding:12px;
-margin-bottom:12px
+margin-bottom:12px;
 }
 
 .admin-img{
@@ -626,18 +678,18 @@ width:100%;
 max-height:230px;
 object-fit:cover;
 border-radius:9px;
-margin-bottom:10px
+margin-bottom:10px;
 }
 
 .admin-info{
 font-size:13px;
-line-height:1.7
+line-height:1.7;
 }
 
 .admin-actions{
 display:flex;
 gap:8px;
-margin-top:10px
+margin-top:10px;
 }
 
 .approve{
@@ -647,7 +699,7 @@ color:#fff;
 border:0;
 border-radius:8px;
 padding:12px;
-font-weight:bold
+font-weight:bold;
 }
 
 .reject{
@@ -657,126 +709,123 @@ color:#fff;
 border:0;
 border-radius:8px;
 padding:12px;
-font-weight:bold
+font-weight:bold;
 }
 
 .tabs{
 display:flex;
 gap:7px;
-margin-bottom:15px
+margin-bottom:15px;
 }
 
 .tabs button{
 border:1px solid #ddd;
 background:#fff;
 padding:9px 12px;
-border-radius:8px
+border-radius:8px;
 }
 
 .tabs button.active{
 background:#222;
-color:#fff
+color:#fff;
 }
 
-.progress{
-display:none;
-margin-top:8px;
-height:7px;
-background:#eee;
-border-radius:20px;
-overflow:hidden
-}
-
-.progress-bar{
-height:100%;
-width:0%;
-background:#f15a24
-}
+/* ================= MOBILE ================= */
 
 @media(max-width:1200px){
-.logo{min-width:270px}
-.grid{grid-template-columns:repeat(3,1fr)}
-.quick{grid-template-columns:repeat(5,1fr)}
+
+.logo{
+min-width:260px;
+}
+
+.grid{
+grid-template-columns:repeat(3,1fr);
+}
+
+.quick{
+grid-template-columns:repeat(5,1fr);
+}
+
 }
 
 @media(max-width:850px){
 
 .nav{
-flex-wrap:wrap
+flex-wrap:wrap;
 }
 
 .logo{
-min-width:auto
+min-width:auto;
 }
 
 .logo-icon{
-font-size:42px
+font-size:42px;
 }
 
 .logo h1{
-font-size:24px
+font-size:24px;
 }
 
 .location{
-display:none
+display:none;
 }
 
 .top-search{
 order:5;
 max-width:none;
-flex-basis:100%
+flex-basis:100%;
 }
 
 .navlinks{
-margin-left:auto
+margin-left:auto;
 }
 
 .navlinks button:not(.post-btn){
-display:none
+display:none;
 }
 
 .layout{
-grid-template-columns:1fr
+grid-template-columns:1fr;
 }
 
 .sidebar{
-display:none
+display:none;
 }
 
 .hero{
 height:auto;
-min-height:280px
+min-height:285px;
 }
 
 .hero h2{
-font-size:30px
+font-size:30px;
 }
 
 .hero-search{
 margin:12px;
-flex-direction:column
+flex-direction:column;
 }
 
 .hero-search input,
 .hero-search select,
 .hero-search button{
-width:100%
+width:100%;
 }
 
 .grid{
-grid-template-columns:repeat(2,1fr)
+grid-template-columns:repeat(2,1fr);
 }
 
 .quick{
-grid-template-columns:repeat(5,1fr)
+grid-template-columns:repeat(5,1fr);
 }
 
 .trust{
-grid-template-columns:repeat(2,1fr)
+grid-template-columns:repeat(2,1fr);
 }
 
 .footer-inner{
-flex-direction:column
+flex-direction:column;
 }
 
 }
@@ -784,53 +833,57 @@ flex-direction:column
 @media(max-width:500px){
 
 main{
-padding:0 9px
+padding:0 9px;
 }
 
 .nav{
-padding:8px 10px
+padding:8px 10px;
+}
+
+.logo h1{
+font-size:21px;
 }
 
 .logo small{
-font-size:10px
+font-size:10px;
 }
 
 .post-btn{
-font-size:11px!important;
-padding:9px!important
+font-size:11px !important;
+padding:9px !important;
 }
 
 .quick-card{
-font-size:10px
+font-size:10px;
 }
 
 .quick-icon{
-font-size:21px
+font-size:21px;
 }
 
 .grid{
-grid-template-columns:1fr
+grid-template-columns:1fr;
 }
 
 .hero{
-border-radius:12px
+border-radius:12px;
 }
 
 .hero-content{
-padding:18px 8px
+padding:18px 8px;
 }
 
 .hero h2{
-font-size:27px
+font-size:27px;
 }
 
 .trust{
-grid-template-columns:1fr 1fr
+grid-template-columns:1fr 1fr;
 }
 
 }
 
-/* hidden admin trigger */
+/* ================= HIDDEN ADMIN BUTTON ================= */
 
 .admin-trigger{
 position:fixed;
@@ -841,79 +894,199 @@ height:25px;
 opacity:.02;
 border:0;
 background:transparent;
-z-index:500
 }
+
 </style>
 </head>
 
 <body>
 
+
+<!-- ================= HEADER ================= -->
+
 <header>
+
 <div class="nav">
 
 <div class="logo">
-<div class="logo-icon">🏛️</div>
-<div>
-<h1>આપણું <span>બોટાદ</span></h1>
-<small>બોટાદમાં જે જોઈએ, અહીં શોધો!</small>
-</div>
+
+<div class="logo-icon">
+🏛️
 </div>
 
-<button class="location">📍 Botad ▾</button>
+<div>
+
+<h1>
+આપણું <span>બોટાદ</span>
+</h1>
+
+<small>
+બોટાદમાં જે જોઈએ, અહીં શોધો!
+</small>
+
+</div>
+
+</div>
+
+
+<button class="location">
+📍 Botad ▾
+</button>
+
 
 <div class="top-search">
-<input id="topSearch" placeholder="શું શોધી રહ્યા છો?" onkeydown="if(event.key==='Enter')searchAds()">
+
+<input
+id="topSearch"
+placeholder="શું શોધી રહ્યા છો?"
+onkeydown="if(event.key==='Enter') searchAds()"
+>
+
 </div>
+
 
 <div class="navlinks">
-<button>♡ ફેવરિટ</button>
-<button>💬 ચેટ</button>
-<button>🔔 નોટિફિકેશન</button>
 
-<button class="post-btn" onclick="openPost()">
-મફત જાહેરાત મૂકો
+<button>
+♡ ફેવરિટ
 </button>
 
-<button class="login-btn" onclick="openUserLogin()">
+<button>
+💬 ચેટ
+</button>
+
+<button>
+🔔 નોટિફિકેશન
+</button>
+
+
+<!-- અહીં FREE કાઢીને ₹99 કર્યું છે -->
+
+<button
+class="post-btn"
+onclick="openPost()"
+>
+જાહેરાત મૂકો માત્ર ₹99
+</button>
+
+
+<button
+class="login-btn"
+onclick="openUserLogin()"
+>
 👤 લોગિન / સાઇનઅપ
 </button>
+
 </div>
 
 </div>
+
 </header>
 
+
+<!-- ================= MAIN ================= -->
 
 <main>
 
 <div class="layout">
 
+
+<!-- ================= SIDEBAR ================= -->
+
 <aside class="sidebar">
 
-<h2>બધી કેટેગરી</h2>
+<h2>
+બધી કેટેગરી
+</h2>
 
-<button class="cat" onclick="filterAds('Business')">🏪 બિઝનેસ <span>›</span></button>
-<button class="cat" onclick="filterAds('Services')">🔧 સેવાઓ <span>›</span></button>
-<button class="cat" onclick="filterAds('Vehicles')">🚗 વાહન <span>›</span></button>
-<button class="cat" onclick="filterAds('Property')">🏠 પ્રોપર્ટી <span>›</span></button>
-<button class="cat" onclick="filterAds('Jobs')">💼 નોકરીઓ <span>›</span></button>
-<button class="cat" onclick="filterAds('Mobile')">📱 મોબાઇલ & ગેજેટ્સ <span>›</span></button>
-<button class="cat" onclick="filterAds('Buy & Sell')">🛒 બાય & સેલ <span>›</span></button>
-<button class="cat" onclick="filterAds('Home')">🛋️ હોમ & લિવિંગ <span>›</span></button>
-<button class="cat" onclick="filterAds('Restaurant')">🍴 રેસ્ટોરન્ટ <span>›</span></button>
-<button class="cat" onclick="filterAds('Wedding')">💍 વેડિંગ સર્વિસ <span>›</span></button>
-<button class="cat" onclick="filterAds('Education')">🎓 એજ્યુકેશન <span>›</span></button>
-<button class="cat" onclick="filterAds('Pets')">🐾 પેટ્સ <span>›</span></button>
-<button class="cat" onclick="filterAds('Agriculture')">🚜 એગ્રીકલ્ચર <span>›</span></button>
-<button class="cat" onclick="filterAds('Offers')">🏷️ ઓફર્સ <span>›</span></button>
 
-<button class="cat allcat" onclick="filterAds('all')">
+<button class="cat" onclick="filterAds('Business')">
+🏪 બિઝનેસ
+<span>›</span>
+</button>
+
+<button class="cat" onclick="filterAds('Services')">
+🔧 સેવાઓ
+<span>›</span>
+</button>
+
+<button class="cat" onclick="filterAds('Vehicles')">
+🚗 વાહન
+<span>›</span>
+</button>
+
+<button class="cat" onclick="filterAds('Property')">
+🏠 પ્રોપર્ટી
+<span>›</span>
+</button>
+
+<button class="cat" onclick="filterAds('Jobs')">
+💼 નોકરીઓ
+<span>›</span>
+</button>
+
+<button class="cat" onclick="filterAds('Mobile')">
+📱 મોબાઇલ & ગેજેટ્સ
+<span>›</span>
+</button>
+
+<button class="cat" onclick="filterAds('Buy & Sell')">
+🛒 બાય & સેલ
+<span>›</span>
+</button>
+
+<button class="cat" onclick="filterAds('Home')">
+🛋️ હોમ & લિવિંગ
+<span>›</span>
+</button>
+
+<button class="cat" onclick="filterAds('Restaurant')">
+🍴 રેસ્ટોરન્ટ
+<span>›</span>
+</button>
+
+<button class="cat" onclick="filterAds('Wedding')">
+💍 વેડિંગ સર્વિસ
+<span>›</span>
+</button>
+
+<button class="cat" onclick="filterAds('Education')">
+🎓 એજ્યુકેશન
+<span>›</span>
+</button>
+
+<button class="cat" onclick="filterAds('Pets')">
+🐾 પેટ્સ
+<span>›</span>
+</button>
+
+<button class="cat" onclick="filterAds('Agriculture')">
+🚜 એગ્રીકલ્ચર
+<span>›</span>
+</button>
+
+<button class="cat" onclick="filterAds('Offers')">
+🏷️ ઓફર્સ
+<span>›</span>
+</button>
+
+
+<button
+class="cat allcat"
+onclick="filterAds('all')"
+>
 ⠿ બધી કેટેગરી જુઓ
 </button>
 
 </aside>
 
 
+<!-- ================= CONTENT ================= -->
+
 <section>
+
+
+<!-- HERO -->
 
 <div class="hero">
 
@@ -924,137 +1097,366 @@ z-index:500
 <span>અહીં શોધો!</span>
 </h2>
 
-<p>વ્યવસાય, નોકરી, પ્રોપર્ટી, વાહન, સેવા અને ઘણું બધું...</p>
+<p>
+વ્યવસાય, નોકરી, પ્રોપર્ટી, વાહન, સેવા અને ઘણું બધું...
+</p>
+
 
 <div class="hero-search">
 
-<input id="mainSearch" placeholder="શું શોધી રહ્યા છો?">
+<input
+id="mainSearch"
+placeholder="શું શોધી રહ્યા છો?"
+>
+
 
 <select id="searchCategory">
-<option value="all">બધી કેટેગરી</option>
-<option>Business</option>
-<option>Services</option>
-<option>Vehicles</option>
-<option>Property</option>
-<option>Jobs</option>
-<option>Mobile</option>
-<option>Buy & Sell</option>
-<option>Home</option>
-<option>Restaurant</option>
-<option>Wedding</option>
-<option>Education</option>
-<option>Pets</option>
-<option>Agriculture</option>
+
+<option value="all">
+બધી કેટેગરી
+</option>
+
+<option value="Business">
+Business
+</option>
+
+<option value="Services">
+Services
+</option>
+
+<option value="Vehicles">
+Vehicles
+</option>
+
+<option value="Property">
+Property
+</option>
+
+<option value="Jobs">
+Jobs
+</option>
+
+<option value="Mobile">
+Mobile
+</option>
+
+<option value="Buy & Sell">
+Buy & Sell
+</option>
+
+<option value="Home">
+Home
+</option>
+
+<option value="Restaurant">
+Restaurant
+</option>
+
+<option value="Wedding">
+Wedding
+</option>
+
+<option value="Education">
+Education
+</option>
+
+<option value="Pets">
+Pets
+</option>
+
+<option value="Agriculture">
+Agriculture
+</option>
+
 </select>
+
 
 <select>
-<option>📍 Botad</option>
+
+<option>
+📍 Botad
+</option>
+
 </select>
 
-<button onclick="searchAds()">શોધો</button>
+
+<button onclick="searchAds()">
+શોધો
+</button>
 
 </div>
 
 </div>
+
 </div>
 
+
+<!-- QUICK CATEGORY -->
 
 <div class="quick">
 
-<div class="quick-card" onclick="filterAds('Business')"><div class="quick-icon">🏪</div>બિઝનેસ</div>
-<div class="quick-card" onclick="filterAds('Services')"><div class="quick-icon">🔧</div>સેવાઓ</div>
-<div class="quick-card" onclick="filterAds('Vehicles')"><div class="quick-icon">🚗</div>વાહન</div>
-<div class="quick-card" onclick="filterAds('Property')"><div class="quick-icon">🏠</div>પ્રોપર્ટી</div>
-<div class="quick-card" onclick="filterAds('Jobs')"><div class="quick-icon">💼</div>નોકરીઓ</div>
-<div class="quick-card" onclick="filterAds('Buy & Sell')"><div class="quick-icon">🛒</div>બાય & સેલ</div>
-<div class="quick-card" onclick="filterAds('Mobile')"><div class="quick-icon">📱</div>મોબાઇલ</div>
-<div class="quick-card" onclick="filterAds('Restaurant')"><div class="quick-icon">🍴</div>રેસ્ટોરન્ટ</div>
-<div class="quick-card" onclick="filterAds('Wedding')"><div class="quick-icon">💍</div>વેડિંગ સર્વિસ</div>
-<div class="quick-card" onclick="filterAds('all')"><div class="quick-icon">•••</div>વધારે જુઓ</div>
+<div class="quick-card"
+onclick="filterAds('Business')">
+<div class="quick-icon">🏪</div>
+બિઝનેસ
+</div>
+
+<div class="quick-card"
+onclick="filterAds('Services')">
+<div class="quick-icon">🔧</div>
+સેવાઓ
+</div>
+
+<div class="quick-card"
+onclick="filterAds('Vehicles')">
+<div class="quick-icon">🚗</div>
+વાહન
+</div>
+
+<div class="quick-card"
+onclick="filterAds('Property')">
+<div class="quick-icon">🏠</div>
+પ્રોપર્ટી
+</div>
+
+<div class="quick-card"
+onclick="filterAds('Jobs')">
+<div class="quick-icon">💼</div>
+નોકરીઓ
+</div>
+
+<div class="quick-card"
+onclick="filterAds('Buy & Sell')">
+<div class="quick-icon">🛒</div>
+બાય & સેલ
+</div>
+
+<div class="quick-card"
+onclick="filterAds('Mobile')">
+<div class="quick-icon">📱</div>
+મોબાઇલ
+</div>
+
+<div class="quick-card"
+onclick="filterAds('Restaurant')">
+<div class="quick-icon">🍴</div>
+રેસ્ટોરન્ટ
+</div>
+
+<div class="quick-card"
+onclick="filterAds('Wedding')">
+<div class="quick-icon">💍</div>
+વેડિંગ સર્વિસ
+</div>
+
+<div class="quick-card"
+onclick="filterAds('all')">
+<div class="quick-icon">•••</div>
+વધારે જુઓ
+</div>
 
 </div>
 
+
+<!-- FEATURED -->
 
 <div class="section-head">
-<h2>🔥 ફીચર્ડ જાહેરાતો</h2>
-<span>બધી જુઓ →</span>
+
+<h2>
+🔥 ફીચર્ડ જાહેરાતો
+</h2>
+
+<span>
+બધી જુઓ →
+</span>
+
 </div>
 
-<div id="featured" class="grid"></div>
 
+<div
+id="featured"
+class="grid"
+>
+</div>
+
+
+<!-- LATEST -->
 
 <div class="section-head">
-<h2>તાજી જાહેરાતો</h2>
-<span>બધી જુઓ →</span>
+
+<h2>
+તાજી જાહેરાતો
+</h2>
+
+<span>
+બધી જુઓ →
+</span>
+
 </div>
 
-<div id="latest" class="grid"></div>
 
+<div
+id="latest"
+class="grid"
+>
+</div>
+
+
+<!-- BANNER -->
 
 <div class="ad-banner">
 
 <div>
-<h2>તમારા બિઝનેસને લો નવા ગ્રાહકો સુધી!</h2>
-<p>✓ પ્રીમિયમ લિસ્ટિંગ</p>
-<p>✓ ટોપ પર ડિસ્પ્લે</p>
-<p>✓ વધુ વિશ્વાસ, વધુ ગ્રાહકો</p>
+
+<h2>
+તમારા બિઝનેસને લો નવા ગ્રાહકો સુધી!
+</h2>
+
+<p>
+✓ ₹99 માં જાહેરાત
+</p>
+
+<p>
+✓ ફોટા સાથે જાહેરાત
+</p>
+
+<p>
+✓ Admin Approval પછી Public
+</p>
+
 </div>
 
-<button onclick="openPost()">જાહેરાત મૂકો</button>
+
+<button onclick="openPost()">
+જાહેરાત મૂકો ₹99
+</button>
 
 </div>
 
+
+<!-- TRUST -->
 
 <div class="trust">
 
 <div>
-<div class="trust-icon">🛡️</div>
-<b>100% ભરોસાપાત્ર</b>
-<small>સાચી અને ચકાસેલી જાહેરાતો</small>
+
+<div class="trust-icon">
+🛡️
 </div>
+
+<b>
+100% ભરોસાપાત્ર
+</b>
+
+<small>
+સાચી અને ચકાસેલી જાહેરાતો
+</small>
+
+</div>
+
 
 <div>
-<div class="trust-icon">🔐</div>
-<b>સુરક્ષિત વ્યવહાર</b>
-<small>તમારો ડેટા સુરક્ષિત</small>
+
+<div class="trust-icon">
+🔐
 </div>
+
+<b>
+સુરક્ષિત વ્યવહાર
+</b>
+
+<small>
+તમારો ડેટા સુરક્ષિત
+</small>
+
+</div>
+
 
 <div>
-<div class="trust-icon">🛎️</div>
-<b>ઝડપી સપોર્ટ</b>
-<small>24×7 હેલ્પ & સપોર્ટ</small>
+
+<div class="trust-icon">
+🛎️
 </div>
+
+<b>
+ઝડપી સપોર્ટ
+</b>
+
+<small>
+હેલ્પ & સપોર્ટ
+</small>
+
+</div>
+
 
 <div>
-<div class="trust-icon">♡</div>
-<b>સ્થાનિક માટે, સ્થાનિક દ્વારા</b>
-<small>આપણું બોટાદ, આપણું ગર્વ</small>
+
+<div class="trust-icon">
+♡
+</div>
+
+<b>
+સ્થાનિક માટે, સ્થાનિક દ્વારા
+</b>
+
+<small>
+આપણું બોટાદ, આપણું ગર્વ
+</small>
+
 </div>
 
 </div>
+
 
 </section>
+
 </div>
+
 </main>
 
+
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
 <div class="footer-inner">
 
 <div>
-<h2>આપણું બોટાદ</h2>
-<p>બોટાદનું પોતાનું Digital Marketplace.</p>
+
+<h2>
+આપણું બોટાદ
+</h2>
+
+<p>
+બોટાદનું પોતાનું Digital Marketplace.
+</p>
+
 </div>
 
-<div>
-<h3>જાહેરાત</h3>
-<p>તમારો Business અહીં મૂકો.</p>
-</div>
 
 <div>
-<h3>સંપર્ક</h3>
-<p>📞 9016942705</p>
+
+<h3>
+જાહેરાત
+</h3>
+
+<p>
+₹99 માં તમારી જાહેરાત મૂકો.
+</p>
+
+</div>
+
+
+<div>
+
+<h3>
+સંપર્ક
+</h3>
+
+<p>
+📞 9016942705
+</p>
+
 </div>
 
 </div>
@@ -1062,257 +1464,544 @@ z-index:500
 </footer>
 
 
-<!-- POST MODAL -->
+<!-- =====================================================
+     POST AD MODAL
+===================================================== -->
 
-<div id="postModal" class="modal">
-
-<div class="modal-box">
-
-<div class="modal-head">
-<h2>₹99 માં જાહેરાત મૂકો</h2>
-<button class="close" onclick="closeModal('postModal')">×</button>
-</div>
-
-<div class="form">
-
-<label>જાહેરાતનું નામ *</label>
-<input id="adTitle" placeholder="જેમ કે Maruti Swift વેચવાની છે">
-
-<label>કેટેગરી *</label>
-
-<select id="adCategory">
-<option>Business</option>
-<option>Services</option>
-<option>Vehicles</option>
-<option>Property</option>
-<option>Jobs</option>
-<option>Mobile</option>
-<option>Buy & Sell</option>
-<option>Home</option>
-<option>Restaurant</option>
-<option>Wedding</option>
-<option>Education</option>
-<option>Pets</option>
-<option>Agriculture</option>
-<option>Offers</option>
-<option>Other</option>
-</select>
-
-<label>ભાવ</label>
-<input id="adPrice" placeholder="₹ 25,000">
-
-<label>નામ / Business નામ *</label>
-<input id="adSeller" placeholder="તમારું નામ">
-
-<label>મોબાઇલ નંબર *</label>
-<input id="adPhone" maxlength="10" type="tel" placeholder="10 અંકનો નંબર">
-
-<label>જાહેરાતની માહિતી *</label>
-<textarea id="adDescription" placeholder="તમારી જાહેરાત વિશે માહિતી..."></textarea>
-
-<label>📸 ફોટો Upload કરો</label>
-<input id="adImage" type="file" accept="image/*" onchange="previewImage()">
-
-<div id="previewBox" class="preview">
-<img id="previewImage">
-</div>
-
-<div id="uploadProgress" class="progress">
-<div id="progressBar" class="progress-bar"></div>
-</div>
-
-<button class="primary" onclick="goToPayment()">
-આગળ વધો → ₹99 Payment
-</button>
-
-</div>
-</div>
-</div>
-
-
-<!-- PAYMENT MODAL -->
-
-<div id="paymentModal" class="modal">
+<div
+id="postModal"
+class="modal"
+>
 
 <div class="modal-box">
 
 <div class="modal-head">
-<h2>₹99 Payment</h2>
-<button class="close" onclick="closeModal('paymentModal')">×</button>
-</div>
 
-<div class="payment">
-
-<p>QR Code scan કરીને ₹99 payment કરો.</p>
-
-<div class="amount">₹99</div>
-
-<div id="qrcode"></div>
-
-<p><b>UPI ID</b></p>
-
-<div class="upi">
-khacharudayraj185-2@okicici
-</div>
-
-<a id="upiButton" class="pay-btn">
-📱 Google Pay / PhonePe / UPI થી Pay કરો
-</a>
-
-<button class="dark-btn" onclick="copyUPI()">
-📋 UPI ID Copy કરો
-</button>
-
-<p style="font-size:12px;color:#777;line-height:1.6">
-Payment કર્યા પછી નીચેનું button દબાવો.<br>
-જાહેરાત Admin Approval માટે જશે.
-</p>
-
-<button class="primary" onclick="submitAd()">
-✅ મેં ₹99 Payment કરી દીધું
-</button>
-
-</div>
-</div>
-</div>
-
-
-<!-- USER LOGIN -->
-
-<div id="userLoginModal" class="modal">
-
-<div class="modal-box">
-
-<div class="modal-head">
-<h2>👤 Login / Signup</h2>
-<button class="close" onclick="closeModal('userLoginModal')">×</button>
-</div>
-
-<p style="color:#777">
-જાહેરાત મૂકવા માટે login જરૂરી નથી.
-તમે સીધું ₹99 payment કરીને જાહેરાત મૂકી શકો છો.
-</p>
-
-<button class="primary" onclick="closeModal('userLoginModal');openPost()">
+<h2>
 ₹99 માં જાહેરાત મૂકો
-</button>
+</h2>
 
-</div>
-</div>
-
-
-<!-- ADMIN LOGIN -->
-
-<div id="adminLoginModal" class="modal">
-
-<div class="modal-box">
-
-<div class="modal-head">
-<h2>🔐 Admin Login</h2>
-<button class="close" onclick="closeModal('adminLoginModal')">×</button>
-</div>
-
-<p>માત્ર Admin માટે.</p>
-
-<div class="form">
-
-<label>Admin Email</label>
-<input id="adminEmail" type="email" placeholder="Admin Email">
-
-<label>Password</label>
-<input id="adminPassword" type="password" placeholder="Password">
-
-<button class="primary" onclick="adminLogin()">
-Login
-</button>
-
-<p id="adminError" style="color:red;text-align:center"></p>
-
-</div>
-</div>
-</div>
-
-
-<!-- ADMIN PANEL -->
-
-<div id="adminModal" class="modal">
-
-<div class="modal-box" style="max-width:760px">
-
-<div class="modal-head">
-
-<h2>👑 Admin Panel</h2>
-
-<button class="close" onclick="closeModal('adminModal')">
+<button
+class="close"
+onclick="closeModal('postModal')"
+>
 ×
 </button>
 
 </div>
 
+
+<div class="form">
+
+
+<label>
+જાહેરાતનું નામ *
+</label>
+
+<input
+id="adTitle"
+placeholder="જેમ કે Maruti Swift વેચવાની છે"
+>
+
+
+<label>
+કેટેગરી *
+</label>
+
+<select id="adCategory">
+
+<option value="Business">
+Business
+</option>
+
+<option value="Services">
+Services
+</option>
+
+<option value="Vehicles">
+Vehicles
+</option>
+
+<option value="Property">
+Property
+</option>
+
+<option value="Jobs">
+Jobs
+</option>
+
+<option value="Mobile">
+Mobile
+</option>
+
+<option value="Buy & Sell">
+Buy & Sell
+</option>
+
+<option value="Home">
+Home
+</option>
+
+<option value="Restaurant">
+Restaurant
+</option>
+
+<option value="Wedding">
+Wedding
+</option>
+
+<option value="Education">
+Education
+</option>
+
+<option value="Pets">
+Pets
+</option>
+
+<option value="Agriculture">
+Agriculture
+</option>
+
+<option value="Offers">
+Offers
+</option>
+
+<option value="Other">
+Other
+</option>
+
+</select>
+
+
+<label>
+ભાવ
+</label>
+
+<input
+id="adPrice"
+placeholder="₹ 25,000"
+>
+
+
+<label>
+નામ / Business નામ *
+</label>
+
+<input
+id="adSeller"
+placeholder="તમારું નામ"
+>
+
+
+<label>
+મોબાઇલ નંબર *
+</label>
+
+<input
+id="adPhone"
+type="tel"
+maxlength="10"
+placeholder="10 અંકનો નંબર"
+>
+
+
+<label>
+જાહેરાતની માહિતી *
+</label>
+
+<textarea
+id="adDescription"
+placeholder="તમારી જાહેરાત વિશે માહિતી..."
+></textarea>
+
+
+<label>
+📸 ફોટો Upload કરો
+</label>
+
+<input
+id="adImage"
+type="file"
+accept="image/*"
+onchange="previewImage()"
+>
+
+
+<div
+id="previewBox"
+class="preview"
+>
+
+<img id="previewImage">
+
+</div>
+
+
+<div
+id="uploadProgress"
+class="progress"
+>
+
+<div
+id="progressBar"
+class="progress-bar"
+>
+</div>
+
+</div>
+
+
+<button
+class="primary"
+onclick="goToPayment()"
+>
+આગળ વધો → ₹99 Payment
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     PAYMENT MODAL
+===================================================== -->
+
+<div
+id="paymentModal"
+class="modal"
+>
+
+<div class="modal-box">
+
+<div class="modal-head">
+
+<h2>
+₹99 Payment
+</h2>
+
+<button
+class="close"
+onclick="closeModal('paymentModal')"
+>
+×
+</button>
+
+</div>
+
+
+<div class="payment">
+
+<p>
+QR Code scan કરીને ₹99 payment કરો.
+</p>
+
+
+<div class="amount">
+₹99
+</div>
+
+
+<div id="qrcode">
+</div>
+
+
+<p>
+<b>
+UPI ID
+</b>
+</p>
+
+
+<div class="upi">
+khacharudayraj185-2@okicici
+</div>
+
+
+<a
+id="upiButton"
+class="pay-btn"
+>
+📱 Google Pay / PhonePe / UPI થી Pay કરો
+</a>
+
+
+<button
+class="dark-btn"
+onclick="copyUPI()"
+>
+📋 UPI ID Copy કરો
+</button>
+
+
+<p
+style="font-size:12px;color:#777;line-height:1.6"
+>
+
+Payment કર્યા પછી નીચેનું button દબાવો.<br>
+
+જાહેરાત Admin Approval માટે જશે.
+
+</p>
+
+
+<button
+class="primary"
+onclick="submitAd()"
+>
+✅ મેં ₹99 Payment કરી દીધું
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     USER LOGIN MODAL
+===================================================== -->
+
+<div
+id="userLoginModal"
+class="modal"
+>
+
+<div class="modal-box">
+
+<div class="modal-head">
+
+<h2>
+👤 Login / Signup
+</h2>
+
+<button
+class="close"
+onclick="closeModal('userLoginModal')"
+>
+×
+</button>
+
+</div>
+
+
+<p style="color:#777">
+
+જાહેરાત મૂકવા માટે હાલમાં Login જરૂરી નથી.
+
+</p>
+
+
+<button
+class="primary"
+onclick="closeModal('userLoginModal');openPost()"
+>
+₹99 માં જાહેરાત મૂકો
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     ADMIN LOGIN
+===================================================== -->
+
+<div
+id="adminLoginModal"
+class="modal"
+>
+
+<div class="modal-box">
+
+<div class="modal-head">
+
+<h2>
+🔐 Admin Login
+</h2>
+
+<button
+class="close"
+onclick="closeModal('adminLoginModal')"
+>
+×
+</button>
+
+</div>
+
+
+<div class="form">
+
+<label>
+Admin Email
+</label>
+
+<input
+id="adminEmail"
+type="email"
+placeholder="Admin Email"
+>
+
+
+<label>
+Password
+</label>
+
+<input
+id="adminPassword"
+type="password"
+placeholder="Password"
+>
+
+
+<button
+class="primary"
+onclick="adminLogin()"
+>
+Login
+</button>
+
+
+<p
+id="adminError"
+style="color:red;text-align:center"
+>
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     ADMIN PANEL
+===================================================== -->
+
+<div
+id="adminModal"
+class="modal"
+>
+
+<div
+class="modal-box"
+style="max-width:760px"
+>
+
+<div class="modal-head">
+
+<h2>
+👑 Admin Panel
+</h2>
+
+<button
+class="close"
+onclick="closeModal('adminModal')"
+>
+×
+</button>
+
+</div>
+
+
 <div class="tabs">
 
-<button id="pendingTab" class="active" onclick="loadAdminAds('pending')">
+<button
+class="active"
+onclick="loadAdminAds('pending')"
+>
 ⏳ Pending
 </button>
 
-<button onclick="loadAdminAds('approved')">
+
+<button
+onclick="loadAdminAds('approved')"
+>
 ✅ Approved
 </button>
 
-<button onclick="loadAdminAds('rejected')">
+
+<button
+onclick="loadAdminAds('rejected')"
+>
 ❌ Rejected
 </button>
 
 </div>
 
-<div id="adminList"></div>
 
-<button class="dark-btn" onclick="adminLogout()">
+<div id="adminList">
+</div>
+
+
+<button
+class="dark-btn"
+onclick="adminLogout()"
+>
 Logout
 </button>
 
 </div>
+
 </div>
 
 
-<!-- hidden admin trigger -->
+<!-- Hidden Admin Button -->
 
 <button
 class="admin-trigger"
-title="Admin"
-onclick="openAdminLogin()">
+onclick="openAdminLogin()"
+>
 </button>
 
 
 <script>
 
-/* =====================================================
+/* =========================================================
    FIREBASE CONFIG
-   =====================================================
+=========================================================
 
-   ↓↓↓ અહીં તમારું Firebase Web App config નાખો ↓↓↓
-*/
+   Firebase Console:
+   Project Settings
+   → Your Apps
+   → Web App
+   → SDK setup and configuration
+
+   ત્યાંથી નીચેની details copy કરો.
+========================================================= */
+
 
 const firebaseConfig = {
 
-apiKey:"YOUR_API_KEY",
+apiKey:
+"YOUR_API_KEY",
 
-authDomain:"YOUR_PROJECT.firebaseapp.com",
+authDomain:
+"YOUR_PROJECT.firebaseapp.com",
 
-projectId:"YOUR_PROJECT_ID",
+projectId:
+"YOUR_PROJECT_ID",
 
-storageBucket:"YOUR_PROJECT.firebasestorage.app",
+storageBucket:
+"YOUR_PROJECT.firebasestorage.app",
 
-messagingSenderId:"YOUR_MESSAGING_SENDER_ID",
+messagingSenderId:
+"YOUR_MESSAGING_SENDER_ID",
 
-appId:"YOUR_APP_ID"
+appId:
+"YOUR_APP_ID"
 
 };
 
 
-/* =====================================================
-   FIREBASE START
-===================================================== */
+/* =========================================================
+   FIREBASE INITIALIZE
+========================================================= */
 
 firebase.initializeApp(firebaseConfig);
 
@@ -1326,9 +2015,9 @@ const storage =
 firebase.storage();
 
 
-/* =====================================================
-   SETTINGS
-===================================================== */
+/* =========================================================
+   UPI
+========================================================= */
 
 const UPI_ID =
 "khacharudayraj185-2@okicici";
@@ -1337,57 +2026,64 @@ const PAYMENT_AMOUNT =
 "99";
 
 
-/*
-  IMPORTANT:
+/* =========================================================
+   ADMIN UID
+=========================================================
 
-  અહીં તમારો Firebase Admin UID નાખશો.
+   અહીં માત્ર તમારો Firebase Authentication UID નાખવો.
 
-  Firebase Authentication માં
-  તમારો Admin user બનાવ્યા પછી
-  તેનો UID અહીં નાખવો.
-*/
+   Example:
+
+   const ADMIN_UID =
+   "abc123....";
+
+========================================================= */
 
 const ADMIN_UID =
 "PUT_YOUR_ADMIN_UID_HERE";
 
 
-let currentUser = null;
+let currentUser =
+null;
 
-let newAd = null;
+let newAd =
+null;
 
 
-/* =====================================================
-   AUTH
-
-   Anonymous login થી સામાન્ય visitor
-   website use કરી શકે છે.
-===================================================== */
+/* =========================================================
+   AUTH STATE
+========================================================= */
 
 auth.onAuthStateChanged(
 function(user){
 
-currentUser = user;
+currentUser =
+user;
 
 }
 );
 
+
+/* =========================================================
+   ANONYMOUS LOGIN
+========================================================= */
 
 auth.signInAnonymously()
 .catch(
 function(error){
 
-console.error(
-"Anonymous login error:",
-error
+console.log(
+"Anonymous login:",
+error.message
 );
 
 }
 );
 
 
-/* =====================================================
+/* =========================================================
    OPEN POST
-===================================================== */
+========================================================= */
 
 function openPost(){
 
@@ -1398,9 +2094,22 @@ document
 }
 
 
-/* =====================================================
-   MODAL CLOSE
-===================================================== */
+/* =========================================================
+   USER LOGIN
+========================================================= */
+
+function openUserLogin(){
+
+document
+.getElementById("userLoginModal")
+.classList.add("show");
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
 
 function closeModal(id){
 
@@ -1411,9 +2120,9 @@ document
 }
 
 
-/* =====================================================
+/* =========================================================
    IMAGE PREVIEW
-===================================================== */
+========================================================= */
 
 function previewImage(){
 
@@ -1426,9 +2135,10 @@ const box =
 document
 .getElementById("previewBox");
 
-const img =
+const image =
 document
 .getElementById("previewImage");
+
 
 if(!file){
 
@@ -1439,7 +2149,8 @@ return;
 
 }
 
-img.src =
+
+image.src =
 URL.createObjectURL(file);
 
 box.style.display =
@@ -1448,9 +2159,9 @@ box.style.display =
 }
 
 
-/* =====================================================
-   GO PAYMENT
-===================================================== */
+/* =========================================================
+   FORM → PAYMENT
+========================================================= */
 
 function goToPayment(){
 
@@ -1460,10 +2171,12 @@ document
 .value
 .trim();
 
+
 const category =
 document
 .getElementById("adCategory")
 .value;
+
 
 const price =
 document
@@ -1471,11 +2184,13 @@ document
 .value
 .trim();
 
+
 const seller =
 document
 .getElementById("adSeller")
 .value
 .trim();
+
 
 const phone =
 document
@@ -1483,11 +2198,13 @@ document
 .value
 .trim();
 
+
 const description =
 document
 .getElementById("adDescription")
 .value
 .trim();
+
 
 const image =
 document
@@ -1497,31 +2214,42 @@ document
 
 if(!title){
 
-alert("જાહેરાતનું નામ લખો.");
+alert(
+"જાહેરાતનું નામ લખો."
+);
 
 return;
 
 }
+
 
 if(!seller){
 
-alert("નામ / Business નામ લખો.");
+alert(
+"નામ / Business નામ લખો."
+);
 
 return;
 
 }
+
 
 if(!/^[0-9]{10}$/.test(phone)){
 
-alert("સાચો 10 અંકનો મોબાઇલ નંબર નાખો.");
+alert(
+"સાચો 10 અંકનો મોબાઇલ નંબર નાખો."
+);
 
 return;
 
 }
 
+
 if(!description){
 
-alert("જાહેરાતની માહિતી લખો.");
+alert(
+"જાહેરાતની માહિતી લખો."
+);
 
 return;
 
@@ -1547,16 +2275,18 @@ image:image || null
 };
 
 
-closeModal("postModal");
+closeModal(
+"postModal"
+);
 
 openPayment();
 
 }
 
 
-/* =====================================================
+/* =========================================================
    PAYMENT QR
-===================================================== */
+========================================================= */
 
 function openPayment(){
 
@@ -1568,16 +2298,24 @@ document
 const qr =
 document.getElementById("qrcode");
 
-qr.innerHTML = "";
+qr.innerHTML =
+"";
 
 
 const upiURL =
+
 "upi://pay" +
+
 "?pa=" +
+
 encodeURIComponent(UPI_ID) +
+
 "&pn=" +
+
 encodeURIComponent("Apnu Botad") +
+
 "&am=99" +
+
 "&cu=INR";
 
 
@@ -1587,35 +2325,40 @@ qr,
 text:upiURL,
 width:230,
 height:230,
-correctLevel:QRCode.CorrectLevel.H
+correctLevel:
+QRCode.CorrectLevel.H
 }
 );
 
 
-const button =
-document.getElementById("upiButton");
-
-button.href =
+document
+.getElementById("upiButton")
+.href =
 upiURL;
 
 }
 
 
-/* =====================================================
+/* =========================================================
    COPY UPI
-===================================================== */
+========================================================= */
 
 function copyUPI(){
 
-navigator.clipboard
+navigator
+.clipboard
 .writeText(UPI_ID)
+
 .then(
 function(){
 
-alert("UPI ID Copy થઈ ગઈ.");
+alert(
+"UPI ID Copy થઈ ગઈ."
+);
 
 }
 )
+
 .catch(
 function(){
 
@@ -1630,15 +2373,17 @@ UPI_ID
 }
 
 
-/* =====================================================
+/* =========================================================
    SUBMIT AD
-===================================================== */
+========================================================= */
 
 async function submitAd(){
 
 if(!newAd){
 
-alert("જાહેરાતની માહિતી મળી નથી.");
+alert(
+"જાહેરાતની માહિતી મળી નથી."
+);
 
 return;
 
@@ -1658,32 +2403,39 @@ return;
 
 try{
 
-const image =
-newAd.image;
-
 let imageURL =
 "";
 
 
-/* IMAGE UPLOAD */
+/* ================= PHOTO UPLOAD ================= */
 
-if(image){
+if(newAd.image){
+
+const file =
+newAd.image;
+
 
 const fileName =
+
 "ads/" +
+
 currentUser.uid +
+
 "/" +
+
 Date.now() +
+
 "_" +
-image.name;
+
+file.name;
 
 
-const ref =
+const storageRef =
 storage.ref(fileName);
 
 
 const uploadTask =
-ref.put(image);
+storageRef.put(file);
 
 
 document
@@ -1697,15 +2449,18 @@ await new Promise(
 function(resolve,reject){
 
 uploadTask.on(
+
 "state_changed",
 
 function(snapshot){
 
 const percent =
+
 (
 snapshot.bytesTransferred /
 snapshot.totalBytes
 ) * 100;
+
 
 document
 .getElementById("progressBar")
@@ -1724,7 +2479,7 @@ reject(error);
 async function(){
 
 imageURL =
-await ref.getDownloadURL();
+await storageRef.getDownloadURL();
 
 resolve();
 
@@ -1739,41 +2494,56 @@ resolve();
 }
 
 
-/* FIRESTORE */
+/* ================= FIRESTORE ================= */
 
 await db
 .collection("ads")
 .add({
 
-title:newAd.title,
+title:
+newAd.title,
 
-category:newAd.category,
+category:
+newAd.category,
 
-price:newAd.price,
+price:
+newAd.price,
 
-seller:newAd.seller,
+seller:
+newAd.seller,
 
-phone:newAd.phone,
+phone:
+newAd.phone,
 
-description:newAd.description,
+description:
+newAd.description,
 
-imageURL:imageURL,
+imageURL:
+imageURL,
 
-userId:currentUser.uid,
+userId:
+currentUser.uid,
 
-status:"pending",
+status:
+"pending",
 
-paymentStatus:"user_marked_paid",
+paymentStatus:
+"user_marked_paid",
 
-paymentAmount:99,
+paymentAmount:
+99,
 
 createdAt:
-firebase.firestore.FieldValue.serverTimestamp()
+firebase.firestore
+.FieldValue
+.serverTimestamp()
 
 });
 
 
-closeModal("paymentModal");
+closeModal(
+"paymentModal"
+);
 
 
 document
@@ -1791,19 +2561,29 @@ null;
 
 
 alert(
-"✅ જાહેરાત સફળતાપૂર્વક મોકલાઈ ગઈ.\n\n" +
-"હવે Admin payment ચેક કરીને Approve કરશે.\n\n" +
-"Approve થયા પછી જ જાહેરાત બધા લોકોને દેખાશે."
+
+"✅ જાહેરાત મોકલાઈ ગઈ.\n\n" +
+
+"Payment ₹99 માટે Admin ચેક કરશે.\n\n" +
+
+"Admin Approve કર્યા પછી જ જાહેરાત બધા લોકોને દેખાશે."
+
 );
 
 
-}catch(error){
+}
+
+catch(error){
 
 console.error(error);
 
+
 alert(
-"જાહેરાત upload કરવામાં error આવ્યો:\n" +
+
+"જાહેરાત upload કરવામાં error આવ્યો:\n\n" +
+
 error.message
+
 );
 
 }
@@ -1811,35 +2591,47 @@ error.message
 }
 
 
-/* =====================================================
+/* =========================================================
    CLEAR FORM
-===================================================== */
+========================================================= */
 
 function clearForm(){
 
 document
 .getElementById("adTitle")
-.value = "";
+.value =
+"";
+
 
 document
 .getElementById("adPrice")
-.value = "";
+.value =
+"";
+
 
 document
 .getElementById("adSeller")
-.value = "";
+.value =
+"";
+
 
 document
 .getElementById("adPhone")
-.value = "";
+.value =
+"";
+
 
 document
 .getElementById("adDescription")
-.value = "";
+.value =
+"";
+
 
 document
 .getElementById("adImage")
-.value = "";
+.value =
+"";
+
 
 document
 .getElementById("previewBox")
@@ -1850,22 +2642,27 @@ document
 }
 
 
-/* =====================================================
+/* =========================================================
    LOAD PUBLIC ADS
-===================================================== */
+========================================================= */
 
 async function loadPublicAds(){
 
 try{
 
 const snapshot =
+
 await db
 .collection("ads")
-.where("status","==","approved")
+.where(
+"status",
+"==",
+"approved"
+)
 .get();
 
 
-const ads =
+let ads =
 [];
 
 
@@ -1873,8 +2670,12 @@ snapshot.forEach(
 function(doc){
 
 ads.push({
-id:doc.id,
+
+id:
+doc.id,
+
 ...doc.data()
+
 });
 
 });
@@ -1884,14 +2685,20 @@ ads.sort(
 function(a,b){
 
 const aTime =
-a.createdAt ?
-a.createdAt.toMillis() :
+a.createdAt
+?
+a.createdAt.toMillis()
+:
 0;
 
+
 const bTime =
-b.createdAt ?
-b.createdAt.toMillis() :
+b.createdAt
+?
+b.createdAt.toMillis()
+:
 0;
+
 
 return bTime-aTime;
 
@@ -1901,36 +2708,52 @@ return bTime-aTime;
 
 renderAds(ads);
 
-}catch(error){
+}
 
-console.error(
-"Public ads error:",
-error
-);
+catch(error){
+
+console.error(error);
+
+
+document
+.getElementById("featured")
+.innerHTML = `
+
+<div class="empty">
+
+⚠️ જાહેરાત લોડ થઈ શકી નથી.
+
+<br><br>
+
+Firebase Firestore Rules / Configuration તપાસો.
+
+</div>
+
+`;
+
 
 document
 .getElementById("latest")
-.innerHTML = `
-<div class="empty">
-⚠️ જાહેરાત લોડ થઈ શકી નથી.<br><br>
-Firebase Firestore Rules / Configuration તપાસો.
-</div>
-`;
+.innerHTML =
+document
+.getElementById("featured")
+.innerHTML;
 
 }
 
 }
 
 
-/* =====================================================
-   RENDER ADS
-===================================================== */
+/* =========================================================
+   RENDER PUBLIC ADS
+========================================================= */
 
 function renderAds(ads){
 
 const featured =
 document
 .getElementById("featured");
+
 
 const latest =
 document
@@ -1940,6 +2763,7 @@ document
 if(!ads.length){
 
 const empty = `
+
 <div class="empty">
 
 📢 હાલમાં કોઈ Approved જાહેરાત નથી.
@@ -1949,13 +2773,17 @@ const empty = `
 તમારી જાહેરાત ₹99 માં મૂકો.
 
 </div>
+
 `;
+
 
 featured.innerHTML =
 empty;
 
+
 latest.innerHTML =
 empty;
+
 
 return;
 
@@ -1963,6 +2791,7 @@ return;
 
 
 featured.innerHTML =
+
 ads
 .slice(0,5)
 .map(createAdCard)
@@ -1970,6 +2799,7 @@ ads
 
 
 latest.innerHTML =
+
 ads
 .map(createAdCard)
 .join("");
@@ -1977,31 +2807,42 @@ ads
 }
 
 
-/* =====================================================
-   CREATE CARD
-===================================================== */
+/* =========================================================
+   CREATE PUBLIC CARD
+========================================================= */
 
 function createAdCard(ad){
 
 const image =
+
 ad.imageURL
 
 ?
 
 `
+
 <img
+
 class="card-img"
+
 src="${escapeHTML(ad.imageURL)}"
+
 alt="${escapeHTML(ad.title)}"
+
 >
+
 `
 
 :
 
 `
+
 <div class="no-photo">
+
 ${getEmoji(ad.category)}
+
 </div>
+
 `;
 
 
@@ -2012,41 +2853,73 @@ return `
 ${image}
 
 <div class="badge">
+
 APPROVED
+
 </div>
+
 
 <div class="card-body">
 
+
 <div class="card-price">
-${escapeHTML(ad.price || "Contact")}
+
+${escapeHTML(
+ad.price || "Contact"
+)}
+
 </div>
+
 
 <div class="card-title">
+
 ${escapeHTML(ad.title)}
+
 </div>
 
+
 <div class="card-meta">
+
 ${escapeHTML(ad.description)}
+
 </div>
 
+
 <div class="card-meta">
-📍 Botad · ${escapeHTML(ad.category)}
+
+📍 Botad ·
+${escapeHTML(ad.category)}
+
 </div>
+
 
 <div class="card-bottom">
 
+
 <span class="card-meta">
+
 ${escapeHTML(ad.seller)}
+
 </span>
 
+
 <a
+
 class="whatsapp"
+
 target="_blank"
-href="https://wa.me/91${escapeHTML(ad.phone)}">
+
+href="https://wa.me/91${escapeHTML(ad.phone)}"
+
+>
+
 💬
+
 </a>
 
+
 </div>
+
 
 </div>
 
@@ -2057,55 +2930,75 @@ href="https://wa.me/91${escapeHTML(ad.phone)}">
 }
 
 
-/* =====================================================
-   EMOJI
-===================================================== */
+/* =========================================================
+   CATEGORY ICON
+========================================================= */
 
 function getEmoji(category){
 
-const icons={
+const icons = {
 
 Business:"🏪",
+
 Services:"🔧",
+
 Vehicles:"🚗",
+
 Property:"🏠",
+
 Jobs:"💼",
+
 Mobile:"📱",
+
 "Buy & Sell":"🛒",
+
 Home:"🛋️",
+
 Restaurant:"🍴",
+
 Wedding:"💍",
+
 Education:"🎓",
+
 Pets:"🐾",
+
 Agriculture:"🚜",
+
 Offers:"🏷️",
+
 Other:"📢"
 
 };
+
 
 return icons[category] || "📢";
 
 }
 
 
-/* =====================================================
+/* =========================================================
    SEARCH
-===================================================== */
+========================================================= */
 
 async function searchAds(){
 
-const q =
-(
+const main =
 document
 .getElementById("mainSearch")
 .value
-||
+.trim();
+
+
+const top =
 document
 .getElementById("topSearch")
 .value
-)
-.toLowerCase()
 .trim();
+
+
+const q =
+(main || top)
+.toLowerCase();
 
 
 const category =
@@ -2114,22 +3007,34 @@ document
 .value;
 
 
+try{
+
 const snapshot =
+
 await db
 .collection("ads")
-.where("status","==","approved")
+.where(
+"status",
+"==",
+"approved"
+)
 .get();
 
 
-let ads=[];
+let ads =
+[];
 
 
 snapshot.forEach(
 function(doc){
 
 ads.push({
-id:doc.id,
+
+id:
+doc.id,
+
 ...doc.data()
+
 });
 
 });
@@ -2140,22 +3045,39 @@ ads.filter(
 function(ad){
 
 const text =
+
 (
+
 ad.title +
+
 " " +
+
 ad.description +
+
 " " +
+
 ad.seller +
+
 " " +
+
 ad.category
+
 )
 .toLowerCase();
 
 
 return (
+
 (!q || text.includes(q))
+
 &&
-(category==="all" || ad.category===category)
+
+(
+category === "all"
+||
+ad.category === category
+)
+
 );
 
 }
@@ -2166,40 +3088,66 @@ renderAds(ads);
 
 }
 
+catch(error){
 
-/* =====================================================
+alert(
+"Search error: " +
+error.message
+);
+
+}
+
+}
+
+
+/* =========================================================
    FILTER
-===================================================== */
+========================================================= */
 
 async function filterAds(category){
 
+try{
+
 const snapshot =
+
 await db
 .collection("ads")
-.where("status","==","approved")
+.where(
+"status",
+"==",
+"approved"
+)
 .get();
 
 
-let ads=[];
+let ads =
+[];
 
 
 snapshot.forEach(
 function(doc){
 
 ads.push({
-id:doc.id,
+
+id:
+doc.id,
+
 ...doc.data()
-});
 
 });
 
+});
 
-if(category!=="all"){
+
+if(category !== "all"){
 
 ads =
 ads.filter(
-a =>
-a.category === category
+function(ad){
+
+return ad.category === category;
+
+}
 );
 
 }
@@ -2207,23 +3155,39 @@ a.category === category
 
 renderAds(ads);
 
+
 window.scrollTo({
+
 top:400,
+
 behavior:"smooth"
+
 });
 
 }
 
+catch(error){
 
-/* =====================================================
+alert(
+"Filter error: " +
+error.message
+);
+
+}
+
+}
+
+
+/* =========================================================
    ADMIN LOGIN
-===================================================== */
+========================================================= */
 
 function openAdminLogin(){
 
 document
 .getElementById("adminLoginModal")
-.classList.add("show");
+.classList
+.add("show");
 
 }
 
@@ -2231,18 +3195,22 @@ document
 async function adminLogin(){
 
 const email =
+
 document
 .getElementById("adminEmail")
 .value
 .trim();
 
+
 const password =
+
 document
 .getElementById("adminPassword")
 .value;
 
 
 const error =
+
 document
 .getElementById("adminError");
 
@@ -2254,6 +3222,7 @@ error.innerText =
 try{
 
 const result =
+
 await auth
 .signInWithEmailAndPassword(
 email,
@@ -2267,6 +3236,7 @@ result.user.uid !== ADMIN_UID
 
 await auth.signOut();
 
+
 error.innerText =
 "❌ આ Admin account નથી.";
 
@@ -2275,16 +3245,24 @@ return;
 }
 
 
-closeModal("adminLoginModal");
+closeModal(
+"adminLoginModal"
+);
+
 
 openAdminPanel();
 
-}catch(error2){
+}
+
+catch(error2){
 
 console.error(error2);
 
+
 error.innerText =
+
 "❌ Login failed: " +
+
 error2.message;
 
 }
@@ -2292,30 +3270,37 @@ error2.message;
 }
 
 
-/* =====================================================
+/* =========================================================
    ADMIN PANEL
-===================================================== */
+========================================================= */
 
 function openAdminPanel(){
 
 document
 .getElementById("adminModal")
-.classList.add("show");
+.classList
+.add("show");
+
 
 loadAdminAds("pending");
 
 }
 
 
-/* =====================================================
+/* =========================================================
    LOAD ADMIN ADS
-===================================================== */
+========================================================= */
 
 async function loadAdminAds(status){
 
 if(
-!currentUser ||
+
+!currentUser
+
+||
+
 currentUser.uid !== ADMIN_UID
+
 ){
 
 alert(
@@ -2328,6 +3313,7 @@ return;
 
 
 const list =
+
 document
 .getElementById("adminList");
 
@@ -2339,21 +3325,31 @@ list.innerHTML =
 try{
 
 const snapshot =
+
 await db
 .collection("ads")
-.where("status","==",status)
+.where(
+"status",
+"==",
+status
+)
 .get();
 
 
-let ads=[];
+let ads =
+[];
 
 
 snapshot.forEach(
 function(doc){
 
 ads.push({
-id:doc.id,
+
+id:
+doc.id,
+
 ...doc.data()
+
 });
 
 });
@@ -2363,14 +3359,20 @@ ads.sort(
 function(a,b){
 
 const aTime =
-a.createdAt ?
-a.createdAt.toMillis() :
+a.createdAt
+?
+a.createdAt.toMillis()
+:
 0;
 
+
 const bTime =
-b.createdAt ?
-b.createdAt.toMillis() :
+b.createdAt
+?
+b.createdAt.toMillis()
+:
 0;
+
 
 return bTime-aTime;
 
@@ -2385,15 +3387,24 @@ list.innerHTML = `
 <div class="empty">
 
 ${
-status==="pending"
+status === "pending"
+
 ?
+
 "⏳ Pending જાહેરાત નથી."
+
 :
-status==="approved"
+
+status === "approved"
+
 ?
+
 "✅ Approved જાહેરાત નથી."
+
 :
+
 "❌ Rejected જાહેરાત નથી."
+
 }
 
 </div>
@@ -2406,16 +3417,17 @@ return;
 
 
 list.innerHTML =
+
 ads
-.map(
-createAdminCard
-)
+.map(createAdminCard)
 .join("");
 
+}
 
-}catch(error){
+catch(error){
 
 console.error(error);
+
 
 list.innerHTML = `
 
@@ -2436,22 +3448,28 @@ Firestore Rules તપાસો.
 }
 
 
-/* =====================================================
+/* =========================================================
    ADMIN CARD
-===================================================== */
+========================================================= */
 
 function createAdminCard(ad){
 
 const image =
+
 ad.imageURL
 
 ?
 
 `
+
 <img
+
 class="admin-img"
+
 src="${escapeHTML(ad.imageURL)}"
+
 >
+
 `
 
 :
@@ -2460,12 +3478,17 @@ src="${escapeHTML(ad.imageURL)}"
 
 
 const created =
+
 ad.createdAt
+
 ?
+
 ad.createdAt
 .toDate()
 .toLocaleString("gu-IN")
+
 :
+
 "";
 
 
@@ -2473,52 +3496,76 @@ return `
 
 <div class="admin-item">
 
+
 ${image}
+
 
 <div class="admin-info">
 
+
 <b>
+
 ${escapeHTML(ad.title)}
+
 </b>
+
 
 <br>
 
 💰 ભાવ:
-${escapeHTML(ad.price || "નથી આપ્યો")}
+
+${escapeHTML(
+ad.price || "નથી આપ્યો"
+)}
+
 
 <br>
 
 📂 Category:
+
 ${escapeHTML(ad.category)}
+
 
 <br>
 
 👤 નામ:
+
 ${escapeHTML(ad.seller)}
+
 
 <br>
 
 📞 Mobile:
+
 ${escapeHTML(ad.phone)}
+
 
 <br>
 
-📝 ${escapeHTML(ad.description)}
+📝
+
+${escapeHTML(ad.description)}
+
 
 <br>
 
 💳 Payment:
+
 ₹99
+
 
 <br>
 
-🕒 ${escapeHTML(created)}
+🕒
+
+${escapeHTML(created)}
+
 
 </div>
 
 
 ${
-ad.status==="pending"
+ad.status === "pending"
 
 ?
 
@@ -2526,17 +3573,32 @@ ad.status==="pending"
 
 <div class="admin-actions">
 
-<button
-class="approve"
-onclick="approveAd('${ad.id}')">
-✅ APPROVE
-</button>
 
 <button
-class="reject"
-onclick="rejectAd('${ad.id}')">
-❌ REJECT
+
+class="approve"
+
+onclick="approveAd('${ad.id}')"
+
+>
+
+✅ APPROVE
+
 </button>
+
+
+<button
+
+class="reject"
+
+onclick="rejectAd('${ad.id}')"
+
+>
+
+❌ REJECT
+
+</button>
+
 
 </div>
 
@@ -2548,6 +3610,7 @@ onclick="rejectAd('${ad.id}')">
 
 }
 
+
 </div>
 
 `;
@@ -2555,18 +3618,25 @@ onclick="rejectAd('${ad.id}')">
 }
 
 
-/* =====================================================
-   APPROVE
-===================================================== */
+/* =========================================================
+   APPROVE AD
+========================================================= */
 
 async function approveAd(id){
 
 if(
-!currentUser ||
+
+!currentUser
+
+||
+
 currentUser.uid !== ADMIN_UID
+
 ){
 
-alert("Admin only.");
+alert(
+"Admin only."
+);
 
 return;
 
@@ -2580,10 +3650,13 @@ await db
 .doc(id)
 .update({
 
-status:"approved",
+status:
+"approved",
 
 approvedAt:
-firebase.firestore.FieldValue.serverTimestamp(),
+firebase.firestore
+.FieldValue
+.serverTimestamp(),
 
 approvedBy:
 currentUser.uid
@@ -2596,17 +3669,26 @@ alert(
 );
 
 
-loadAdminAds("pending");
+loadAdminAds(
+"pending"
+);
+
 
 loadPublicAds();
 
-}catch(error){
+}
+
+catch(error){
 
 console.error(error);
 
+
 alert(
-"Approve error: " +
+
+"Approve error:\n" +
+
 error.message
+
 );
 
 }
@@ -2614,18 +3696,25 @@ error.message
 }
 
 
-/* =====================================================
-   REJECT
-===================================================== */
+/* =========================================================
+   REJECT AD
+========================================================= */
 
 async function rejectAd(id){
 
 if(
-!currentUser ||
+
+!currentUser
+
+||
+
 currentUser.uid !== ADMIN_UID
+
 ){
 
-alert("Admin only.");
+alert(
+"Admin only."
+);
 
 return;
 
@@ -2639,10 +3728,13 @@ await db
 .doc(id)
 .update({
 
-status:"rejected",
+status:
+"rejected",
 
 rejectedAt:
-firebase.firestore.FieldValue.serverTimestamp(),
+firebase.firestore
+.FieldValue
+.serverTimestamp(),
 
 rejectedBy:
 currentUser.uid
@@ -2655,15 +3747,23 @@ alert(
 );
 
 
-loadAdminAds("pending");
+loadAdminAds(
+"pending"
+);
 
-}catch(error){
+}
+
+catch(error){
 
 console.error(error);
 
+
 alert(
-"Reject error: " +
+
+"Reject error:\n" +
+
 error.message
+
 );
 
 }
@@ -2671,15 +3771,19 @@ error.message
 }
 
 
-/* =====================================================
+/* =========================================================
    ADMIN LOGOUT
-===================================================== */
+========================================================= */
 
 async function adminLogout(){
 
 await auth.signOut();
 
-closeModal("adminModal");
+
+closeModal(
+"adminModal"
+);
+
 
 alert(
 "Admin Logout થઈ ગયું."
@@ -2688,45 +3792,61 @@ alert(
 }
 
 
-/* =====================================================
+/* =========================================================
    ESCAPE HTML
-===================================================== */
+========================================================= */
 
 function escapeHTML(value){
 
 return String(value || "")
 
-.replace(/&/g,"&amp;")
+.replace(
+/&/g,
+"&amp;"
+)
 
-.replace(/</g,"&lt;")
+.replace(
+/</g,
+"&lt;"
+)
 
-.replace(/>/g,"&gt;")
+.replace(
+/>/g,
+"&gt;"
+)
 
-.replace(/"/g,"&quot;")
+.replace(
+/"/g,
+"&quot;"
+)
 
-.replace(/'/g,"&#039;");
+.replace(
+/'/g,
+"&#039;"
+);
 
 }
 
 
-/* =====================================================
+/* =========================================================
    START
-===================================================== */
+========================================================= */
 
 loadPublicAds();
 
 
-/* =====================================================
-   ADMIN ACCESS
+/* =========================================================
+   ADMIN URL
 
-   મોબાઇલમાં:
+   Website URLના અંતે:
 
-   Website ના અંતે #admin લખો.
+   #admin
 
    Example:
 
-   yoursite.github.io/apnu-botad/#admin
-===================================================== */
+   https://udayraj9016.github.io/apnu-botad-/#admin
+
+========================================================= */
 
 if(
 window.location.hash === "#admin"
@@ -2738,28 +3858,29 @@ function(){
 openAdminLogin();
 
 },
-800
+1000
 );
 
 }
 
 
-/* =====================================================
-   MODAL OUTSIDE CLICK
-===================================================== */
+/* =========================================================
+   CLOSE MODAL ON OUTSIDE CLICK
+========================================================= */
 
 window.addEventListener(
 "click",
-function(e){
+function(event){
 
-if(e.target.classList.contains("modal")){
+if(
+event.target.classList.contains("modal")
+){
 
-e.target.classList.remove("show");
+event.target.classList.remove("show");
 
 }
 
-}
-);
+});
 
 </script>
 
