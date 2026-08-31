@@ -2,895 +2,633 @@
 <html lang="gu">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>આપણું બોટાદ</title>
 
 <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-storage-compat.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <style>
-
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
-  margin:0;
-  font-family:Arial,"Noto Sans Gujarati",sans-serif;
-  background:#f7f7f8;
-  color:#20242b;
+margin:0;
+font-family:Arial,"Noto Sans Gujarati",sans-serif;
+background:#f7f7f8;
+color:#20242b
 }
 
-button,input,select,textarea{
-  font-family:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-/* HEADER */
+button,input,select,textarea{font-family:inherit}
+button{cursor:pointer}
 
 header{
-  background:white;
-  border-bottom:1px solid #eee;
-  position:sticky;
-  top:0;
-  z-index:100;
+background:#fff;
+border-bottom:1px solid #eee;
+position:sticky;
+top:0;
+z-index:100
 }
 
 .nav{
-  max-width:1500px;
-  margin:auto;
-  min-height:82px;
-  display:flex;
-  align-items:center;
-  gap:15px;
-  padding:10px 18px;
+max-width:1500px;
+margin:auto;
+min-height:80px;
+display:flex;
+align-items:center;
+gap:14px;
+padding:10px 18px
 }
 
 .logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  min-width:300px;
+display:flex;
+align-items:center;
+gap:9px;
+min-width:280px
 }
 
-.logo-icon{
-  font-size:50px;
-}
+.logo-icon{font-size:45px}
 
 .logo h1{
-  margin:0;
-  font-size:29px;
-  font-weight:900;
-  color:#16233d;
+margin:0;
+font-size:28px;
+color:#16233d
 }
 
-.logo h1 span{
-  color:#f15a24;
-}
+.logo h1 span{color:#f15a24}
 
-.logo small{
-  font-size:13px;
-  font-weight:bold;
-}
+.logo small{font-size:12px;font-weight:bold}
 
 .location{
-  background:#fff;
-  border:1px solid #ddd;
-  border-radius:10px;
-  padding:13px;
-  font-size:15px;
+background:#fff;
+border:1px solid #ddd;
+border-radius:9px;
+padding:12px
 }
 
-.top-search{
-  flex:1;
-  max-width:430px;
-}
+.top-search{flex:1}
 
 .top-search input{
-  width:100%;
-  height:48px;
-  border:1px solid #ddd;
-  border-radius:12px;
-  padding:0 15px;
-  font-size:15px;
-  outline:none;
+width:100%;
+height:46px;
+border:1px solid #ddd;
+border-radius:10px;
+padding:0 14px;
+font-size:15px
 }
 
 .navlinks{
-  display:flex;
-  align-items:center;
-  gap:5px;
-  margin-left:auto;
+display:flex;
+align-items:center;
+gap:5px
 }
 
 .navlinks button{
-  border:0;
-  background:white;
-  padding:12px 9px;
-  font-weight:bold;
+border:0;
+background:#fff;
+padding:11px 8px;
+font-weight:bold
 }
 
 .post-btn{
-  background:#f15a24 !important;
-  color:white !important;
-  border-radius:10px;
-  font-size:15px;
+background:#f15a24!important;
+color:#fff!important;
+border-radius:9px
 }
 
 .login-btn{
-  border:1px solid #ddd !important;
-  border-radius:10px;
+border:1px solid #ddd!important;
+border-radius:9px
 }
 
-/* MAIN */
-
 main{
-  max-width:1500px;
-  margin:12px auto;
-  padding:0 18px;
+max-width:1500px;
+margin:15px auto;
+padding:0 18px
 }
 
 .layout{
-  display:grid;
-  grid-template-columns:235px 1fr;
-  gap:20px;
+display:grid;
+grid-template-columns:230px 1fr;
+gap:18px
 }
 
-/* SIDEBAR */
-
 .sidebar{
-  background:white;
-  border:1px solid #e7e7e7;
-  border-radius:14px;
-  padding:12px;
-  height:max-content;
+background:#fff;
+border:1px solid #e7e7e7;
+border-radius:13px;
+padding:12px;
+height:max-content
 }
 
 .sidebar h2{
-  color:#f15a24;
-  font-size:20px;
-  margin:5px 8px 12px;
+color:#f15a24;
+font-size:20px;
+margin:5px 8px 12px
 }
 
 .cat{
-  width:100%;
-  border:0;
-  background:white;
-  padding:11px 8px;
-  display:flex;
-  align-items:center;
-  gap:11px;
-  font-size:15px;
-  text-align:left;
-  border-radius:8px;
+width:100%;
+border:0;
+background:#fff;
+padding:10px 7px;
+display:flex;
+gap:9px;
+font-size:14px;
+text-align:left;
+border-radius:8px
 }
 
 .cat:hover{
-  background:#fff2eb;
-  color:#f15a24;
+background:#fff1eb;
+color:#f15a24
 }
 
-.cat span{
-  margin-left:auto;
-}
+.cat span{margin-left:auto}
 
 .allcat{
-  background:#fff0cf;
-  justify-content:center;
-  font-weight:bold;
-  margin-top:8px;
+background:#fff0cf;
+justify-content:center;
+font-weight:bold;
+margin-top:7px
 }
 
-/* HERO */
-
 .hero{
-  height:240px;
-  border-radius:18px;
-  overflow:hidden;
-  position:relative;
-
-  background:
-  linear-gradient(
-    90deg,
-    rgba(255,255,255,.96),
-    rgba(255,255,255,.65),
-    rgba(255,255,255,.08)
-  ),
-  url("https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=1800&q=85");
-
-  background-size:cover;
-  background-position:center;
+min-height:240px;
+border-radius:17px;
+overflow:hidden;
+background:
+linear-gradient(90deg,rgba(255,255,255,.96),rgba(255,255,255,.60),rgba(255,255,255,.10)),
+url("https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=1800&q=85");
+background-size:cover;
+background-position:center
 }
 
 .hero-content{
-  text-align:center;
-  padding-top:25px;
+text-align:center;
+padding-top:28px
 }
 
 .hero h2{
-  font-size:39px;
-  line-height:1.15;
-  margin:0;
-  color:#16233f;
+font-size:38px;
+line-height:1.15;
+margin:0;
+color:#16233f
 }
 
-.hero h2 span{
-  color:#f15a24;
-}
+.hero h2 span{color:#f15a24}
 
 .hero p{
-  font-size:17px;
-  font-weight:bold;
-  margin:8px 0;
+font-size:16px;
+font-weight:bold
 }
 
 .hero-search{
-  background:white;
-  max-width:1000px;
-  margin:15px auto;
-  padding:7px;
-  border-radius:12px;
-  display:flex;
-  gap:7px;
-  box-shadow:0 3px 15px #0002;
+background:#fff;
+max-width:950px;
+margin:15px auto;
+padding:7px;
+border-radius:11px;
+display:flex;
+gap:7px;
+box-shadow:0 3px 15px #0002
 }
 
 .hero-search input,
 .hero-search select{
-  height:46px;
-  border:1px solid #ddd;
-  border-radius:8px;
-  padding:0 12px;
-  font-size:14px;
+height:44px;
+border:1px solid #ddd;
+border-radius:8px;
+padding:0 10px
 }
 
-.hero-search input{
-  flex:1;
-}
+.hero-search input{flex:1}
 
-.hero-search select{
-  width:190px;
-}
+.hero-search select{width:170px}
 
 .hero-search button{
-  width:130px;
-  border:0;
-  border-radius:8px;
-  background:#f15a24;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
+width:110px;
+border:0;
+border-radius:8px;
+background:#f15a24;
+color:#fff;
+font-weight:bold
 }
 
-/* CATEGORIES */
-
 .quick{
-  display:grid;
-  grid-template-columns:repeat(10,1fr);
-  gap:10px;
-  margin:15px 0 18px;
+display:grid;
+grid-template-columns:repeat(10,1fr);
+gap:9px;
+margin:14px 0
 }
 
 .quick-card{
-  background:white;
-  border:1px solid #eee;
-  border-radius:12px;
-  padding:9px 3px;
-  text-align:center;
-  font-weight:bold;
-  font-size:13px;
+background:#fff;
+border:1px solid #eee;
+border-radius:11px;
+padding:9px 3px;
+text-align:center;
+font-size:12px;
+font-weight:bold
 }
 
 .quick-icon{
-  font-size:27px;
-  margin-bottom:4px;
+font-size:25px;
+margin-bottom:4px
 }
 
-/* SECTIONS */
-
 .section-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin:14px 0 10px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin:16px 0 10px
 }
 
 .section-head h2{
-  font-size:21px;
-  margin:0;
+font-size:20px;
+margin:0
 }
 
 .section-head span{
-  color:#673ab7;
-  font-weight:bold;
+color:#673ab7;
+font-weight:bold
 }
 
-/* ADS */
-
 .grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:12px;
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:12px
 }
 
 .card{
-  background:white;
-  border:1px solid #e7e7e7;
-  border-radius:13px;
-  overflow:hidden;
-  position:relative;
-  transition:.2s;
-}
-
-.card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 7px 20px #0001;
+background:#fff;
+border:1px solid #e7e7e7;
+border-radius:12px;
+overflow:hidden;
+position:relative
 }
 
 .card-img{
-  width:100%;
-  height:145px;
-  object-fit:cover;
-  background:#eee;
+width:100%;
+height:145px;
+object-fit:cover;
+background:#eee
 }
 
 .no-photo{
-  height:145px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:60px;
-  background:#fff2eb;
+height:145px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:55px;
+background:#fff1eb
 }
 
 .badge{
-  position:absolute;
-  top:8px;
-  left:8px;
-  background:#12a150;
-  color:white;
-  font-size:10px;
-  font-weight:bold;
-  padding:5px 8px;
-  border-radius:6px;
+position:absolute;
+top:7px;
+left:7px;
+background:#159447;
+color:#fff;
+font-size:10px;
+font-weight:bold;
+padding:5px 7px;
+border-radius:5px
 }
 
-.card-body{
-  padding:10px;
-}
+.card-body{padding:10px}
 
 .card-price{
-  font-size:17px;
-  font-weight:900;
+font-size:17px;
+font-weight:900
 }
 
 .card-title{
-  font-weight:bold;
-  margin-top:4px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+font-weight:bold;
+margin-top:4px;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis
 }
 
 .card-meta{
-  font-size:11px;
-  color:#70757d;
-  margin-top:5px;
+font-size:11px;
+color:#777;
+margin-top:5px
 }
 
 .card-bottom{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-top:8px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:8px
 }
 
 .whatsapp{
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  background:#16a34a;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
+width:29px;
+height:29px;
+border-radius:50%;
+background:#16a34a;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none
 }
-
-/* EMPTY */
 
 .empty{
-  background:white;
-  border:1px dashed #ccc;
-  border-radius:13px;
-  padding:45px 20px;
-  text-align:center;
-  color:#777;
-  grid-column:1/-1;
+background:#fff;
+border:1px dashed #ccc;
+border-radius:12px;
+padding:40px 15px;
+text-align:center;
+color:#777;
+grid-column:1/-1
 }
-
-/* BANNER */
 
 .ad-banner{
-  margin-top:16px;
-  border-radius:14px;
-  padding:22px;
-  background:linear-gradient(110deg,#57209a,#8520c2);
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+margin-top:16px;
+border-radius:13px;
+padding:20px;
+background:linear-gradient(110deg,#57209a,#8520c2);
+color:#fff;
+display:flex;
+justify-content:space-between;
+align-items:center
 }
 
-.ad-banner h2{
-  margin:0 0 8px;
-  font-size:25px;
-}
+.ad-banner h2{margin:0 0 8px}
 
 .ad-banner button{
-  background:#ff7a22;
-  color:white;
-  border:0;
-  border-radius:8px;
-  padding:11px 16px;
-  font-weight:bold;
+background:#ff7a22;
+color:#fff;
+border:0;
+border-radius:8px;
+padding:11px 15px;
+font-weight:bold
 }
-
-/* TRUST */
 
 .trust{
-  margin-top:15px;
-  background:white;
-  border-radius:13px;
-  padding:15px;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
+margin-top:15px;
+background:#fff;
+border-radius:12px;
+padding:14px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px
 }
 
-.trust div{
-  text-align:center;
-  padding:8px;
-}
+.trust div{text-align:center}
 
-.trust-icon{
-  font-size:26px;
-}
+.trust-icon{font-size:25px}
 
-.trust b{
-  display:block;
-  margin-top:5px;
-}
+.trust b{display:block;margin-top:5px}
 
-.trust small{
-  color:#777;
-}
-
-/* FOOTER */
+.trust small{color:#777}
 
 footer{
-  background:#181818;
-  color:white;
-  margin-top:30px;
-  padding:30px 18px;
+background:#181818;
+color:#fff;
+margin-top:30px;
+padding:28px 18px
 }
 
 .footer-inner{
-  max-width:1500px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
+max-width:1500px;
+margin:auto;
+display:flex;
+justify-content:space-between
 }
 
-/* MODAL */
-
 .modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:#0009;
-  z-index:1000;
-  padding:15px;
-  overflow:auto;
+display:none;
+position:fixed;
+inset:0;
+background:#0009;
+z-index:1000;
+padding:15px;
+overflow:auto
 }
 
 .modal.show{
-  display:flex;
-  align-items:center;
-  justify-content:center;
+display:flex;
+align-items:center;
+justify-content:center
 }
 
 .modal-box{
-  background:white;
-  width:100%;
-  max-width:570px;
-  border-radius:16px;
-  padding:20px;
-  max-height:94vh;
-  overflow:auto;
+background:#fff;
+width:100%;
+max-width:570px;
+border-radius:15px;
+padding:20px;
+max-height:94vh;
+overflow:auto
 }
 
 .modal-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px
 }
 
-.modal-head h2{
-  margin:0;
-}
+.modal-head h2{margin:0}
 
 .close{
-  border:0;
-  background:#eee;
-  width:35px;
-  height:35px;
-  border-radius:50%;
-  font-size:22px;
+border:0;
+background:#eee;
+width:35px;
+height:35px;
+border-radius:50%;
+font-size:22px
 }
 
 .form label{
-  display:block;
-  font-weight:bold;
-  margin:9px 0 5px;
+display:block;
+font-weight:bold;
+margin:9px 0 5px
 }
 
 .form input,
 .form select,
 .form textarea{
-  width:100%;
-  border:1px solid #ddd;
-  border-radius:9px;
-  padding:12px;
-  outline:none;
+width:100%;
+border:1px solid #ddd;
+border-radius:8px;
+padding:12px
 }
 
-.form textarea{
-  min-height:100px;
-}
+.form textarea{min-height:90px}
 
 .primary{
-  width:100%;
-  margin-top:15px;
-  border:0;
-  background:#f15a24;
-  color:white;
-  padding:14px;
-  border-radius:9px;
-  font-weight:bold;
-  font-size:16px;
+width:100%;
+margin-top:14px;
+border:0;
+background:#f15a24;
+color:#fff;
+padding:13px;
+border-radius:8px;
+font-weight:bold
 }
 
-.preview{
-  display:none;
-  margin-top:8px;
-}
-
-.preview img{
-  width:100%;
-  max-height:250px;
-  object-fit:contain;
-  border-radius:9px;
-  background:#eee;
-}
-
-/* PAYMENT */
-
-.payment{
-  text-align:center;
-}
+.payment{text-align:center}
 
 .amount{
-  font-size:38px;
-  font-weight:900;
-  color:#f15a24;
-  margin:10px;
+font-size:38px;
+font-weight:900;
+color:#f15a24;
+margin:10px
 }
 
 #qrcode{
-  display:flex;
-  justify-content:center;
-  margin:15px;
+display:flex;
+justify-content:center;
+margin:15px
 }
 
 .upi{
-  background:#f3f3f3;
-  padding:12px;
-  border-radius:8px;
-  font-weight:bold;
-  word-break:break-all;
+background:#f3f3f3;
+padding:12px;
+border-radius:8px;
+font-weight:bold;
+word-break:break-all
 }
 
 .pay-btn{
-  display:block;
-  width:100%;
-  margin-top:10px;
-  background:#168b3b;
-  color:white;
-  border:0;
-  border-radius:9px;
-  padding:13px;
-  font-weight:bold;
+width:100%;
+background:#168b3b;
+color:#fff;
+border:0;
+border-radius:8px;
+padding:13px;
+font-weight:bold
 }
 
-/* ADMIN */
-
 .admin-item{
-  border:1px solid #ddd;
-  border-radius:12px;
-  padding:12px;
-  margin-bottom:12px;
+border:1px solid #ddd;
+border-radius:11px;
+padding:12px;
+margin-bottom:12px
 }
 
 .admin-img{
-  width:100%;
-  max-height:230px;
-  object-fit:cover;
-  border-radius:9px;
-  margin-bottom:10px;
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:8px;
+margin-bottom:8px
 }
 
 .admin-info{
-  font-size:13px;
-  line-height:1.7;
+font-size:13px;
+line-height:1.7
 }
 
 .admin-actions{
-  display:flex;
-  gap:8px;
-  margin-top:10px;
+display:flex;
+gap:8px;
+margin-top:10px
 }
 
-.approve{
-  flex:1;
-  background:#16a34a;
-  color:white;
-  border:0;
-  border-radius:8px;
-  padding:12px;
-  font-weight:bold;
+.approve,.reject{
+flex:1;
+border:0;
+color:#fff;
+padding:11px;
+border-radius:8px;
+font-weight:bold
 }
 
-.reject{
-  flex:1;
-  background:#dc2626;
-  color:white;
-  border:0;
-  border-radius:8px;
-  padding:12px;
-  font-weight:bold;
-}
-
-/* USER INFO */
-
-.user-box{
-  background:#f5f5f5;
-  padding:12px;
-  border-radius:9px;
-  margin-bottom:10px;
-}
+.approve{background:#16a34a}
+.reject{background:#dc2626}
 
 .logout{
-  background:#333;
-  color:white;
-  border:0;
-  padding:12px;
-  width:100%;
-  border-radius:8px;
+width:100%;
+background:#333;
+color:#fff;
+border:0;
+padding:12px;
+border-radius:8px;
+margin-top:10px
 }
 
-/* MOBILE */
-
 @media(max-width:1200px){
-
-  .logo{
-    min-width:260px;
-  }
-
-  .grid{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .quick{
-    grid-template-columns:repeat(5,1fr);
-  }
+.grid{grid-template-columns:repeat(3,1fr)}
+.quick{grid-template-columns:repeat(5,1fr)}
 }
 
 @media(max-width:850px){
-
-  .nav{
-    flex-wrap:wrap;
-  }
-
-  .logo{
-    min-width:auto;
-  }
-
-  .location{
-    display:none;
-  }
-
-  .top-search{
-    order:5;
-    max-width:none;
-    flex-basis:100%;
-  }
-
-  .navlinks button:not(.post-btn){
-    display:none;
-  }
-
-  .layout{
-    grid-template-columns:1fr;
-  }
-
-  .sidebar{
-    display:none;
-  }
-
-  .hero{
-    height:auto;
-    min-height:285px;
-  }
-
-  .hero h2{
-    font-size:30px;
-  }
-
-  .hero-search{
-    margin:12px;
-    flex-direction:column;
-  }
-
-  .hero-search input,
-  .hero-search select,
-  .hero-search button{
-    width:100%;
-  }
-
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .quick{
-    grid-template-columns:repeat(5,1fr);
-  }
-
-  .trust{
-    grid-template-columns:repeat(2,1fr);
-  }
+.nav{flex-wrap:wrap}
+.logo{min-width:auto}
+.location{display:none}
+.top-search{order:5;flex-basis:100%}
+.navlinks button:not(.post-btn){display:none}
+.layout{grid-template-columns:1fr}
+.sidebar{display:none}
+.grid{grid-template-columns:repeat(2,1fr)}
+.hero-search{margin:12px;flex-direction:column}
+.hero-search input,
+.hero-search select,
+.hero-search button{width:100%}
+.trust{grid-template-columns:repeat(2,1fr)}
 }
 
 @media(max-width:500px){
-
-  main{
-    padding:0 9px;
-  }
-
-  .nav{
-    padding:8px 10px;
-  }
-
-  .logo h1{
-    font-size:21px;
-  }
-
-  .logo small{
-    font-size:10px;
-  }
-
-  .post-btn{
-    font-size:11px !important;
-    padding:9px !important;
-  }
-
-  .quick-card{
-    font-size:10px;
-  }
-
-  .quick-icon{
-    font-size:21px;
-  }
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero h2{
-    font-size:27px;
-  }
-
-  .footer-inner{
-    flex-direction:column;
-  }
+main{padding:0 9px}
+.logo h1{font-size:21px}
+.logo small{font-size:9px}
+.post-btn{font-size:11px!important}
+.grid{grid-template-columns:1fr}
+.quick-card{font-size:10px}
+.quick-icon{font-size:20px}
+.hero h2{font-size:28px}
+.footer-inner{flex-direction:column}
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-
 <div class="nav">
 
 <div class="logo">
-
-<div class="logo-icon">
-🏛️
-</div>
-
+<div class="logo-icon">🏛️</div>
 <div>
-
-<h1>
-આપણું <span>બોટાદ</span>
-</h1>
-
-<small>
-બોટાદમાં જે જોઈએ, અહીં શોધો!
-</small>
-
+<h1>આપણું <span>બોટાદ</span></h1>
+<small>બોટાદમાં જે જોઈએ, અહીં શોધો!</small>
+</div>
 </div>
 
-</div>
-
-<button class="location">
-📍 Botad ▾
-</button>
+<button class="location">📍 Botad ▾</button>
 
 <div class="top-search">
-
-<input
-id="topSearch"
-placeholder="શું શોધી રહ્યા છો?"
-onkeydown="if(event.key==='Enter') searchAds()"
->
-
+<input id="topSearch" placeholder="શું શોધી રહ્યા છો?"
+onkeydown="if(event.key==='Enter')searchAds()">
 </div>
 
 <div class="navlinks">
 
-<button>
-♡ ફેવરિટ
-</button>
+<button>♡ ફેવરિટ</button>
+<button>💬 ચેટ</button>
+<button>🔔 નોટિફિકેશન</button>
 
-<button>
-💬 ચેટ
-</button>
-
-<button>
-🔔 નોટિફિકેશન
-</button>
-
-<button
-class="post-btn"
-onclick="openPost()"
->
+<button class="post-btn" onclick="openPost()">
 જાહેરાત મૂકો માત્ર ₹99
 </button>
 
-<button
-id="loginButton"
+<button id="loginButton"
 class="login-btn"
-onclick="openUserLogin()"
->
+onclick="openUserLogin()">
 👤 લોગિન / સાઇનઅપ
 </button>
 
 </div>
-
 </div>
-
 </header>
 
 
@@ -898,12 +636,9 @@ onclick="openUserLogin()"
 
 <div class="layout">
 
-
 <aside class="sidebar">
 
-<h2>
-બધી કેટેગરી
-</h2>
+<h2>બધી કેટેગરી</h2>
 
 <button class="cat">🏪 બિઝનેસ <span>›</span></button>
 <button class="cat">🔧 સેવાઓ <span>›</span></button>
@@ -915,19 +650,13 @@ onclick="openUserLogin()"
 <button class="cat">🍴 રેસ્ટોરન્ટ <span>›</span></button>
 <button class="cat">💍 વેડિંગ સર્વિસ <span>›</span></button>
 <button class="cat">🎓 એજ્યુકેશન <span>›</span></button>
-<button class="cat">🐾 પેટ્સ <span>›</span></button>
-<button class="cat">🚜 એગ્રીકલ્ચર <span>›</span></button>
-<button class="cat">🏷️ ઓફર્સ <span>›</span></button>
 
-<button class="cat allcat">
-••• બધી કેટેગરી જુઓ
-</button>
+<button class="cat allcat">••• બધી કેટેગરી જુઓ</button>
 
 </aside>
 
 
 <div>
-
 
 <section class="hero">
 
@@ -938,200 +667,81 @@ onclick="openUserLogin()"
 <span>અહીં શોધો!</span>
 </h2>
 
-<p>
-વ્યવસાય, નોકરી, પ્રોપર્ટી, વાહન, સેવા અને ઘણું બધું...
-</p>
+<p>વ્યવસાય, નોકરી, પ્રોપર્ટી, વાહન, સેવા અને ઘણું બધું...</p>
 
 <div class="hero-search">
 
-<input
-id="heroSearch"
-placeholder="શું શોધી રહ્યા છો?"
->
+<input id="heroSearch" placeholder="શું શોધી રહ્યા છો?">
 
 <select id="categoryFilter">
-
-<option value="">
-બધી કેટેગરી
-</option>
-
-<option value="બિઝનેસ">
-બિઝનેસ
-</option>
-
-<option value="સેવાઓ">
-સેવાઓ
-</option>
-
-<option value="વાહન">
-વાહન
-</option>
-
-<option value="પ્રોપર્ટી">
-પ્રોપર્ટી
-</option>
-
-<option value="નોકરીઓ">
-નોકરીઓ
-</option>
-
-<option value="બાય & સેલ">
-બાય & સેલ
-</option>
-
-<option value="મોબાઇલ">
-મોબાઇલ
-</option>
-
-<option value="રેસ્ટોરન્ટ">
-રેસ્ટોરન્ટ
-</option>
-
+<option value="">બધી કેટેગરી</option>
+<option>બિઝનેસ</option>
+<option>સેવાઓ</option>
+<option>વાહન</option>
+<option>પ્રોપર્ટી</option>
+<option>નોકરીઓ</option>
+<option>બાય & સેલ</option>
+<option>મોબાઇલ</option>
+<option>રેસ્ટોરન્ટ</option>
 </select>
 
 <select>
 <option>📍 Botad</option>
 </select>
 
-<button onclick="searchAds()">
-શોધો
-</button>
+<button onclick="searchAds()">શોધો</button>
 
 </div>
-
 </div>
-
 </section>
 
 
 <div class="quick">
 
-<div class="quick-card">
-<div class="quick-icon">🏪</div>
-બિઝનેસ
-</div>
-
-<div class="quick-card">
-<div class="quick-icon">🔧</div>
-સેવાઓ
-</div>
-
-<div class="quick-card">
-<div class="quick-icon">🚗</div>
-વાહન
-</div>
-
-<div class="quick-card">
-<div class="quick-icon">🏠</div>
-પ્રોપર્ટી
-</div>
-
-<div class="quick-card">
-<div class="quick-icon">💼</div>
-નોકરીઓ
-</div>
-
-<div class="quick-card">
-<div class="quick-icon">🛒</div>
-બાય & સેલ
-</div>
-
-<div class="quick-card">
-<div class="quick-icon">📱</div>
-મોબાઇલ
-</div>
-
-<div class="quick-card">
-<div class="quick-icon">🍴</div>
-રેસ્ટોરન્ટ
-</div>
-
-<div class="quick-card">
-<div class="quick-icon">💍</div>
-વેડિંગ
-</div>
-
-<div class="quick-card">
-<div class="quick-icon">•••</div>
-વધારે જુઓ
-</div>
+<div class="quick-card"><div class="quick-icon">🏪</div>બિઝનેસ</div>
+<div class="quick-card"><div class="quick-icon">🔧</div>સેવાઓ</div>
+<div class="quick-card"><div class="quick-icon">🚗</div>વાહન</div>
+<div class="quick-card"><div class="quick-icon">🏠</div>પ્રોપર્ટી</div>
+<div class="quick-card"><div class="quick-icon">💼</div>નોકરીઓ</div>
+<div class="quick-card"><div class="quick-icon">🛒</div>બાય & સેલ</div>
+<div class="quick-card"><div class="quick-icon">📱</div>મોબાઇલ</div>
+<div class="quick-card"><div class="quick-icon">🍴</div>રેસ્ટોરન્ટ</div>
+<div class="quick-card"><div class="quick-icon">💍</div>વેડિંગ</div>
+<div class="quick-card"><div class="quick-icon">•••</div>વધારે</div>
 
 </div>
 
 
 <div class="section-head">
-
-<h2>
-🔥 ફીચર્ડ જાહેરાતો
-</h2>
-
-<span>
-બધી જુઓ →
-</span>
-
+<h2>🔥 ફીચર્ડ જાહેરાતો</h2>
+<span>બધી જુઓ →</span>
 </div>
 
-<div
-id="featuredAds"
-class="grid"
->
-
-<div class="empty">
-જાહેરાતો લોડ થઈ રહી છે...
-</div>
-
+<div id="featuredAds" class="grid">
+<div class="empty">જાહેરાતો લોડ થઈ રહી છે...</div>
 </div>
 
 
 <div class="section-head">
-
-<h2>
-📢 તાજેતરની જાહેરાતો
-</h2>
-
-<span>
-બધી જુઓ →
-</span>
-
+<h2>📢 તાજેતરની જાહેરાતો</h2>
+<span>બધી જુઓ →</span>
 </div>
 
-<div
-id="recentAds"
-class="grid"
->
-
-<div class="empty">
-જાહેરાતો લોડ થઈ રહી છે...
-</div>
-
+<div id="recentAds" class="grid">
+<div class="empty">જાહેરાતો લોડ થઈ રહી છે...</div>
 </div>
 
 
 <div class="ad-banner">
 
 <div>
-
-<h2>
-તમારા બિઝનેસને લો નવા ગ્રાહકો સુધી!
-</h2>
-
-<p>
-✓ પ્રીમિયમ લિસ્ટિંગ
-</p>
-
-<p>
-✓ ટોપ પર ડિસ્પ્લે
-</p>
-
-<p>
-✓ વધુ વિશ્વાસ, વધુ ગ્રાહકો
-</p>
-
+<h2>તમારા બિઝનેસને લો નવા ગ્રાહકો સુધી!</h2>
+<p>✓ પ્રીમિયમ લિસ્ટિંગ</p>
+<p>✓ ટોપ પર ડિસ્પ્લે</p>
+<p>✓ વધુ વિશ્વાસ, વધુ ગ્રાહકો</p>
 </div>
 
-<button onclick="openPost()">
-જાહેરાત મૂકો ₹99
-</button>
+<button onclick="openPost()">જાહેરાત મૂકો ₹99</button>
 
 </div>
 
@@ -1145,7 +755,7 @@ class="grid"
 </div>
 
 <div>
-<div class="trust-icon">🛡️</div>
+<div class="trust-icon">🔒</div>
 <b>સુરક્ષિત વ્યવહાર</b>
 <small>તમારો ડેટા સુરક્ષિત</small>
 </div>
@@ -1165,122 +775,64 @@ class="grid"
 </div>
 
 </div>
-
 </div>
-
 </main>
 
 
 <footer>
-
 <div class="footer-inner">
-
 <div>
 <h2>આપણું બોટાદ</h2>
 <p>બોટાદમાં જે જોઈએ, અહીં શોધો!</p>
 </div>
-
 <div>
 <p>© 2026 આપણું બોટાદ</p>
 <p>Local Marketplace</p>
 </div>
-
 </div>
-
 </footer>
 
 
-<!-- LOGIN MODAL -->
+<!-- LOGIN -->
 
-<div
-id="loginModal"
-class="modal"
->
+<div id="loginModal" class="modal">
 
 <div class="modal-box">
 
 <div class="modal-head">
-
-<h2>
-👤 Login / Sign Up
-</h2>
-
-<button class="close" onclick="closeModal('loginModal')">
-×
-</button>
-
+<h2>👤 Login / Sign Up</h2>
+<button class="close" onclick="closeModal('loginModal')">×</button>
 </div>
-
-
-<div id="loginForm">
 
 <div class="form">
 
-<label>
-Email
-</label>
+<label>Email</label>
+<input id="loginEmail" type="email" placeholder="તમારો Email">
 
-<input
-id="loginEmail"
-type="email"
-placeholder="તમારો Email"
->
+<label>Password</label>
+<input id="loginPassword" type="password" placeholder="Password">
 
-<label>
-Password
-</label>
+<button class="primary" onclick="loginUser()">Login</button>
 
-<input
-id="loginPassword"
-type="password"
-placeholder="Password"
->
-
-<button
-class="primary"
-onclick="loginUser()"
->
-Login
-</button>
-
-<button
-class="primary"
-onclick="signupUser()"
->
+<button class="primary" onclick="signupUser()">
 નવું Account બનાવો
 </button>
 
 </div>
 
 </div>
-
-</div>
-
 </div>
 
 
-<!-- POST MODAL -->
+<!-- POST -->
 
-<div
-id="postModal"
-class="modal"
->
+<div id="postModal" class="modal">
 
 <div class="modal-box">
 
 <div class="modal-head">
-
-<h2>
-📢 જાહેરાત મૂકો
-</h2>
-
-<button
-class="close"
-onclick="closeModal('postModal')"
->
-×
-</button>
-
+<h2>📢 જાહેરાત મૂકો</h2>
+<button class="close" onclick="closeModal('postModal')">×</button>
 </div>
 
 
@@ -1288,137 +840,58 @@ onclick="closeModal('postModal')"
 
 <div class="form">
 
-<label>
-જાહેરાતનું નામ
-</label>
+<label>જાહેરાતનું નામ</label>
+<input id="adTitle" placeholder="ઉદાહરણ: મારું બિઝનેસ">
 
-<input
-id="adTitle"
-placeholder="ઉદાહરણ: મારુ બિઝનેસ"
->
-
-<label>
-કેટેગરી
-</label>
+<label>કેટેગરી</label>
 
 <select id="adCategory">
-
-<option value="બિઝનેસ">
-બિઝનેસ
-</option>
-
-<option value="સેવાઓ">
-સેવાઓ
-</option>
-
-<option value="વાહન">
-વાહન
-</option>
-
-<option value="પ્રોપર્ટી">
-પ્રોપર્ટી
-</option>
-
-<option value="નોકરીઓ">
-નોકરીઓ
-</option>
-
-<option value="બાય & સેલ">
-બાય & સેલ
-</option>
-
-<option value="મોબાઇલ">
-મોબાઇલ
-</option>
-
-<option value="રેસ્ટોરન્ટ">
-રેસ્ટોરન્ટ
-</option>
-
+<option>બિઝનેસ</option>
+<option>સેવાઓ</option>
+<option>વાહન</option>
+<option>પ્રોપર્ટી</option>
+<option>નોકરીઓ</option>
+<option>બાય & સેલ</option>
+<option>મોબાઇલ</option>
+<option>રેસ્ટોરન્ટ</option>
 </select>
 
+<label>કિંમત</label>
+<input id="adPrice" placeholder="₹">
 
-<label>
-કિંમત
-</label>
+<label>વર્ણન</label>
+<textarea id="adDescription"
+placeholder="તમારી જાહેરાત વિશે લખો"></textarea>
 
-<input
-id="adPrice"
-placeholder="₹"
->
+<label>મોબાઇલ નંબર</label>
+<input id="adPhone" type="tel" placeholder="મોબાઇલ નંબર">
 
-<label>
-વર્ણન
-</label>
+<label>ફોટોનો URL</label>
 
-<textarea
-id="adDescription"
-placeholder="તમારી જાહેરાત વિશે લખો"
-></textarea>
+<input id="adImageUrl"
+placeholder="https://example.com/photo.jpg">
 
+<small style="color:#777">
+અત્યારે Firebase Storage વગર હોવાથી ફોટા માટે સીધી image URL નાખવી પડશે.
+</small>
 
-<label>
-મોબાઇલ નંબર
-</label>
-
-<input
-id="adPhone"
-type="tel"
-placeholder="મોબાઇલ નંબર"
->
-
-
-<label>
-ફોટો
-</label>
-
-<input
-id="adImage"
-type="file"
-accept="image/*"
-onchange="previewImage(event)"
->
-
-<div
-id="imagePreview"
-class="preview"
->
-
-<img id="previewImg">
-
-</div>
-
-
-<button
-class="primary"
-onclick="openPayment()"
->
+<button class="primary" onclick="openPayment()">
 આગળ → ₹99 Payment
 </button>
 
 </div>
-
 </div>
 
 
-<div
-id="paymentStep"
-style="display:none"
->
+<div id="paymentStep" style="display:none">
 
 <div class="payment">
 
-<h2>
-₹99 જાહેરાત ફી
-</h2>
+<h2>₹99 જાહેરાત ફી</h2>
 
-<div class="amount">
-₹99
-</div>
+<div class="amount">₹99</div>
 
-<p>
-નીચેનો QR Scan કરીને ₹99 Payment કરો
-</p>
+<p>નીચેનો QR Scan કરીને ₹99 Payment કરો</p>
 
 <div id="qrcode"></div>
 
@@ -1429,1252 +902,800 @@ khacharudayraj185-2@okicici
 
 <br>
 
-<button
-class="pay-btn"
-onclick="openUPI()"
->
+<button class="pay-btn" onclick="openUPI()">
 📱 UPI App ખોલો
 </button>
 
-<button
-class="primary"
-onclick="submitAd()"
->
+<button class="primary" onclick="submitAd()">
 ✅ Payment કર્યા પછી જાહેરાત મોકલો
 </button>
 
 </div>
-
 </div>
 
 </div>
-
 </div>
 
 
-<!-- ADMIN MODAL -->
+<!-- ADMIN -->
 
-<div
-id="adminModal"
-class="modal"
->
+<div id="adminModal" class="modal">
 
 <div class="modal-box">
 
 <div class="modal-head">
-
-<h2>
-👑 Admin Panel
-</h2>
-
-<button
-class="close"
-onclick="closeModal('adminModal')"
->
-×
-</button>
-
+<h2>👑 Admin Panel</h2>
+<button class="close" onclick="closeModal('adminModal')">×</button>
 </div>
 
 <div id="adminList">
-
-જાહેરાતો લોડ થઈ રહી છે...
-
+લોડ થઈ રહ્યું છે...
 </div>
 
-<button
-class="logout"
-onclick="logoutUser()"
->
+<button class="logout" onclick="logoutUser()">
 Logout
 </button>
 
 </div>
-
 </div>
 
 
 <script>
 
-/* =====================================================
-   FIREBASE CONFIG
-===================================================== */
+/* ================================
+FIREBASE
+================================ */
 
 const firebaseConfig = {
-
-  apiKey:
-  "AIzaSyCpf3StVGaPJoiZcm2AfxoJ8N-Anp1kxLI",
-
-  authDomain:
-  "apnu-botad.firebaseapp.com",
-
-  projectId:
-  "apnu-botad",
-
-  storageBucket:
-  "apnu-botad.firebasestorage.app",
-
-  messagingSenderId:
-  "134409761224",
-
-  appId:
-  "1:134409761224:web:9a7fa68403e631a90810fd",
-
-  measurementId:
-  "G-D4JRJXG3DQ"
+apiKey:"AIzaSyCpf3StVGaPJoiZcm2AfxoJ8N-Anp1kxLI",
+authDomain:"apnu-botad.firebaseapp.com",
+projectId:"apnu-botad",
+storageBucket:"apnu-botad.firebasestorage.app",
+messagingSenderId:"134409761224",
+appId:"1:134409761224:web:9a7fa68403e631a90810fd",
+measurementId:"G-D4JRJXG3DQ"
 };
-
-
-/* FIREBASE */
 
 firebase.initializeApp(firebaseConfig);
 
-const auth =
-firebase.auth();
+const auth=firebase.auth();
+const db=firebase.firestore();
 
-const db =
-firebase.firestore();
+const ADMIN_UID="OuqDvIyDBqhnKjOFyEBdGt5WmvI3";
 
-const storage =
-firebase.storage();
+const UPI_ID="khacharudayraj185-2@okicici";
 
-
-/* SETTINGS */
-
-const ADMIN_UID =
-"OuqDvIyDBqhnKjOFyEBdGt5WmvI3";
-
-const UPI_ID =
-"khacharudayraj185-2@okicici";
-
-const PAYMENT_AMOUNT =
-"99";
-
-let currentUser =
-null;
-
-let selectedImage =
-null;
+let currentUser=null;
+let currentUPILink="";
 
 
-/* =====================================================
-   AUTH STATE
-===================================================== */
+/* ================================
+AUTH
+================================ */
 
-auth.onAuthStateChanged(function(user){
+auth.onAuthStateChanged(user=>{
 
-  currentUser = user;
+currentUser=user;
 
-  const button =
-  document.getElementById("loginButton");
+const btn=document.getElementById("loginButton");
 
-  if(user){
+if(user){
 
-    button.innerHTML =
-    "👤 " +
-    (user.email || "Account");
+btn.innerHTML="👤 "+(user.email||"Account");
 
-  }else{
+}else{
 
-    button.innerHTML =
-    "👤 લોગિન / સાઇનઅપ";
+btn.innerHTML="👤 લોગિન / સાઇનઅપ";
 
-  }
+}
 
-  loadApprovedAds();
+loadApprovedAds();
 
 });
 
 
-/* =====================================================
-   MODALS
-===================================================== */
-
 function openModal(id){
-
-  document
-  .getElementById(id)
-  .classList
-  .add("show");
-
+document.getElementById(id).classList.add("show");
 }
 
 function closeModal(id){
-
-  document
-  .getElementById(id)
-  .classList
-  .remove("show");
-
+document.getElementById(id).classList.remove("show");
 }
 
 
-/* =====================================================
-   USER LOGIN
-===================================================== */
+/* ================================
+LOGIN
+================================ */
 
 function openUserLogin(){
 
-  if(currentUser){
+if(currentUser){
 
-    if(currentUser.uid === ADMIN_UID){
+if(currentUser.uid===ADMIN_UID){
 
-      openAdmin();
+openAdmin();
 
-      return;
+}else{
 
-    }
+if(confirm("Logout કરવું છે?")){
+logoutUser();
+}
 
-    if(confirm("Logout કરવું છે?")){
+}
 
-      logoutUser();
+return;
+}
 
-    }
-
-    return;
-
-  }
-
-  openModal("loginModal");
+openModal("loginModal");
 
 }
 
 
 async function loginUser(){
 
-  const email =
-  document
-  .getElementById("loginEmail")
-  .value
-  .trim();
+const email=document.getElementById("loginEmail").value.trim();
+const password=document.getElementById("loginPassword").value;
 
-  const password =
-  document
-  .getElementById("loginPassword")
-  .value;
+if(!email||!password){
+alert("Email અને Password નાખો.");
+return;
+}
 
-  if(!email || !password){
+try{
 
-    alert("Email અને Password નાખો.");
+await auth.signInWithEmailAndPassword(email,password);
 
-    return;
+closeModal("loginModal");
 
-  }
+if(auth.currentUser.uid===ADMIN_UID){
+openAdmin();
+}
 
-  try{
+}catch(error){
 
-    await auth
-    .signInWithEmailAndPassword(
-      email,
-      password
-    );
+alert("Login Error: "+error.message);
 
-    closeModal("loginModal");
-
-    alert("Login સફળ થયું.");
-
-    if(auth.currentUser.uid === ADMIN_UID){
-
-      openAdmin();
-
-    }
-
-  }catch(error){
-
-    alert(
-      "Login Error: " +
-      error.message
-    );
-
-  }
+}
 
 }
 
 
 async function signupUser(){
 
-  const email =
-  document
-  .getElementById("loginEmail")
-  .value
-  .trim();
+const email=document.getElementById("loginEmail").value.trim();
+const password=document.getElementById("loginPassword").value;
 
-  const password =
-  document
-  .getElementById("loginPassword")
-  .value;
+if(!email||!password){
+alert("Email અને Password નાખો.");
+return;
+}
 
-  if(!email || !password){
+if(password.length<6){
+alert("Password ઓછામાં ઓછો 6 charactersનો હોવો જોઈએ.");
+return;
+}
 
-    alert("Email અને Password નાખો.");
+try{
 
-    return;
+await auth.createUserWithEmailAndPassword(email,password);
 
-  }
+closeModal("loginModal");
 
-  if(password.length < 6){
+alert("Account સફળતાપૂર્વક બની ગયું.");
 
-    alert(
-      "Password ઓછામાં ઓછો 6 charactersનો હોવો જોઈએ."
-    );
+}catch(error){
 
-    return;
+alert("Signup Error: "+error.message);
 
-  }
-
-  try{
-
-    await auth
-    .createUserWithEmailAndPassword(
-      email,
-      password
-    );
-
-    closeModal("loginModal");
-
-    alert(
-      "Account સફળતાપૂર્વક બની ગયું."
-    );
-
-  }catch(error){
-
-    alert(
-      "Signup Error: " +
-      error.message
-    );
-
-  }
+}
 
 }
 
 
 async function logoutUser(){
 
-  await auth.signOut();
+await auth.signOut();
 
-  closeModal("adminModal");
+closeModal("adminModal");
 
 }
 
 
-/* =====================================================
-   POST AD
-===================================================== */
+/* ================================
+POST
+================================ */
 
 function openPost(){
 
-  if(!currentUser){
+if(!currentUser){
 
-    alert(
-      "પહેલા Login / Sign Up કરો."
-    );
+alert("પહેલા Login / Sign Up કરો.");
 
-    openUserLogin();
+openUserLogin();
 
-    return;
-
-  }
-
-  document
-  .getElementById("postStep")
-  .style.display = "block";
-
-  document
-  .getElementById("paymentStep")
-  .style.display = "none";
-
-  openModal("postModal");
+return;
 
 }
 
+document.getElementById("postStep").style.display="block";
+document.getElementById("paymentStep").style.display="none";
 
-function previewImage(event){
-
-  const file =
-  event.target.files[0];
-
-  if(!file){
-
-    selectedImage = null;
-
-    return;
-
-  }
-
-  selectedImage = file;
-
-  const reader =
-  new FileReader();
-
-  reader.onload =
-  function(e){
-
-    document
-    .getElementById("previewImg")
-    .src = e.target.result;
-
-    document
-    .getElementById("imagePreview")
-    .style.display = "block";
-
-  };
-
-  reader.readAsDataURL(file);
+openModal("postModal");
 
 }
 
-
-/* =====================================================
-   PAYMENT
-===================================================== */
 
 function openPayment(){
 
-  const title =
-  document
-  .getElementById("adTitle")
-  .value
-  .trim();
+const title=document.getElementById("adTitle").value.trim();
+const phone=document.getElementById("adPhone").value.trim();
 
-  const phone =
-  document
-  .getElementById("adPhone")
-  .value
-  .trim();
+if(!title){
+alert("જાહેરાતનું નામ નાખો.");
+return;
+}
 
-  if(!title){
+if(!phone){
+alert("મોબાઇલ નંબર નાખો.");
+return;
+}
 
-    alert(
-      "જાહેરાતનું નામ નાખો."
-    );
+document.getElementById("postStep").style.display="none";
+document.getElementById("paymentStep").style.display="block";
 
-    return;
-
-  }
-
-  if(!phone){
-
-    alert(
-      "મોબાઇલ નંબર નાખો."
-    );
-
-    return;
-
-  }
-
-  document
-  .getElementById("postStep")
-  .style.display = "none";
-
-  document
-  .getElementById("paymentStep")
-  .style.display = "block";
-
-  createQR();
+createQR();
 
 }
 
 
+/* ================================
+QR
+================================ */
+
 function createQR(){
 
-  const qr =
-  document.getElementById("qrcode");
+const box=document.getElementById("qrcode");
 
-  qr.innerHTML = "";
+box.innerHTML="";
 
-  const upiLink =
-  "upi://pay?pa=" +
-  encodeURIComponent(UPI_ID) +
-  "&pn=" +
-  encodeURIComponent("Apnu Botad") +
-  "&am=99" +
-  "&cu=INR" +
-  "&tn=" +
-  encodeURIComponent("Apnu Botad Advertisement");
+currentUPILink=
+"upi://pay?pa="+
+encodeURIComponent(UPI_ID)+
+"&pn="+
+encodeURIComponent("Apnu Botad")+
+"&am=99"+
+"&cu=INR"+
+"&tn="+
+encodeURIComponent("Apnu Botad Advertisement");
 
-  new QRCode(qr,{
-
-    text:upiLink,
-
-    width:220,
-
-    height:220
-
-  });
-
-  window.currentUPILink =
-  upiLink;
+new QRCode(box,{
+text:currentUPILink,
+width:220,
+height:220
+});
 
 }
 
 
 function openUPI(){
 
-  if(window.currentUPILink){
-
-    window.location.href =
-    window.currentUPILink;
-
-  }
+if(currentUPILink){
+window.location.href=currentUPILink;
+}
 
 }
 
 
-/* =====================================================
-   SUBMIT AD
-===================================================== */
+/* ================================
+SUBMIT
+================================ */
 
 async function submitAd(){
 
-  if(!currentUser){
+if(!currentUser){
 
-    alert(
-      "Login કરો."
-    );
+alert("Login કરો.");
+return;
 
-    return;
+}
 
-  }
+const title=document.getElementById("adTitle").value.trim();
+const category=document.getElementById("adCategory").value;
+const price=document.getElementById("adPrice").value.trim();
+const description=document.getElementById("adDescription").value.trim();
+const phone=document.getElementById("adPhone").value.trim();
+const imageUrl=document.getElementById("adImageUrl").value.trim();
 
-  const title =
-  document
-  .getElementById("adTitle")
-  .value
-  .trim();
+if(!title||!phone){
 
-  const category =
-  document
-  .getElementById("adCategory")
-  .value;
+alert("જરૂરી વિગતો પૂરી કરો.");
+return;
 
-  const price =
-  document
-  .getElementById("adPrice")
-  .value
-  .trim();
+}
 
-  const description =
-  document
-  .getElementById("adDescription")
-  .value
-  .trim();
+try{
 
-  const phone =
-  document
-  .getElementById("adPhone")
-  .value
-  .trim();
+await db.collection("ads").add({
 
-  if(!title || !phone){
+title:title,
+category:category,
+price:price,
+description:description,
+phone:phone,
+imageUrl:imageUrl,
 
-    alert(
-      "જરૂરી વિગતો પૂરી કરો."
-    );
+userId:currentUser.uid,
+userEmail:currentUser.email||"",
 
-    return;
+status:"pending",
+paymentStatus:"pending",
 
-  }
+createdAt:
+firebase.firestore.FieldValue.serverTimestamp()
 
+});
 
-  try{
+alert(
+"જાહેરાત મોકલાઈ ગઈ છે.\n\n"+
+"Payment ચેક કર્યા પછી Admin તેને Approve કરશે."
+);
 
-    let imageUrl = "";
+closeModal("postModal");
 
+resetForm();
 
-    /* PHOTO UPLOAD */
+}catch(error){
 
-    if(selectedImage){
+alert(
+"જાહેરાત મોકલવામાં Error:\n"+
+error.message
+);
 
-      const safeName =
-      Date.now() +
-      "_" +
-      selectedImage.name
-      .replace(/[^\w.-]/g,"_");
-
-      const ref =
-      storage
-      .ref()
-      .child(
-        "ads/" +
-        currentUser.uid +
-        "/" +
-        safeName
-      );
-
-      const snapshot =
-      await ref.put(selectedImage);
-
-      imageUrl =
-      await snapshot.ref.getDownloadURL();
-
-    }
-
-
-    /* FIRESTORE */
-
-    await db
-    .collection("ads")
-    .add({
-
-      title:title,
-
-      category:category,
-
-      price:price,
-
-      description:description,
-
-      phone:phone,
-
-      imageUrl:imageUrl,
-
-      userId:currentUser.uid,
-
-      userEmail:
-      currentUser.email || "",
-
-      status:"pending",
-
-      paymentStatus:"pending",
-
-      createdAt:
-      firebase.firestore.FieldValue.serverTimestamp()
-
-    });
-
-
-    alert(
-      "જાહેરાત મોકલાઈ ગઈ છે.\n\n" +
-      "હવે Admin payment ચેક કરીને Approve કરશે."
-    );
-
-
-    closeModal("postModal");
-
-    resetPostForm();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "જાહેરાત મોકલવામાં Error:\n" +
-      error.message
-    );
-
-  }
+}
 
 }
 
 
-/* RESET */
+function resetForm(){
 
-function resetPostForm(){
-
-  document
-  .getElementById("adTitle")
-  .value = "";
-
-  document
-  .getElementById("adPrice")
-  .value = "";
-
-  document
-  .getElementById("adDescription")
-  .value = "";
-
-  document
-  .getElementById("adPhone")
-  .value = "";
-
-  document
-  .getElementById("adImage")
-  .value = "";
-
-  document
-  .getElementById("imagePreview")
-  .style.display = "none";
-
-  selectedImage = null;
+document.getElementById("adTitle").value="";
+document.getElementById("adPrice").value="";
+document.getElementById("adDescription").value="";
+document.getElementById("adPhone").value="";
+document.getElementById("adImageUrl").value="";
 
 }
 
 
-/* =====================================================
-   PUBLIC ADS
-===================================================== */
+/* ================================
+PUBLIC ADS
+================================ */
 
 async function loadApprovedAds(){
 
-  const featured =
-  document
-  .getElementById("featuredAds");
+const featured=document.getElementById("featuredAds");
+const recent=document.getElementById("recentAds");
 
-  const recent =
-  document
-  .getElementById("recentAds");
+try{
 
-  try{
+const snapshot=await db
+.collection("ads")
+.where("status","==","approved")
+.get();
 
-    const snapshot =
-    await db
-    .collection("ads")
-    .where("status","==","approved")
-    .orderBy(
-      "createdAt",
-      "desc"
-    )
-    .limit(30)
-    .get();
+featured.innerHTML="";
+recent.innerHTML="";
 
+let count=0;
 
-    featured.innerHTML = "";
+snapshot.forEach(doc=>{
 
-    recent.innerHTML = "";
+const ad=doc.data();
 
+if(count<5){
+featured.innerHTML+=createCard(ad);
+}
 
-    if(snapshot.empty){
+recent.innerHTML+=createCard(ad);
 
-      featured.innerHTML =
-      '<div class="empty">' +
-      '📢 હાલમાં કોઈ Approved જાહેરાત નથી.' +
-      '</div>';
+count++;
 
-      recent.innerHTML =
-      '<div class="empty">' +
-      '📢 હાલમાં કોઈ Approved જાહેરાત નથી.' +
-      '</div>';
-
-      return;
-
-    }
+});
 
 
-    let count = 0;
+if(count===0){
 
+const empty=
+'<div class="empty">📢 હાલમાં કોઈ Approved જાહેરાત નથી.</div>';
 
-    snapshot.forEach(doc => {
+featured.innerHTML=empty;
+recent.innerHTML=empty;
 
-      const ad =
-      doc.data();
+}
 
-      const html =
-      createAdCard(ad);
+}catch(error){
 
-      if(count < 5){
+console.error(error);
 
-        featured.innerHTML +=
-        html;
+featured.innerHTML=
+'<div class="empty">જાહેરાતો લોડ થઈ શકી નથી.</div>';
 
-      }
+recent.innerHTML=
+'<div class="empty">જાહેરાતો લોડ થઈ શકી નથી.</div>';
 
-      recent.innerHTML +=
-      html;
-
-      count++;
-
-    });
-
-
-  }catch(error){
-
-    console.error(error);
-
-    featured.innerHTML =
-    '<div class="empty">' +
-    'જાહેરાતો લોડ થઈ શકી નથી.' +
-    '<br><small>' +
-    error.message +
-    '</small></div>';
-
-    recent.innerHTML =
-    '<div class="empty">' +
-    'જાહેરાતો લોડ થઈ શકી નથી.' +
-    '</div>';
-
-  }
+}
 
 }
 
 
-/* =====================================================
-   AD CARD
-===================================================== */
+/* ================================
+CARD
+================================ */
 
-function createAdCard(ad){
+function createCard(ad){
 
-  const image =
-  ad.imageUrl
-  ?
-  `<img class="card-img" src="${escapeHtml(ad.imageUrl)}">`
-  :
-  `<div class="no-photo">📢</div>`;
+let image="";
 
+if(ad.imageUrl){
 
-  const whatsapp =
-  ad.phone
-  ?
-  `<a class="whatsapp"
-      href="https://wa.me/91${String(ad.phone).replace(/\D/g,'')}"
-      target="_blank">
-      ☎
-   </a>`
-  :
-  "";
+image=
+'<img class="card-img" src="'+
+escapeHtml(ad.imageUrl)+
+'">';
 
+}else{
 
-  return `
+image='<div class="no-photo">📢</div>';
 
-  <div class="card">
+}
 
-    <div class="badge">
-      APPROVED
-    </div>
+let whatsapp="";
 
-    ${image}
+if(ad.phone){
 
-    <div class="card-body">
+const phone=String(ad.phone).replace(/\D/g,"");
 
-      <div class="card-price">
-        ${ad.price ? "₹ " + escapeHtml(ad.price) : "Contact"}
-      </div>
+whatsapp=
+'<a class="whatsapp" target="_blank" href="https://wa.me/91'+
+phone+
+'">☎</a>';
 
-      <div class="card-title">
-        ${escapeHtml(ad.title || "")}
-      </div>
+}
 
-      <div class="card-meta">
-        ${escapeHtml(ad.category || "")}
-        • Botad
-      </div>
+return `
 
-      <div class="card-bottom">
+<div class="card">
 
-        <span>
-          📍 Botad
-        </span>
+<div class="badge">APPROVED</div>
 
-        ${whatsapp}
+${image}
 
-      </div>
+<div class="card-body">
 
-    </div>
+<div class="card-price">
+${ad.price ? "₹ "+escapeHtml(ad.price) : "Contact"}
+</div>
 
-  </div>
+<div class="card-title">
+${escapeHtml(ad.title)}
+</div>
 
-  `;
+<div class="card-meta">
+${escapeHtml(ad.category||"")} • Botad
+</div>
+
+<div class="card-bottom">
+
+<span>📍 Botad</span>
+
+${whatsapp}
+
+</div>
+
+</div>
+
+</div>
+
+`;
 
 }
 
 
-/* =====================================================
-   ADMIN PANEL
-===================================================== */
+/* ================================
+ADMIN
+================================ */
 
 function openAdmin(){
 
-  if(!currentUser){
+if(!currentUser||
+currentUser.uid!==ADMIN_UID){
 
-    alert("Login કરો.");
+alert("તમને Admin permission નથી.");
+return;
 
-    return;
+}
 
-  }
+openModal("adminModal");
 
-  if(currentUser.uid !== ADMIN_UID){
-
-    alert(
-      "તમને Admin permission નથી."
-    );
-
-    return;
-
-  }
-
-  openModal("adminModal");
-
-  loadPendingAds();
+loadPendingAds();
 
 }
 
 
 async function loadPendingAds(){
 
-  const list =
-  document
-  .getElementById("adminList");
+const list=document.getElementById("adminList");
 
-  list.innerHTML =
-  "Pending જાહેરાતો લોડ થઈ રહી છે...";
+list.innerHTML="Pending જાહેરાતો લોડ થઈ રહી છે...";
 
+try{
 
-  try{
+const snapshot=await db
+.collection("ads")
+.where("status","==","pending")
+.get();
 
-    const snapshot =
-    await db
-    .collection("ads")
-    .where("status","==","pending")
-    .orderBy(
-      "createdAt",
-      "desc"
-    )
-    .get();
+list.innerHTML="";
 
+if(snapshot.empty){
 
-    list.innerHTML = "";
+list.innerHTML=
+'<div class="empty">🎉 હાલમાં કોઈ Pending જાહેરાત નથી.</div>';
 
+return;
 
-    if(snapshot.empty){
+}
 
-      list.innerHTML =
-      `<div class="empty">
-        🎉 હાલમાં કોઈ Pending જાહેરાત નથી.
-      </div>`;
+snapshot.forEach(doc=>{
 
-      return;
+const ad=doc.data();
 
-    }
+const div=document.createElement("div");
 
+div.className="admin-item";
 
-    snapshot.forEach(doc => {
+let image="";
 
-      const ad =
-      doc.data();
+if(ad.imageUrl){
 
-      const item =
-      document.createElement("div");
+image=
+'<img class="admin-img" src="'+
+escapeHtml(ad.imageUrl)+
+'">';
 
-      item.className =
-      "admin-item";
+}
 
+div.innerHTML=`
 
-      const image =
-      ad.imageUrl
-      ?
-      `<img class="admin-img"
-            src="${escapeHtml(ad.imageUrl)}">`
-      :
-      "";
+${image}
 
+<div class="admin-info">
 
-      item.innerHTML = `
+<b>${escapeHtml(ad.title)}</b>
 
-        ${image}
+<br>
 
-        <div class="admin-info">
+💰 Price:
+${escapeHtml(ad.price||"-")}
 
-          <b>
-            ${escapeHtml(ad.title || "")}
-          </b>
+<br>
 
-          <br>
+📂 Category:
+${escapeHtml(ad.category||"-")}
 
-          💰 Price:
-          ${escapeHtml(ad.price || "-")}
+<br>
 
-          <br>
+📞 Phone:
+${escapeHtml(ad.phone||"-")}
 
-          📂 Category:
-          ${escapeHtml(ad.category || "-")}
+<br>
 
-          <br>
+👤 User:
+${escapeHtml(ad.userEmail||"-")}
 
-          📞 Phone:
-          ${escapeHtml(ad.phone || "-")}
+<br>
 
-          <br>
+📝 Description:
+${escapeHtml(ad.description||"-")}
 
-          👤 User:
-          ${escapeHtml(ad.userEmail || "-")}
+</div>
 
-          <br>
+<div class="admin-actions">
 
-          📝
-          ${escapeHtml(ad.description || "-")}
+<button class="approve"
+onclick="approveAd('${doc.id}')">
+✅ APPROVE
+</button>
 
-        </div>
+<button class="reject"
+onclick="rejectAd('${doc.id}')">
+❌ REJECT
+</button>
 
+</div>
 
-        <div class="admin-actions">
+`;
 
-          <button
-            class="approve"
-            onclick="approveAd('${doc.id}')"
-          >
-            ✅ APPROVE
-          </button>
+list.appendChild(div);
 
-          <button
-            class="reject"
-            onclick="rejectAd('${doc.id}')"
-          >
-            ❌ REJECT
-          </button>
+});
 
-        </div>
+}catch(error){
 
-      `;
+list.innerHTML=
+'<div class="empty">Error: '+
+escapeHtml(error.message)+
+'</div>';
 
-
-      list.appendChild(item);
-
-    });
-
-
-  }catch(error){
-
-    console.error(error);
-
-    list.innerHTML =
-    `<div class="empty">
-      Error:
-      ${escapeHtml(error.message)}
-    </div>`;
-
-  }
+}
 
 }
 
 
-/* =====================================================
-   APPROVE
-===================================================== */
+/* ================================
+APPROVE
+================================ */
 
 async function approveAd(id){
 
-  if(!currentUser){
+if(!currentUser||
+currentUser.uid!==ADMIN_UID){
 
-    alert("Login જરૂરી છે.");
+alert("Admin permission જરૂરી છે.");
+return;
 
-    return;
+}
 
-  }
+if(!confirm("આ જાહેરાત Approve કરવી છે?")){
+return;
+}
 
-  if(currentUser.uid !== ADMIN_UID){
+try{
 
-    alert(
-      "તમને Approve કરવાની permission નથી."
-    );
+await db
+.collection("ads")
+.doc(id)
+.update({
 
-    return;
+status:"approved",
 
-  }
+approvedBy:ADMIN_UID,
 
+approvedAt:
+firebase.firestore.FieldValue.serverTimestamp()
 
-  if(!confirm(
-    "આ જાહેરાત Approve કરવી છે?"
-  )){
+});
 
-    return;
+alert("જાહેરાત Approved થઈ ગઈ. ✅");
 
-  }
+loadPendingAds();
+loadApprovedAds();
 
+}catch(error){
 
-  try{
+alert("Approve Error: "+error.message);
 
-    await db
-    .collection("ads")
-    .doc(id)
-    .update({
-
-      status:"approved",
-
-      approvedAt:
-      firebase.firestore.FieldValue.serverTimestamp(),
-
-      approvedBy:
-      ADMIN_UID
-
-    });
-
-
-    alert(
-      "જાહેરાત Approved થઈ ગઈ. ✅"
-    );
-
-
-    loadPendingAds();
-
-    loadApprovedAds();
-
-
-  }catch(error){
-
-    alert(
-      "Approve Error:\n" +
-      error.message
-    );
-
-  }
+}
 
 }
 
 
-/* =====================================================
-   REJECT
-===================================================== */
+/* ================================
+REJECT
+================================ */
 
 async function rejectAd(id){
 
-  if(!currentUser ||
-     currentUser.uid !== ADMIN_UID){
+if(!currentUser||
+currentUser.uid!==ADMIN_UID){
 
-    alert(
-      "Admin permission જરૂરી છે."
-    );
+alert("Admin permission જરૂરી છે.");
+return;
 
-    return;
+}
 
-  }
+if(!confirm("આ જાહેરાત Reject કરવી છે?")){
+return;
+}
 
+try{
 
-  if(!confirm(
-    "આ જાહેરાત Reject/Delete કરવી છે?"
-  )){
+await db
+.collection("ads")
+.doc(id)
+.delete();
 
-    return;
+alert("જાહેરાત Reject થઈ ગઈ.");
 
-  }
+loadPendingAds();
 
+}catch(error){
 
-  try{
+alert("Reject Error: "+error.message);
 
-    await db
-    .collection("ads")
-    .doc(id)
-    .delete();
-
-
-    alert(
-      "જાહેરાત Reject થઈ ગઈ."
-    );
-
-
-    loadPendingAds();
-
-
-  }catch(error){
-
-    alert(
-      "Reject Error:\n" +
-      error.message
-    );
-
-  }
+}
 
 }
 
 
-/* =====================================================
-   SEARCH
-===================================================== */
+/* ================================
+SEARCH
+================================ */
 
 async function searchAds(){
 
-  const text =
-  (
-    document
-    .getElementById("topSearch")
-    .value ||
-    document
-    .getElementById("heroSearch")
-    .value
-  )
-  .toLowerCase()
-  .trim();
+const text=(
+document.getElementById("topSearch").value||
+document.getElementById("heroSearch").value
+).toLowerCase().trim();
 
+const category=
+document.getElementById("categoryFilter").value;
 
-  const category =
-  document
-  .getElementById("categoryFilter")
-  .value;
+try{
 
+const snapshot=await db
+.collection("ads")
+.where("status","==","approved")
+.get();
 
-  try{
+const recent=document.getElementById("recentAds");
 
-    const snapshot =
-    await db
-    .collection("ads")
-    .where("status","==","approved")
-    .get();
+recent.innerHTML="";
 
+let found=0;
 
-    const recent =
-    document
-    .getElementById("recentAds");
+snapshot.forEach(doc=>{
 
-    recent.innerHTML = "";
+const ad=doc.data();
 
+const allText=(
+(ad.title||"")+" "+
+(ad.description||"")+" "+
+(ad.category||"")
+).toLowerCase();
 
-    let found = 0;
+if(
+(!text||allText.includes(text))&&
+(!category||ad.category===category)
+){
 
+recent.innerHTML+=createCard(ad);
 
-    snapshot.forEach(doc => {
+found++;
 
-      const ad =
-      doc.data();
+}
 
+});
 
-      const fullText =
-      (
-        (ad.title || "") +
-        " " +
-        (ad.description || "") +
-        " " +
-        (ad.category || "")
-      )
-      .toLowerCase();
+if(found===0){
 
+recent.innerHTML=
+'<div class="empty">🔍 કોઈ જાહેરાત મળી નથી.</div>';
 
-      if(
-        (!text || fullText.includes(text)) &&
-        (!category || ad.category === category)
-      ){
+}
 
-        recent.innerHTML +=
-        createAdCard(ad);
+}catch(error){
 
-        found++;
+alert("Search Error: "+error.message);
 
-      }
-
-    });
-
-
-    if(!found){
-
-      recent.innerHTML =
-      `<div class="empty">
-        🔍 કોઈ જાહેરાત મળી નથી.
-      </div>`;
-
-    }
-
-  }catch(error){
-
-    alert(
-      "Search Error: " +
-      error.message
-    );
-
-  }
+}
 
 }
 
 
-/* =====================================================
-   HTML ESCAPE
-===================================================== */
+/* ================================
+ESCAPE
+================================ */
 
 function escapeHtml(value){
 
-  return String(value || "")
-  .replace(/&/g,"&amp;")
-  .replace(/</g,"&lt;")
-  .replace(/>/g,"&gt;")
-  .replace(/"/g,"&quot;")
-  .replace(/'/g,"&#039;");
+return String(value||"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
 
